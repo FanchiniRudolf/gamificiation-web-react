@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, BrowserRouter, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './Components/Login/Login';
+import Group from './Components/Group/Group';
 
 
 ReactDOM.render(
@@ -12,13 +14,13 @@ ReactDOM.render(
     <BrowserRouter forceRefresh={true}>
       <Switch>
           <Route path="/login"> 
-            <App/>
+            <Login />
           </Route>
           <Route path="/profile">
             <App/>
           </Route>
-          <Route path="/pendingmissions">
-            <App/>
+          <Route path="/group">
+            <Group />
           </Route>
           <Route path="/courses">
             <App/>
