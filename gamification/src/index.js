@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, BrowserRouter, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Component imports
 import Login from './Components/Login/Login';
 import Group from './Components/Group/Group';
+import Courses from './Components/Courses/Courses';
 
 
 ReactDOM.render(
@@ -23,7 +27,7 @@ ReactDOM.render(
             <Group />
           </Route>
           <Route path="/courses">
-            <App/>
+            <Courses/>
           </Route>
           <Route path="/">
             <App/>
