@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import './Group.css';
+import './StudentGroup.css';
 //@bobby
-function Group() {
+function StudentGroup() {
   return (
-    // <div className="Group">
+    // <div className="StudentGroup">
     <div>
       <Container>
         <Row>
@@ -21,4 +21,4 @@ function Group() {
   );
 }
 
-export default Group;
+export default StudentGroup;

@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Component imports
 import Login from './Components/Login/Login';
-import Group from './Components/Group/Group';
+import StudentGroup from './Components/StudentGroup/StudentGroup';
 import Courses from './Components/Courses/Courses';
+
 
 
 ReactDOM.render(
@@ -23,11 +24,11 @@ ReactDOM.render(
           <Route path="/profile">
             <App/>
           </Route>
-          <Route path="/group">
-            <Group />
-          </Route>
           <Route path="/courses">
             <Courses/>
+          </Route>
+          <Route path="/studentgroup">
+            <StudentGroup />
           </Route>
           <Route path="/">
             <App/>
