@@ -9,8 +9,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Component imports
 import Login from './Components/Login/Login';
-import StudentGroup from './Components/StudentGroup/StudentGroup';
+
+// Student-only components
 import Courses from './Components/Courses/Courses';
+import StudentGroup from './Components/StudentGroup/StudentGroup';
+
+// Instructor-only components
+import TeacherCourses from './Components/TeacherCourses/TeacherCourses';
+import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
+import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
+import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
+import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
 
 
 
@@ -30,6 +39,25 @@ ReactDOM.render(
           <Route path="/studentgroup">
             <StudentGroup />
           </Route>
+
+          <Route path="/teachercourses">
+            <TeacherCourses />
+          </Route>
+          <Route path="/teachergroups">
+            <TeacherGroups />
+          </Route>
+          
+          {/* dinamica, correcto?? */}
+          <Route path="/teachergroup">
+            <TeacherGroup />
+          </Route>
+          <Route path="/teacherperiods">
+            <TeacherPeriods />
+          </Route>
+          <Route path="/teachermissions">
+            <TeacherMissions />
+          </Route>
+
           <Route path="/">
             <App/>
           </Route>
