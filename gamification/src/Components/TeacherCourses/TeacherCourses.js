@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import Navbar from '../Navbar/Navbar';
 
 import './TeacherCourses.css';
 //@bobby
@@ -7,6 +8,9 @@ function TeacherCourses() {
   return (
     // <div className="StudentGroup">
     <div>
+
+      <Navbar />
+
       <Container>
       <Row className="mt-5 mb-3">
           <Col lg={9}>
