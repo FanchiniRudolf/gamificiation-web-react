@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import Navbar from '../Navbar/Navbar';
 
 import './TeacherGroups.css';
 //@bobby
@@ -7,11 +8,13 @@ function TeacherGroups() {
   return (
     // <div className="StudentGroup">
     <div>
+
+      <Navbar />
+
       <Container>
       <Row className="mt-5 mb-3">
           <Col lg={9}>
             <h1>Mis Grupos</h1>
-            <p>(TODO/reminder, en Navbar que diga "cursos", "grupos", "periodos", "misiones")</p>
           </Col>
           <Col lg={3}>
             <Button variant="primary" size="md" >

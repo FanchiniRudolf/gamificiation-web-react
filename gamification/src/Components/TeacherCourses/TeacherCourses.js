@@ -15,7 +15,6 @@ function TeacherCourses() {
       <Row className="mt-5 mb-3">
           <Col lg={9}>
             <h1>Mis cursos</h1>
-            <p>(TODO/reminder, en Navbar que diga "cursos", "grupos", "periodos", "misiones")</p>
           </Col>
           <Col lg={3}>
             <Button variant="primary">
