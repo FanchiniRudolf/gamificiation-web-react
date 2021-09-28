@@ -15,7 +15,7 @@ function Navbar() {
             <Nav.Link href="/teachergroups">Grupos</Nav.Link>
             <Nav.Link href="/teacherperiods">Periodos</Nav.Link>
             <Nav.Link href="/teachermissions">Misiones</Nav.Link>
-            <NavDropdown title="Dropdown (ignore 4 now)" id="basic-nav-dropdown">
+            <NavDropdown title="Dropdown (add logout in here)" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action

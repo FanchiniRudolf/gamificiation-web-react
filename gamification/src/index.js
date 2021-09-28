@@ -20,11 +20,15 @@ import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
 import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
 import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
 import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
+import Navbar from './Components/Navbar/Navbar';
+import StudentProfile from './Components/StudentProfile/StudentProfile';
 
 
 
 ReactDOM.render(
+  
   <React.StrictMode>
+    <Navbar />
     <BrowserRouter forceRefresh={true}>
       <Switch>
           <Route path="/login"> 
@@ -38,6 +42,9 @@ ReactDOM.render(
           </Route>
           <Route path="/studentgroup">
             <StudentGroup />
+          </Route>
+          <Route path="/studentprofile">
+            <StudentProfile />
           </Route>
 
           <Route path="/teachercourses">
