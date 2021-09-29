@@ -22,6 +22,7 @@ import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
 import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
 import Navbar from './Components/Navbar/Navbar';
 import StudentProfile from './Components/StudentProfile/StudentProfile';
+import GradeStudent from './Components/GradeStudent/GradeStudent';
 
 
 
@@ -47,16 +48,12 @@ ReactDOM.render(
             <StudentProfile />
           </Route>
 
+
           <Route path="/teachercourses">
             <TeacherCourses />
           </Route>
           <Route path="/teachergroups">
             <TeacherGroups />
-          </Route>
-          
-          {/* dinamica, correcto?? */}
-          <Route path="/teachergroup">
-            <TeacherGroup />
           </Route>
           <Route path="/teacherperiods">
             <TeacherPeriods />
@@ -64,6 +61,15 @@ ReactDOM.render(
           <Route path="/teachermissions">
             <TeacherMissions />
           </Route>
+
+          {/* dinamicas, correcto?? */}
+          <Route path="/teachergroup">
+            <TeacherGroup />
+          </Route>
+          <Route path="/gradestudent">
+            <GradeStudent />
+          </Route>
+
 
           <Route path="/">
             <App/>
