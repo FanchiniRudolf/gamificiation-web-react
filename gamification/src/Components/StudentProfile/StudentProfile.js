@@ -8,7 +8,12 @@ function StudentProfile() {
     // <div className="Courses">
     <div>
       <Container>
-      <Row className="text-lg-center mt-5 mb-3">
+        <Row className="text-lg-center mt-2 mb-3">
+          <Col lg={12}>
+            <h2>Mi perfil (grupo x)</h2>
+          </Col>
+        </Row>
+        <Row className="text-lg-center mt-5 mb-3">
           <Col lg={12}>
             <p>foto</p>
           </Col>

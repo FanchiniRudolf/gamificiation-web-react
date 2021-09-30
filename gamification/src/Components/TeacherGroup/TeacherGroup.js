@@ -22,18 +22,21 @@ function TeacherGroup() {
           <Col lg={6}>
             <h4>Promedio del grupo: {(99.8+0.1).toFixed(2)}</h4>
           </Col>
+
+          {/* stretch goal: add min & max grade & logic to compute it */}
           
         </Row>
-
+        
+        <hr />
         <Row className="mt-4">
           <Col lg={12}>
             <h4>Alumnos:</h4>
           </Col>
         </Row>
-
+        
         <Row className="mt-2">
           <Col lg={12}>
-            <p>tabla con los alumnos</p>
+            <p>tabla con los alumnos (ordenados por matricula)</p>
           </Col>
         </Row>
       </Container>

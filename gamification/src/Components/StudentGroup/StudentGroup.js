@@ -9,10 +9,14 @@ function StudentGroup() {
     <div>
       <Container>
         <Row>
-          <Col lg={6} className='mt-5'>
+          <Col lg={12} className='mt-5'>
+            <p>usar un boton o toggle y renderear condicionalmente una u otra</p>
             <h2>Misiones pendientes</h2>
           </Col>
-          <Col lg={6} className='mt-5'>
+        </Row>
+        <hr />
+        <Row>
+          <Col lg={12} className='mt-5'>
             <h2>Tabla de posiciones del grupo</h2>
           </Col>
         </Row>

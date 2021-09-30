@@ -35,12 +35,16 @@ ReactDOM.render(
           <Route path="/login"> 
             <Login />
           </Route>
+
+          {/* student routes */}
           <Route path="/profile">
             <App/>
           </Route>
           <Route path="/courses">
             <Courses/>
           </Route>
+
+          {/* dynamic */}
           <Route path="/studentgroup">
             <StudentGroup />
           </Route>
@@ -49,6 +53,7 @@ ReactDOM.render(
           </Route>
 
 
+          {/* teacher routes */}
           <Route path="/teachercourses">
             <TeacherCourses />
           </Route>
