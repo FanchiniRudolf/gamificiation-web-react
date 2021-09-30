@@ -23,6 +23,7 @@ import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
 import Navbar from './Components/Navbar/Navbar';
 import StudentProfile from './Components/StudentProfile/StudentProfile';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
+import AddStudent from './Components/AddStudent/AddStudent';
 
 
 
@@ -73,6 +74,10 @@ ReactDOM.render(
           </Route>
           <Route path="/gradestudent">
             <GradeStudent />
+          </Route>
+
+          <Route path="/addstudent">
+            <AddStudent />
           </Route>
 
 
