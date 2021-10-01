@@ -1,41 +1,55 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, {useState} from "react";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import "./Profile.css";
+import {getCookie} from "../../Functions/Cookies"
+import {useParams}  from "react-router-dom";
+
 //@dos
 function StudentProfile() {
+
+
+  const { id } = useParams();
+
+
+  const [user, setUser] = useState({
+    name: "John Doe", 
+    id: id,
+    profilePic:"http://dipsinternational.com/wp-content/uploads/2017/03/user-icon-fontawesome.png",
+    group: 0,
+    hp: 420,
+    xp: 69,
+    coins: 42
+  }); //TODO make custom hook
 
   return (
     // <div className="Courses">
     <div>
       <Container>
-        <Row className="text-lg-center mt-2 mb-3">
+        <Row className="text-center mt-2 mb-3">
           <Col lg={12}>
-            <h2>Mi perfil (grupo x)</h2>
+            <h2>Grupo  {user.group} </h2>
+            <h2>Perfil de {user.id} </h2>
           </Col>
         </Row>
-        <Row className="text-lg-center mt-5 mb-3">
-          <Col lg={12}>
-            <p>foto</p>
+        <Row className="text-center mt-2 mb-5">
+          <Col >
+            <Image src={user.profilePic} alt="Profile Pic" roundedCircle /*TODO make dynamic*//> 
           </Col>
         </Row>
-        <Row className="text-lg-center mt-5 mb-3">
+        <Row className="text-center mt-5 mb-3">
           <Col lg={12}>
-            <h2>Nombre</h2>
+            <h1>{user.name}</h1>
           </Col>
         </Row>
-        <Row className="text-lg-center mt-5 mb-3">
-          <Col lg={12}>
-            <h1>X hp</h1>
+        <Row className="text-center mt-5 mb-3">
+          <Col>
+            <h2>{user.hp} 💗</h2>
           </Col>
-        </Row>
-        <Row className="text-lg-center mt-5 mb-3">
-          <Col lg={12}>
-            <h3>Y XP</h3>
+          <Col >
+            <h2>{user.xp} ⭐</h2>
           </Col>
-        </Row>
-        <Row className="text-lg-center mt-5 mb-3">
-          <Col lg={12}>
-            <h3>Z monedas</h3>
+          <Col >
+            <h2>{user.coins} 🪙</h2>
           </Col>
         </Row>
         
