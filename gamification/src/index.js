@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, BrowserRouter, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import {getCookie} from './Functions/Cookies.js'
 
 // Component imports
 import Login from './Components/Login/Login';
@@ -14,7 +15,7 @@ import Navbar from './Components/Navbar/Navbar';
 // Student-only components
 import Courses from './Components/Courses/Courses';
 import StudentGroup from './Components/StudentGroup/StudentGroup';
-import StudentProfile from './Components/StudentProfile/StudentProfile';
+import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
 import TeacherCourses from './Components/TeacherCourses/TeacherCourses';
@@ -27,11 +28,11 @@ import AddStudent from './Components/AddStudent/AddStudent';
 import CreateCourse from './Components/CreateCourse/CreateCourse';
 import CreateGroup from './Components/CreateGroup/CreateGroup';
 import CreatePeriod from './Components/CreatePeriod/CreatePeriod';
-import CreateMission from './Components/CreateMission/CreateMission';
+import CreateMission from './Components/CreateMission/CreateMission'; //TODO collapse all into one
 import EditCourse from './Components/EditCourse/EditCourse';
 import EditGroup from './Components/EditGroup/EditGroup';
 import EditPeriod from './Components/EditPeriod/EditPeriod';
-import EditMission from './Components/EditMission/EditMission';
+import EditMission from './Components/EditMission/EditMission'; //TODO collapse all into one
 
 
 
@@ -39,25 +40,22 @@ ReactDOM.render(
   
   <React.StrictMode>
     <Navbar />
-    <BrowserRouter forceRefresh={true}>
+    <BrowserRouter forceRefresh={false}>
       <Switch>
           <Route path="/login"> 
             <Login />
           </Route>
 
           {/* student routes */}
-          <Route path="/profile">
-            <App/>
-          </Route>
           <Route path="/courses">
             <Courses/>
           </Route>
 
           {/* dynamic */}
-          <Route path="/studentgroup">
+          <Route path="/studentgroup/:id">
             <StudentGroup />
           </Route>
-          <Route path="/studentprofile">
+          <Route path="/profile/:id">
             <StudentProfile />
           </Route>
 
@@ -76,16 +74,16 @@ ReactDOM.render(
             <TeacherMissions />
           </Route>
 
-          <Route path="/createcourse">
+          <Route path="/createcourse" /* rudy */>
             <CreateCourse />
           </Route>
-          <Route path="/creategroup">
+          <Route path="/creategroup" /* rudy */>
             <CreateGroup />
           </Route>
-          <Route path="/createperiod">
+          <Route path="/createperiod"/* rudy */>
             <CreatePeriod />
           </Route>
-          <Route path="/createmission">
+          <Route path="/createmission"/* rudy */>
             <CreateMission />
           </Route>
           <Route path="/editcourse">
@@ -114,9 +112,14 @@ ReactDOM.render(
             <AddStudent />
           </Route>
 
-
           <Route path="/">
-            <App/>
+            {getCookie("loggedIn") ? 
+              (getCookie("isTeacher") ?
+                (<Courses/>) :
+                (<StudentGroup/>) //TODO this should be rolled into one 
+              ) :
+              (<Login />)
+            }
           </Route>
       </Switch>
     </BrowserRouter>

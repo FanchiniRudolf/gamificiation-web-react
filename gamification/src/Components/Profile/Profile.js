@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "./StudentProfile.css";
+import "./Profile.css";
 //@dos
 function StudentProfile() {
 
