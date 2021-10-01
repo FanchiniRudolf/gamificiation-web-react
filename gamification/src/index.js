@@ -14,14 +14,12 @@ import Navbar from './Components/Navbar/Navbar';
 
 // Student-only components
 import Courses from './Components/Courses/Courses';
-import StudentGroup from './Components/StudentGroup/StudentGroup';
+import Group from './Components/Group/Group';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
-import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
 import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
 import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
-import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
 
@@ -46,52 +44,36 @@ ReactDOM.render(
           </Route>
 
           {/* dynamic */}
-          <Route path="/studentgroup/:id">
-            <StudentGroup />
+          <Route path="/Group/:id">
+            <Group />
           </Route>
           <Route path="/profile/:id">
             <StudentProfile />
           </Route>
-
-
-          {/* teacher routes */}
-          <Route path="/teachergroups">
-            <TeacherGroups />
+          <Route path="/gradestudent/:id">
+            <GradeStudent />
           </Route>
-          <Route path="/teacherperiods">
-            <TeacherPeriods />
-          </Route>
-          <Route path="/teachermissions">
-            <TeacherMissions />
-          </Route>
-
-          <Route path="/create/:type" /* rudy */>
+          <Route path="/create/:type">
             <Create />
           </Route>
           <Route path="/edit/:type/:id">
             <Edit />
           </Route>
-          
 
-
-          {/* dinamicas, correcto?? */}
-          <Route path="/teachergroup">
-            <TeacherGroup />
+          {/* teacher routes */}
+          <Route path="/periods">
+            <TeacherPeriods />
           </Route>
-          <Route path="/gradestudent">
-            <GradeStudent />
+          <Route path="/missions">
+            <TeacherMissions />
           </Route>
-
           <Route path="/addstudent">
             <AddStudent />
-          </Route>
+          </Route>          
 
           <Route path="/">
             {getCookie("loggedIn") ? 
-              (getCookie("isTeacher") ?
-                (<Courses/>) :
-                (<StudentGroup/>) //TODO this should be rolled into one 
-              ) :
+              (<Courses/>) :
               (<Login />)
             }
           </Route>

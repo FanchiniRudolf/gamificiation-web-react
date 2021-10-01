@@ -1,9 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
-import './TeacherGroup.css';
-//@bobby
-function TeacherGroup() {
+function Teacher() {
   return (
     // <div className="StudentGroup">
     <div>
@@ -44,4 +42,4 @@ function TeacherGroup() {
   );
 }
 
-export default TeacherGroup;
+export default Teacher;
