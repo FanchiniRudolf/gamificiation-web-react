@@ -7,11 +7,11 @@ function Navbar() {
   return (
     <BNavbar bg="primary" variant="dark" expand="lg">
       <Container>
-        <BNavbar.Brand href="/teachercourses">Gamificación Tec CEM</BNavbar.Brand>
+        <BNavbar.Brand href="/">Gamificación Tec CEM</BNavbar.Brand>
         <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/teachercourses">Cursos</Nav.Link>
+            <Nav.Link href="/courses">Cursos</Nav.Link>
             <Nav.Link href="/teachergroups">Grupos</Nav.Link>
             <Nav.Link href="/teacherperiods">Periodos</Nav.Link>
             <Nav.Link href="/teachermissions">Misiones</Nav.Link>

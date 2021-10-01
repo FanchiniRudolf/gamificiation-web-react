@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import "./Profile.css";
-import {getCookie} from "../../Functions/Cookies"
 import {useParams}  from "react-router-dom";
 
 //@dos
@@ -11,14 +10,14 @@ function StudentProfile() {
   const { id } = useParams();
 
 
-  const [user, setUser] = useState({
+  const [user] = useState({
     name: "John Doe", 
     id: id,
     profilePic:"http://dipsinternational.com/wp-content/uploads/2017/03/user-icon-fontawesome.png",
     group: 0,
     hp: 420,
     xp: 69,
-    coins: 42
+    coins: 7
   }); //TODO make custom hook
 
   return (

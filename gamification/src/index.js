@@ -18,21 +18,15 @@ import StudentGroup from './Components/StudentGroup/StudentGroup';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
-import TeacherCourses from './Components/TeacherCourses/TeacherCourses';
 import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
 import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
 import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
 import TeacherGroup from './Components/TeacherGroup/TeacherGroup';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
-import CreateCourse from './Components/CreateCourse/CreateCourse';
-import CreateGroup from './Components/CreateGroup/CreateGroup';
-import CreatePeriod from './Components/CreatePeriod/CreatePeriod';
-import CreateMission from './Components/CreateMission/CreateMission'; //TODO collapse all into one
-import EditCourse from './Components/EditCourse/EditCourse';
-import EditGroup from './Components/EditGroup/EditGroup';
-import EditPeriod from './Components/EditPeriod/EditPeriod';
-import EditMission from './Components/EditMission/EditMission'; //TODO collapse all into one
+
+import Create from './Components/Create/Create';
+import Edit from './Components/Edit/Edit';
 
 
 
@@ -61,9 +55,6 @@ ReactDOM.render(
 
 
           {/* teacher routes */}
-          <Route path="/teachercourses">
-            <TeacherCourses />
-          </Route>
           <Route path="/teachergroups">
             <TeacherGroups />
           </Route>
@@ -74,30 +65,13 @@ ReactDOM.render(
             <TeacherMissions />
           </Route>
 
-          <Route path="/createcourse" /* rudy */>
-            <CreateCourse />
+          <Route path="/create/:type" /* rudy */>
+            <Create />
           </Route>
-          <Route path="/creategroup" /* rudy */>
-            <CreateGroup />
+          <Route path="/edit/:type/:id">
+            <Edit />
           </Route>
-          <Route path="/createperiod"/* rudy */>
-            <CreatePeriod />
-          </Route>
-          <Route path="/createmission"/* rudy */>
-            <CreateMission />
-          </Route>
-          <Route path="/editcourse">
-            <EditCourse />
-          </Route>
-          <Route path="/editgroup">
-            <EditGroup />
-          </Route>
-          <Route path="/editperiod">
-            <EditPeriod />
-          </Route>
-          <Route path="/editmission">
-            <EditMission />
-          </Route>
+          
 
 
           {/* dinamicas, correcto?? */}
