@@ -47,7 +47,7 @@ ReactDOM.render(
           <Route path="/Group/:id">
             <Group />
           </Route>
-          <Route path="/profile/:id">
+          <Route path="/profile/:group/:id">
             <StudentProfile />
           </Route>
           <Route path="/gradestudent/:id">
