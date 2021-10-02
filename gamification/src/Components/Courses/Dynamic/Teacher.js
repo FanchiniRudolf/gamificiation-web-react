@@ -1,9 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import './TeacherCourses.css';
-//@bobby
-function TeacherCourses() {
+function Teacher() {
   return (
     // <div className="StudentGroup">
     <div>
@@ -28,4 +26,4 @@ function TeacherCourses() {
   );
 }
 
-export default TeacherCourses;
+export default Teacher;
