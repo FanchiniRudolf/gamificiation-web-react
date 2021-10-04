@@ -12,8 +12,8 @@ function Courses() {
     <div>
       {  getCookie("isTeacher") ?
         (<Teacher/>) :
-        // (<Teacher/>)
-        (<Student/>)
+        (<Teacher/>)
+        // (<Student/>)
       }
     </div>
   );

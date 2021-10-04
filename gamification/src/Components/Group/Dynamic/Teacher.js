@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
+import StudentListItem from '../../StudentListItem/StudentListItem';
+
 function Teacher() {
   return (
     // <div className="StudentGroup">
@@ -33,7 +35,7 @@ function Teacher() {
           </Col>
           
           <Col lg={6}>
-            <h4>Promedio del grupo: {(99.8+0.1).toFixed(2)}</h4>
+            <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
           </Col>
 
           {/* stretch goal: add min & max grade & logic to compute it */}
@@ -50,6 +52,7 @@ function Teacher() {
         <Row className="mt-2">
           <Col lg={12}>
             <p>tabla con los alumnos (ordenados por matricula)</p>
+            <StudentListItem />
           </Col>
         </Row>
 
