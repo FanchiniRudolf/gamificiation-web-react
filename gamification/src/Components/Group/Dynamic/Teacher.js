@@ -4,15 +4,44 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import StudentListItem from '../../StudentListItem/StudentListItem';
 
 function Teacher() {
+
+  const dummyStudents = [
+    {
+      id: 'A01374448',
+      name: 'Estudiante1',
+      hp: 0,
+      xp: 0,
+      gold: 0,
+      average:0.0
+    },
+    {
+      id: 'A01374866',
+      name: 'Estudiante2',
+      hp: 0,
+      xp: 0,
+      gold: 0,
+      average:0.0
+    },
+    {
+      id: 'A01374785',
+      name: 'Estudiante3',
+      hp: 0,
+      xp: 0,
+      gold: 0,
+      average:0.0
+    }
+  ];
+  const dummyStudentsList = dummyStudents.map(student => <StudentListItem key={student.id} student={student} />)
+
   return (
     // <div className="StudentGroup">
     <div>
       <Container>
-      <Row className="mt-5 mb-3">
-          <Col lg={4}>
+        <Row className="mt-5 mb-3">
+          <Col lg={5}>
            {' '} 
           </Col>
-          <Col lg={8}>
+          <Col lg={7}>
             <Button variant="info">Ver grupo/alumnos</Button>{' '}
             <Button variant="info">Ver misiones</Button>{' '}
             <Button variant="info">Ver tabla de posiciones</Button>{' '}
@@ -52,7 +81,8 @@ function Teacher() {
         <Row className="mt-2">
           <Col lg={12}>
             <p>tabla con los alumnos (ordenados por matricula)</p>
-            <StudentListItem />
+            {/* <StudentListItem /> */}
+            {dummyStudentsList}
           </Col>
         </Row>
 

@@ -1,20 +1,20 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-function StudentListItem() {
+function StudentListItem({student}) {
   return (
     <div>
       <Container>
-        <Row>
-          <Col lg={3}>
-            Nombre del alumno
+        <Row className="mt-2">
+        <Col lg={2}>
+            {student.id}
           </Col>
-          <Col lg={2}>
-            A01234567
+          <Col lg={3}>
+          {student.name}
           </Col>
 
           <Col lg={6}>
-            {0} hp, {0} xp, {0} monedas | Promedio misiones: {(0.0).toFixed(2)}
+            {student.hp} hp, {student.hp} xp, {student.gold} monedas | Promedio misiones: {(student.average).toFixed(2)}
           </Col>
 
           <Col lg={1}>
