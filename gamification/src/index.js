@@ -22,6 +22,7 @@ import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
 import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
+import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
 
 import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
@@ -69,6 +70,9 @@ ReactDOM.render(
           </Route>
           <Route path="/addstudent">
             <AddStudent />
+          </Route>
+          <Route path="/teachersubjects">
+            <TeacherGroups />
           </Route>          
 
           <Route path="/">
