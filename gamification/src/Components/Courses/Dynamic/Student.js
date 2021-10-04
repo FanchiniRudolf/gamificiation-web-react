@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 
 import CourseCard from "../../CourseCard/CourseCard"
   
@@ -17,7 +17,23 @@ const Student=()=>
           <Modal.Header closeButton>
             <Modal.Title>Unirse a un curso</Modal.Title>
           </Modal.Header>
-          <Modal.Body>This is the body.</Modal.Body>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Código</Form.Label>
+                <Form.Control type="text" placeholder="Código de clase" />
+                <Form.Text className="text-muted">
+                  Introduce el código de la clase para quedar registrado en esta.
+                </Form.Text>
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Registrar
+              </Button>
+              <Button variant="link" onClick={handleJoinModalClose}>
+                Cancelar
+              </Button>
+            </Form>
+          </Modal.Body>
         </Modal>
   
         <Container>
