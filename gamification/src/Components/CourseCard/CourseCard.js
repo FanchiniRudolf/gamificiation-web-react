@@ -1,5 +1,7 @@
 import React from 'react'
-import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+import { getCookie } from "../../Functions/Cookies";
+import Teacher from "./Dynamic/Teacher"
 
 function CourseCard() {
   return (
@@ -13,10 +15,13 @@ function CourseCard() {
                 <Card.Text>
                   {1*1} Misiones en total
                 </Card.Text>
-                <hr />
-                <Button variant="primary">editar</Button>
-                {' '}
-                <Button variant="danger">eliminar</Button>
+                <div>
+                  {  getCookie("isTeacher") ?
+                    (<Teacher/>) :
+                    // (<></>)
+                    (<Teacher/>)
+                  }
+                </div>
               </Card.Body>
             </Card>
     </div>
