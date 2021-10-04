@@ -12,9 +12,10 @@ import {getCookie} from './Functions/Cookies.js'
 import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 
+import Group from './Components/Group/Group';
+
 // Student-only components
 import Courses from './Components/Courses/Courses';
-import Group from './Components/Group/Group';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
