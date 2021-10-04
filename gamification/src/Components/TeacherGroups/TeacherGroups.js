@@ -20,8 +20,8 @@ function TeacherGroups() {
         </Row>
         <Row>
           <Col>
-            <p>Cards con los grupos - incluyen botones de editar y borrar (?)</p>
-            <p>Seleccionar un grupo lleva a componente con los detalles del grupo</p>
+            <p>Materias que imparte el profesor</p>
+            <p>Lista con opciones de editar o eliminar la entrada de la lista</p>
           </Col>
         </Row>
       </Container>

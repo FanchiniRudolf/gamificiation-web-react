@@ -18,7 +18,8 @@ function Teacher() {
         </Row>
         <Row>
           <Col>
-            <p>Lista con los cursos - cada curso tiene boton de editar y borrar</p>
+            <p>Cards con los grupos - incluyen botones de editar y borrar (?)</p>
+            <p>Seleccionar un grupo lleva a componente con los detalles del grupo</p>
           </Col>
         </Row>
       </Container>

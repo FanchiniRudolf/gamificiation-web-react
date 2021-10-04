@@ -5,12 +5,16 @@ import './TeacherMissions.css';
 //@bobby
 function TeacherMissions() {
   return (
-    // <div className="StudentGroup">
     <div>
       <Container>
-      <Row className="mt-5 mb-3">
-          <Col lg={12}>
+        <Row className="mt-5 mb-3">
+          <Col lg={9}>
             <h1>Misiones</h1>
+          </Col>
+          <Col lg={3}>
+            <Button variant="primary">
+              Crear
+            </Button>
           </Col>
         </Row>
       </Container>

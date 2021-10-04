@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
   
 const Student=()=>
 {
@@ -30,8 +30,33 @@ const Student=()=>
             </Col>
           </Row>
           <Row>
-            <Col lg={6}>Card curso 1</Col>
-            <Col lg={6}>Card curso 2</Col>
+            <Col lg={6}>Componente card curso 1</Col>
+            <Col lg={6}>Componente card curso 2</Col>
+          </Row>
+          
+          {/* trying to add course cards here before separating into their own component */}
+          <Row>
+          <Col lg={6}>
+            <Card>
+              <Card.Header>Nombre del curso</Card.Header>
+              <Card.Body>
+                <Card.Title>Número de grupo</Card.Title>
+                <Card.Text>
+                  Misiones en total
+                </Card.Text>
+                <Card.Text>
+                  {2*2} Misiones pendientes
+                </Card.Text>
+                <Card.Text>
+                  {3*3} Misiones que han pasado
+                </Card.Text>
+                <hr />
+                <Button variant="primary">editar</Button>
+                {' '}
+                <Button variant="danger">eliminar</Button>
+              </Card.Body>
+            </Card>
+            </Col>
           </Row>
         </Container>
       </div>
