@@ -3,19 +3,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 function Student() {
   return (
-    // <div className="StudentGroup">
     <div>
       <Container>
         <Row>
           <Col lg={12} className='mt-5'>
-            <p>usar un boton o toggle y renderear condicionalmente una u otra</p>
-            <h2>Misiones pendientes</h2>
+            <h1>Misiones pendientes</h1>
+            <p>Componente con lista de misiones pendientes</p>
           </Col>
         </Row>
         <hr />
         <Row>
           <Col lg={12} className='mt-5'>
-            <h2>Tabla de posiciones del grupo</h2>
+            <h1>Tabla de posiciones del grupo</h1>
+            <p>Componente con tabla de posiciones</p>
           </Col>
         </Row>
       </Container>
