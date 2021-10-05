@@ -18,8 +18,7 @@ function CourseCard() {
           <div>
             {  getCookie("isTeacher") ?
               (<Teacher/>) :
-              // (<></>)
-              (<Teacher/>)
+              (<></>)
             }
           </div>
         </Card.Body>

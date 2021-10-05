@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
+import CourseCard from "../../CourseCard/CourseCard"
+
 function Teacher() {
   return (
     // <div className="StudentGroup">
@@ -16,12 +18,15 @@ function Teacher() {
             </Button>
           </Col>
         </Row>
+        
         <Row>
-          <Col>
-            <p>Cards con los grupos - incluyen botones de editar y borrar (?)</p>
-            <p>Seleccionar un grupo lleva a componente con los detalles del grupo</p>
-          </Col>
-        </Row>
+            <Col lg={6}>
+              <CourseCard />
+            </Col>
+            <Col lg={6}>
+              <CourseCard />
+            </Col>
+          </Row>
       </Container>
     </div>
   );

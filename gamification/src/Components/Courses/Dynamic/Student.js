@@ -47,8 +47,7 @@ const Student=()=>
               </Button>
             </Col>
           </Row>
-          
-          {/* trying to add course cards here before separating into their own component */}
+
           <Row>
             <Col lg={6}>
               <CourseCard />
