@@ -21,9 +21,9 @@ function EditCourse() {
       </Form.Group>
     )
 
-  const textQuestion = (tittle, desc) => {
+  const textQuestion = (tittle, desc, id) => {
     return( 
-          <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Group className="mb-3" controlId={id}>
             <Form.Label>{tittle}</Form.Label>
             <Form.Control type="text" placeholder={desc} />
           </Form.Group>
@@ -34,7 +34,7 @@ function EditCourse() {
    const renderElement = () => {
     switch (type) {
       case "course":
-        return textQuestion("Profesor que imparte", info.extra)
+        return textQuestion("Profesor que imparte", info.extra, "prof")
       
       case "mission":
         return datePicker
@@ -43,7 +43,7 @@ function EditCourse() {
         return datePicker
 
     case "group":
-      return textQuestion("Nombre Materia", info.extra)
+      return textQuestion("Nombre Materia", info.extra, "sub")
 
     case "subject":
       return;
@@ -55,14 +55,8 @@ function EditCourse() {
 
   return (
     <Form className="container-md text-center align-content-center">
-      <Form.Group className="mb-3 justify-content-center " controlId="formTitle">
-              <Form.Label>Titulo</Form.Label>
-              <Form.Control type="text" placeholder={info.tittle} />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formTitle">
-              <Form.Label>Descripción</Form.Label>
-              <Form.Control type="text" placeholder={info.desc} />
-      </Form.Group>
+      {textQuestion("Titulo", info.tittle, "tittle")}
+      {textQuestion("Descripción", info.desc, "desc")}
       {renderElement()}
       <Button variant="primary" type="submit">
           Editar {type}

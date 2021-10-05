@@ -19,9 +19,9 @@ function CreatePeriod() {
       </Form.Group>
     )
 
-  const textQuestion = (tittle, desc) => {
+  const textQuestion = (tittle, desc, id) => {
     return( 
-          <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Group className="mb-3" controlId={id}>
             <Form.Label>{tittle}</Form.Label>
             <Form.Control type="text" placeholder={desc} />
           </Form.Group>
@@ -32,7 +32,7 @@ function CreatePeriod() {
    const renderElement = () => {
     switch (type) {
       case "course":
-        return textQuestion("Profesor que imparte", "Dame el Titulo")
+        return textQuestion("Profesor que imparte", "Deme el profesor", "prof")
       
       case "mission":
         return datePicker
@@ -41,7 +41,7 @@ function CreatePeriod() {
         return datePicker
 
     case "group":
-      return textQuestion("Nombre Materia", "Materia")
+      return textQuestion("Nombre Materia", "Materia", "sub")
 
     case "subject":
       return;
@@ -53,14 +53,8 @@ function CreatePeriod() {
 
   return (
     <Form className="container-md text-center align-content-center">
-      <Form.Group className="mb-3 justify-content-center " controlId="formTitle">
-              <Form.Label>Titulo</Form.Label>
-              <Form.Control type="text" placeholder="Dame el Titulo" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formTitle">
-              <Form.Label>Descripción</Form.Label>
-              <Form.Control type="text" placeholder="Dame el Titulo" />
-      </Form.Group>
+      {textQuestion("Titulo", "Deme el Titulo", "tittle")}
+      {textQuestion("Descripción", "Deme descripción", "desc")}
       {renderElement()}
       <Button variant="primary" type="submit">
           Crear {type}
