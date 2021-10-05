@@ -92,6 +92,8 @@ function Teacher() {
             <hr/>
           </Col>
         </Row>
+
+        {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
         <Row className="mt-2">
           <Col lg={12}>
             <h1>Pantalla 2 de 3</h1>
@@ -107,7 +109,7 @@ function Teacher() {
         </Row>
         <Row className="mt-2">
           <Col lg={12}>
-            <h1>Pantalla 2 de 3</h1>
+            <h1>Pantalla 3 de 3</h1>
             <h1>Tabla de posiciones del grupo</h1>
             <p>Estará ordenada por puntaje, NO por matrícula</p>
           </Col>

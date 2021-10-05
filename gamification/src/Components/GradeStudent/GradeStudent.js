@@ -20,6 +20,9 @@ function GradeStudent() {
           <Row className="mt-3">
             <Col lg={6}>
               <h3>Misión</h3>
+
+              {/* TODO: use hook that changes original value of the mission given
+              so it can be changed based on merit, without professor needing to lookup value */}
               <Form.Select aria-label="Default select example">
                 <option>Misión a calificar</option>
                 <option value="1">One</option>
