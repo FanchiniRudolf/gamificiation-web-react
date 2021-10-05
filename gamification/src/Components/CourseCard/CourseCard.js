@@ -16,10 +16,7 @@ function CourseCard() {
             {1*1} Misiones en total
           </Card.Text>
           <div>
-            {  getCookie("isTeacher") ?
-              (<Teacher/>) :
-              (<></>)
-            }
+            { getCookie("isTeacher") && (<Teacher/>) }
           </div>
         </Card.Body>
       </Card>
