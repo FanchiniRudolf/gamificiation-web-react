@@ -1,20 +1,20 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import './TeacherGroups.css';
+import './Subjects.css';
 //@bobby
-function TeacherGroups() {
+function Subjects() {
   return (
     // <div className="StudentGroup">
     <div>
       <Container>
       <Row className="mt-5 mb-3">
           <Col lg={9}>
-            <h1>Mis Grupos</h1>
+            <h1>Mis Materias</h1>
           </Col>
           <Col lg={3}>
             <Button variant="primary" size="md" >
-              Crear un Grupo
+              Crear
             </Button>
           </Col>
         </Row>
@@ -29,4 +29,4 @@ function TeacherGroups() {
   );
 }
 
-export default TeacherGroups;
+export default Subjects;
