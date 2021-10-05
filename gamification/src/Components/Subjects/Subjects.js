@@ -22,6 +22,7 @@ function Subjects() {
           <Col>
             <p>Materias que imparte el profesor</p>
             <p>Lista con opciones de editar o eliminar la entrada de la lista</p>
+            {/* TODO: @FanchiniRudolf */}
           </Col>
         </Row>
       </Container>
