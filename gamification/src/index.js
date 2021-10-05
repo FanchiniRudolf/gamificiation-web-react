@@ -19,8 +19,8 @@ import Courses from './Components/Courses/Courses';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
-import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
-import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
+import Periods from './Components/Periods/Periods';
+import Missions from './Components/Missions/Missions';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
 import Subjects from './Components/Subjects/Subjects';
@@ -64,10 +64,10 @@ ReactDOM.render(
 
           {/* teacher routes */}
           <Route path="/periods">
-            <TeacherPeriods />
+            <Periods />
           </Route>
           <Route path="/missions">
-            <TeacherMissions />
+            <Missions />
           </Route>
           <Route path="/addstudent">
             <AddStudent />

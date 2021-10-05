@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import './TeacherMissions.css';
+import './Missions.css';
 //@bobby
-function TeacherMissions() {
+function Missions() {
   return (
     <div>
       <Container>
@@ -22,4 +22,4 @@ function TeacherMissions() {
   );
 }
 
-export default TeacherMissions;
+export default Missions;
