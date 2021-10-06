@@ -8,13 +8,15 @@ function CourseCard() {
     <div>
       <Card>
         <Card.Header>
-          <Button variant="link">Nombre del curso</Button>
+          <Button variant="link">Nombre del curso (dinámico)</Button>
         </Card.Header>
         <Card.Body>
-          <Card.Title>Número de grupo</Card.Title>
-          <Card.Text>
+          <Card.Title>Grupo {3*3}</Card.Title>
+          {/* TODO: after demo add data customer requests -
+              might have to determine it how to get it first */}
+          {/* <Card.Text>
             {1*1} Misiones en total
-          </Card.Text>
+          </Card.Text> */}
           <div>
             { getCookie("isTeacher") && (<Teacher/>) }
           </div>
