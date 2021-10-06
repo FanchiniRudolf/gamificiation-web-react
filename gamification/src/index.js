@@ -31,12 +31,12 @@ import Edit from './Components/Edit/Edit';
 
 
 ReactDOM.render(
-  
+
   <React.StrictMode>
     <Navbar />
     <BrowserRouter forceRefresh={false}>
       <Switch>
-          <Route path="/login"> 
+          <Route path="/login">
             <Login />
           </Route>
 
@@ -74,10 +74,10 @@ ReactDOM.render(
           </Route>
           <Route path="/subjects">
             <Subjects />
-          </Route>          
+          </Route>
 
           <Route path="/">
-            {getCookie("loggedIn") ? 
+            {getCookie("loggedIn") ?
               (<Courses/>) :
               (<Login />)
             }
