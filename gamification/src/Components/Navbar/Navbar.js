@@ -12,15 +12,11 @@ function Navbar() {
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/courses">Cursos</Nav.Link>
-            <Nav.Link href="/teachersubjects">Grupos</Nav.Link /*TODO why two groups for teacher*/> 
+            <Nav.Link href="/subjects">Materias</Nav.Link>
             <Nav.Link href="/periods">Periodos</Nav.Link>
             <Nav.Link href="/missions">Misiones</Nav.Link>
-            <NavDropdown title="Más..." id="basic-nav-dropdown" /*TODO add logout here*/>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Cerrar sesión
-              </NavDropdown.Item>
-            </NavDropdown>
+
+            <Nav.Link href="/login">Cerrar sesión</Nav.Link>
           </Nav>
         </BNavbar.Collapse>
       </Container>

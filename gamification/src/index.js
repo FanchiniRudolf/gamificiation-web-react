@@ -19,11 +19,11 @@ import Courses from './Components/Courses/Courses';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
-import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
-import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
+import Periods from './Components/Periods/Periods';
+import Missions from './Components/Missions/Missions';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
-import TeacherGroups from './Components/TeacherGroups/TeacherGroups';
+import Subjects from './Components/Subjects/Subjects';
 
 import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
@@ -31,12 +31,12 @@ import Edit from './Components/Edit/Edit';
 
 
 ReactDOM.render(
-  
+
   <React.StrictMode>
     <Navbar />
     <BrowserRouter forceRefresh={false}>
       <Switch>
-          <Route path="/login"> 
+          <Route path="/login">
             <Login />
           </Route>
 
@@ -64,20 +64,20 @@ ReactDOM.render(
 
           {/* teacher routes */}
           <Route path="/periods">
-            <TeacherPeriods />
+            <Periods />
           </Route>
           <Route path="/missions">
-            <TeacherMissions />
+            <Missions />
           </Route>
           <Route path="/addstudent">
             <AddStudent />
           </Route>
-          <Route path="/teachersubjects">
-            <TeacherGroups />
-          </Route>          
+          <Route path="/subjects">
+            <Subjects />
+          </Route>
 
           <Route path="/">
-            {getCookie("loggedIn") ? 
+            {getCookie("loggedIn") ?
               (<Courses/>) :
               (<Login />)
             }

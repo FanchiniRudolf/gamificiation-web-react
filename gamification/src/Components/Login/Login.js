@@ -29,7 +29,7 @@ function Login() {
           <FinalForm onSubmit={onLoginSubmit}>
             {({handleSubmit, submitting}) => (
               <Form>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicEmail" className="mb-3">
                   <Form.Label>Email</Form.Label>
                   <FinalFormField name='email'>
                     {({ input }) => (
@@ -38,7 +38,7 @@ function Login() {
                   </FinalFormField>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group controlId="formBasicPassword" className="mb-3">
                   <Form.Label>Contraseña</Form.Label>
                   <FinalFormField name='password'>
                     {({ input }) => (

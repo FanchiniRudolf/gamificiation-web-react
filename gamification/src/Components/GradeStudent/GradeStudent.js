@@ -37,7 +37,7 @@ function GradeStudent() {
               </Form.Select>
             </Col>
           </Row>
-          
+
           <Row className="mt-3">
             <Col lg={6}>
               <Form.Group className="mb-3" controlId="hp">
@@ -76,7 +76,7 @@ function GradeStudent() {
             <Col lg={6}>
               <Form.Group className="mb-3" controlId="grade">
                 <Form.Label><h5>Calificación</h5></Form.Label>
-                <Form.Control type="number" value={grade} 
+                <Form.Control type="number" value={grade}
                   onChange={(e) => {setGrade(Number(e.target.value))}}/>
               <Form.Text className="text-muted">
                 La calificación numérica (0 - 100) de esta tarea
