@@ -2,6 +2,9 @@ import React from "react";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { getCookie } from "../../Functions/Cookies";
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
 
 import "./Group.css";
@@ -43,93 +46,80 @@ function Courses() {
   return (
     <div>
       <Container>
-      { getCookie("isTeacher") &&
-        <div>
-          <Row className="mt-5 mb-3">
-            <Col lg={5}>
-            {' '} 
-            </Col>
-            <Col lg={7}>
-              <Button variant="info">Ver grupo/alumnos</Button>{' '}
-              <Button variant="info">Ver misiones</Button>{' '}
-              <Button variant="info">Ver tabla de posiciones</Button>{' '}
-            </Col>
-            <Col lg={12}>
-            <hr/> 
-            </Col>
-          </Row>
-        </div>
-      }
-        
-      { getCookie("isTeacher") &&
-        <div>
-          <Row className="mt-5 mb-3">
-            <Col lg={12}>
-              <h1>Pantalla 1 de 3</h1>
-              <h1>Grupo {1+1}</h1>
-            </Col>
-          </Row>
+        <Tabs>
+          <TabList>
+            {getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab>}
+            <Tab>Misiones</Tab>
+            <Tab>Tabla de posiciones</Tab>
+          </TabList>
+
+
+          {getCookie("isTeacher") &&
+            <TabPanel>
+              <div>
+                <Row className="mt-5 mb-3">
+                  <Col lg={12}>
+                    <h1>Grupo {1+1}</h1>
+                  </Col>
+                </Row>
+                
+                <Row className="mt-4">
+                  <Col lg={6}>
+                    <h4>{3*3} misiones</h4>
+                  </Col>
+                  
+                  <Col lg={6}>
+                    <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
+                  </Col>
+
+                  {/* stretch goal: add min & max grade & logic to compute it */}
+                  
+                </Row>
+                
+                <hr />
+                <Row className="mt-4">
+                  <Col lg={12}>
+                    <h4>Alumnos:</h4>
+                  </Col>
+                </Row>
+                
+                <Row className="mt-2">
+                  <Col lg={12}>
+                    <p>tabla con los alumnos (ordenados por matricula)</p>
+                    {/* <StudentListItem /> */}
+                    {studentsList}
+                  </Col>
+                </Row>
+                {/* divider */}
+                <Row>
+                  <Col lg={12}>
+                    <hr/>
+                  </Col>
+                </Row>
+              </div>
+            </TabPanel>
+          }
           
-          <Row className="mt-4">
-            <Col lg={6}>
-              <h4>{3*3} misiones</h4>
-            </Col>
+
+            <TabPanel>
+              {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
+              <Row className="mt-4">
+                <Col lg={12}>
+                  <h1>Misiones</h1>
+                </Col>
+              </Row>
+            </TabPanel>
             
-            <Col lg={6}>
-              <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
-            </Col>
 
-            {/* stretch goal: add min & max grade & logic to compute it */}
-            
-          </Row>
-          
-          <hr />
-          <Row className="mt-4">
-            <Col lg={12}>
-              <h4>Alumnos:</h4>
-            </Col>
-          </Row>
-          
-          <Row className="mt-2">
-            <Col lg={12}>
-              <p>tabla con los alumnos (ordenados por matricula)</p>
-              {/* <StudentListItem /> */}
-              {studentsList}
-            </Col>
-          </Row>
-          {/* divider */}
-          <Row>
-            <Col lg={12}>
-              <hr/>
-            </Col>
-          </Row>
-        </div>
-      }
-
-
-        {/* screen 2 */}
-        {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
-        <Row className="mt-4">
-          <Col lg={12}>
-            <h1>Misiones</h1>
-          </Col>
-        </Row>
-
-        {/* divider */}
-        <Row>
-          <Col lg={12}>
-            <hr/>
-          </Col>
-        </Row>
-          
-
-        {/* screen 3 */}        
-        <Row className="mt-2">
-          <Col lg={12}>
-            <h1>Tabla de posiciones</h1>
-            <p>Estará ordenada por puntaje, NO por matrícula</p>
-          </Col>
-        </Row>
+            <TabPanel>
+              <Row className="mt-2">
+                <Col lg={12}>
+                  <h1>Tabla de posiciones</h1>
+                  <p>Estará ordenada por puntaje, NO por matrícula</p>
+                </Col>
+              </Row>
+            </TabPanel>
+        </Tabs>        
       </Container>
     </div>
   );
