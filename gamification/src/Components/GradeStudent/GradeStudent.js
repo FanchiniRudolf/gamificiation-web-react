@@ -7,7 +7,6 @@ function GradeStudent() {
   const [hp, setHp] = useState(0);
   const [xp, setXp] = useState(0);
   const [coins, setCoins] = useState(0);
-  const [grade, setGrade] = useState(100);
 
 
   return (
@@ -44,7 +43,7 @@ function GradeStudent() {
                 <Form.Label><h5>HP a sumar o restar</h5></Form.Label>
                 <Form.Control type="number" placeholder={hp}  onChange={(e) => {setHp(Number(e.target.value))}}/>
                 <Form.Text className="text-muted">
-                  HP Final: {hp + (mission.hp)*(grade/100)}
+                  HP Final: {hp + (mission.hp)}
                 </Form.Text>
               </Form.Group>
             </Col>
@@ -55,7 +54,7 @@ function GradeStudent() {
                 <Form.Label><h5>XP a sumar o restar</h5></Form.Label>
                 <Form.Control type="number" placeholder={xp}  onChange={(e) => {setXp(Number(e.target.value))}}/>
                 <Form.Text className="text-muted">
-                  XP Final: {xp + (mission.xp)*(grade/100)}
+                  XP Final: {xp + (mission.xp)}
                 </Form.Text>
               </Form.Group>
             </Col>
@@ -66,24 +65,12 @@ function GradeStudent() {
               <Form.Label><h5>Monedas a sumar o restar</h5></Form.Label>
                 <Form.Control type="number" placeholder={coins}  onChange={(e) => {setCoins(Number(e.target.value))}}/>
                 <Form.Text className="text-muted">
-                  Monedas Finales: {coins + (mission.coins)*(grade/100)}
+                  Monedas Finales: {coins + (mission.coins)}
                 </Form.Text>
               </Form.Group>
             </Col>
           </Row>
 
-          <Row className="mt-3 mb-5">
-            <Col lg={6}>
-              <Form.Group className="mb-3" controlId="grade">
-                <Form.Label><h5>Calificación</h5></Form.Label>
-                <Form.Control type="number" value={grade}
-                  onChange={(e) => {setGrade(Number(e.target.value))}}/>
-              <Form.Text className="text-muted">
-                La calificación numérica (0 - 100) de esta tarea
-              </Form.Text>
-              </Form.Group>
-            </Col>
-          </Row>
 
           <Row className="mt-3 mb-5">
             <Col>
