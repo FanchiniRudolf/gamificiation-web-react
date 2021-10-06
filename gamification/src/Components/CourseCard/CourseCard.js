@@ -9,7 +9,8 @@ function CourseCard({course}) {
       {/* <Col lg={6}> */}
         <Card>
           <Card.Header>
-            <Button variant="link">{course.name}</Button>
+            {/* TODO replace hard-coded route in href for dynamic route */}
+            <Button variant="link" href="/Group/1">{course.name}</Button>
           </Card.Header>
           <Card.Body>
             <Card.Title>Grupo {3*3}</Card.Title>

@@ -74,7 +74,8 @@ function GradeStudent() {
 
           <Row className="mt-3 mb-5">
             <Col>
-              <Button variant="danger">Cancelar</Button>
+              {/* TODO replace hard-coded route in href for dynamic route */}
+              <Button variant="danger" href="/Group/1">Cancelar</Button>
             </Col>
             <Col>
               {' '}
