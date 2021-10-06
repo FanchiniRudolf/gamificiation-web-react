@@ -33,6 +33,7 @@ function EditCourse() {
 
    const renderElement = () => {
     switch (type) {
+      // TODO: merge course and group form, check fields agains data model
       case "course":
         return textQuestion("Profesor que imparte", info.extra, "prof")
       
