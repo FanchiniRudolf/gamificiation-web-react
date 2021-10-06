@@ -35,7 +35,7 @@ function Courses() {
       average:0.0
     }
   ];
-  const dummyStudentsList = dummyStudents.map(student => <StudentListItem key={student.id} student={student} />)
+  const studentsList = dummyStudents.map(student => <StudentListItem key={student.id} student={student} />)
 
   
   //TODO give components group id from route
@@ -94,7 +94,7 @@ function Courses() {
             <Col lg={12}>
               <p>tabla con los alumnos (ordenados por matricula)</p>
               {/* <StudentListItem /> */}
-              {dummyStudentsList}
+              {studentsList}
             </Col>
           </Row>
           {/* divider */}
