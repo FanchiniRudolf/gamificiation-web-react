@@ -1,11 +1,13 @@
 import React from "react";
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { getCookie } from "../../Functions/Cookies";
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
+import MissionItem  from "../MissionItem/MissionItem";
+import TableEntry  from "../TableEntry/TableEntry";
 
 import "./Group.css";
 
@@ -36,6 +38,49 @@ function Courses() {
       xp: 0,
       gold: 0,
       average:0.0
+    }
+  ];
+
+  const misiones = [
+    {
+      tittle: 'Mision 1',
+      desc: 'Descripcion 1',
+    },
+    {
+      tittle: 'Mision 2',
+      desc: 'Descripcion 2',
+    },
+    {
+      tittle: 'Mision 3',
+      desc: 'Descripcion 3',
+    }
+  ];
+
+  const tableEntries = [
+    {
+      name: 'John Doe',
+      id: 'A01374458',
+      hp: 15,
+      xp: 0,
+      coins: 10,
+      position: 1
+
+    },
+    {
+      name: 'Jane Doe',
+      id: 'A01373458',
+      hp: 25,
+      xp: 10,
+      coins: 110,
+      position: 2
+    },
+    {
+      name: 'Max Doe',
+      id: 'A01384458',
+      hp: 0,
+      xp: 2,
+      coins: 1,
+      position: 3
     }
   ];
   const studentsList = dummyStudents.map(student => <StudentListItem key={student.id} student={student} />)
@@ -105,19 +150,27 @@ function Courses() {
               {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
               <Row className="mt-4">
                 <Col lg={12}>
-                  <h1>Misiones</h1>
+                  {misiones.map(mission => <MissionItem mission={mission}/>)}
                 </Col>
               </Row>
             </TabPanel>
-
-
+              
             <TabPanel>
-              <Row className="mt-2">
-                <Col lg={12}>
-                  <h1>Tabla de posiciones</h1>
-                  <p>Estará ordenada por puntaje, NO por matrícula</p>
-                </Col>
-              </Row>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Matricula</th>
+                    <th>HP 💗</th>
+                    <th>XP ⭐</th>
+                    <th>Coins 🪙</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableEntries.map(entry => <TableEntry entry={entry}/> )}
+                </tbody>
+              </Table>
             </TabPanel>
         </Tabs>
       </Container>
