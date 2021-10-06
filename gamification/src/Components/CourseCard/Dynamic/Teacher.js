@@ -1,11 +1,13 @@
 import React from 'react'
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 function Teacher() {
 
+const history = useHistory();
+
   const handleRoute = () => {
-    // history.pushState("/edit")
-    console.log('should handle route');
+    history.push("/edit")
   }
 
   return (

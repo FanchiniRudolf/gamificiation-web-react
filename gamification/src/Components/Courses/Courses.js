@@ -2,8 +2,6 @@ import React, {useState} from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getCookie } from "../../Functions/Cookies";
 
-import Student from "./Dynamic/Student";
-import Teacher from "./Dynamic/Teacher";
 
 import CourseCard from "../CourseCard/CourseCard";
 import "./Courses.css";
