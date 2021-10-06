@@ -12,7 +12,7 @@ function Missions() {
             <h1>Misiones</h1>
           </Col>
           <Col lg={3}>
-            <Button variant="primary">
+            <Button variant="primary" href="/create/mission">
               Crear
             </Button>
           </Col>

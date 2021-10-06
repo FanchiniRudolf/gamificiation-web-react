@@ -13,8 +13,8 @@ function Periods() {
             <h1>Periodos académicos</h1>
           </Col>
           <Col lg={3}>
-            <Button variant="primary" size="md" >
-              Nuevo periodo
+            <Button variant="primary" size="md" href="/create/period">
+              Crear
             </Button>
           </Col>
         </Row>

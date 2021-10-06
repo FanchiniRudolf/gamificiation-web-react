@@ -13,7 +13,7 @@ function Subjects() {
             <h1>Mis Materias</h1>
           </Col>
           <Col lg={3}>
-            <Button variant="primary" size="md" >
+            <Button variant="primary" size="md" href="/create/subject">
               Crear
             </Button>
           </Col>
