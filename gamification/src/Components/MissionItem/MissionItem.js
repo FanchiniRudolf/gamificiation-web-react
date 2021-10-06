@@ -11,7 +11,8 @@ function MissionItem({mission}) {
       <Card.Text>
         {mission.desc}
       </Card.Text>
-      { getCookie("isTeacher") && <Button variant="primary">Editar</Button> }
+      { getCookie("isTeacher") && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
+      {' '}
       { getCookie("isTeacher") && <Button variant="danger">Borrar</Button> }
       
     </Card.Body>

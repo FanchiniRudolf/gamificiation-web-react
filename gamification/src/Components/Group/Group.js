@@ -60,7 +60,7 @@ function Courses() {
     {
       name: 'John Doe',
       id: 'A01374458',
-      hp: 15,
+      hp: 35,
       xp: 0,
       coins: 10,
       position: 1
@@ -149,6 +149,9 @@ function Courses() {
             <TabPanel>
               {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
               <Row className="mt-4">
+              <Col lg={12}>
+              <h1>Misiones del grupo</h1>
+                </Col>
                 <Col lg={12}>
                   {misiones.map(mission => <MissionItem mission={mission}/>)}
                 </Col>
@@ -156,6 +159,7 @@ function Courses() {
             </TabPanel>
               
             <TabPanel>
+              <h1>Tabla de posiciones del grupo</h1>
               <Table striped bordered hover>
                 <thead>
                   <tr>
