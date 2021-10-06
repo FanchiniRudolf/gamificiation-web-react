@@ -59,12 +59,15 @@ function Courses() {
             </Col>
             <Col lg={3}>
               { getCookie("isTeacher") ?
-                (<Button variant="primary">
-                Crear
-              </Button>) :
-              (<Button variant="primary" size="md" onClick={handleJoinModalShow}>
-              Unirme a un curso
-            </Button>)
+                (
+                  <Button variant="primary" href="/create/course/1">
+                    Crear
+                  </Button>
+                ) : (
+                  <Button variant="primary" size="md" onClick={handleJoinModalShow}>
+                    Unirme a un curso
+                  </Button>
+                )
               }
             </Col>
           </Row>

@@ -7,7 +7,8 @@ function Teacher() {
 const history = useHistory();
 
   const handleRoute = () => {
-    history.push("/edit")
+    // TODO: change hard-coded route
+    history.push("/edit/course/1")
   }
 
   return (
