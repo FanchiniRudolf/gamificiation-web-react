@@ -114,7 +114,7 @@ function Courses() {
                   </Col>
 
                   <Col lg={6}>
-                    <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
+                    <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)} HP</h4>
                   </Col>
 
                   {/* stretch goal: add min & max grade & logic to compute it */}

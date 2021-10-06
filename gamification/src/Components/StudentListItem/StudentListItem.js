@@ -14,7 +14,7 @@ function StudentListItem({student}) {
           </Col>
 
           <Col lg={6}>
-            {student.hp} hp, {student.hp} xp, {student.gold} monedas | Promedio misiones: {(student.average).toFixed(2)}
+            <b>{student.hp} HP</b>, {student.hp} xp, {student.gold} monedas
           </Col>
 
           <Col lg={1}>
