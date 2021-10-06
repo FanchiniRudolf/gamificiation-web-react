@@ -1,7 +1,7 @@
 import React from "react";
 
-import {
-  Navbar as BNavbar, Nav, NavDropdown, Container, Row, Col, Button} from "react-bootstrap";
+import { Navbar as BNavbar, Nav, NavDropdown, Container, Row, Col, Button} from "react-bootstrap";
+import { getCookie } from "../../Functions/Cookies";
 
 function Navbar() {
   return (
@@ -12,9 +12,9 @@ function Navbar() {
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/courses">Cursos</Nav.Link>
-            <Nav.Link href="/subjects">Materias</Nav.Link>
-            <Nav.Link href="/periods">Periodos</Nav.Link>
-            <Nav.Link href="/missions">Misiones</Nav.Link>
+            { getCookie("isTeacher") && <Nav.Link href="/subjects">Materias</Nav.Link> }
+            { getCookie("isTeacher") && <Nav.Link href="/periods">Periodos</Nav.Link> }
+            { getCookie("isTeacher") && <Nav.Link href="/missions">Misiones</Nav.Link> }
 
             <Nav.Link href="/login">Cerrar sesión</Nav.Link>
           </Nav>
