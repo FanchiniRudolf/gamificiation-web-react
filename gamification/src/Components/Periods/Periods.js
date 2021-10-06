@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import './TeacherPeriods.css';
+import './Periods.css';
 //@bobby
-function TeacherPeriods() {
+function Periods() {
   return (
     // <div className="StudentGroup">
     <div>
@@ -23,4 +23,4 @@ function TeacherPeriods() {
   );
 }
 
-export default TeacherPeriods;
+export default Periods;

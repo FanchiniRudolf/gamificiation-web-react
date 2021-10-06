@@ -12,16 +12,18 @@ import {getCookie} from './Functions/Cookies.js'
 import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 
+import Group from './Components/Group/Group';
+
 // Student-only components
 import Courses from './Components/Courses/Courses';
-import Group from './Components/Group/Group';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
-import TeacherPeriods from './Components/TeacherPeriods/TeacherPeriods';
-import TeacherMissions from './Components/TeacherMissions/TeacherMissions';
+import Periods from './Components/Periods/Periods';
+import Missions from './Components/Missions/Missions';
 import GradeStudent from './Components/GradeStudent/GradeStudent';
 import AddStudent from './Components/AddStudent/AddStudent';
+import Subjects from './Components/Subjects/Subjects';
 
 import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
@@ -50,7 +52,7 @@ ReactDOM.render(
           <Route path="/profile/:group/:id">
             <StudentProfile />
           </Route>
-          <Route path="/gradestudent/:id">
+          <Route path="/gradestudent/:group/:id">
             <GradeStudent />
           </Route>
           <Route path="/create/:type">
@@ -62,13 +64,16 @@ ReactDOM.render(
 
           {/* teacher routes */}
           <Route path="/periods">
-            <TeacherPeriods />
+            <Periods />
           </Route>
           <Route path="/missions">
-            <TeacherMissions />
+            <Missions />
           </Route>
           <Route path="/addstudent">
             <AddStudent />
+          </Route>
+          <Route path="/subjects">
+            <Subjects />
           </Route>          
 
           <Route path="/">

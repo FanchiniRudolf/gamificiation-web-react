@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-function Teacher() {
+import './Missions.css';
+//@bobby
+function Missions() {
   return (
-    // <div className="StudentGroup">
     <div>
       <Container>
-      <Row className="mt-5 mb-3">
+        <Row className="mt-5 mb-3">
           <Col lg={9}>
-            <h1>Mis cursos</h1>
+            <h1>Misiones</h1>
           </Col>
           <Col lg={3}>
             <Button variant="primary">
@@ -16,14 +17,9 @@ function Teacher() {
             </Button>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <p>Lista con los cursos - cada curso tiene boton de editar y borrar</p>
-          </Col>
-        </Row>
       </Container>
     </div>
   );
 }
 
-export default Teacher;
+export default Missions;
