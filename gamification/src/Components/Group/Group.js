@@ -5,6 +5,7 @@ import { getCookie } from "../../Functions/Cookies";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
 import MissionItem  from "../MissionItem/MissionItem";
 import TableEntry  from "../TableEntry/TableEntry";
@@ -93,9 +94,10 @@ function Courses() {
       <Container>
         <Tabs>
           <TabList>
-            {getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab>}
+            { getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab> }
             <Tab>Misiones</Tab>
             <Tab>Tabla de posiciones</Tab>
+            { !getCookie("isTeacher") && <Tab>Perfil</Tab> }
           </TabList>
 
 
@@ -176,6 +178,12 @@ function Courses() {
                 </tbody>
               </Table>
             </TabPanel>
+
+          { !getCookie("isTeacher") &&
+            <TabPanel>
+              <StudentProfile />
+            </TabPanel>
+          }
         </Tabs>
       </Container>
     </div>
