@@ -27,6 +27,8 @@ import Subjects from './Components/Subjects/Subjects';
 
 import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
+import Signup from './Components/Signup/Signup';
+import ForgotPass from './Components/ForgotPass/ForgotPass';
 
 
 
@@ -38,6 +40,12 @@ ReactDOM.render(
       <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/forgotpass">
+            <ForgotPass />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
 
           {/* student routes */}
