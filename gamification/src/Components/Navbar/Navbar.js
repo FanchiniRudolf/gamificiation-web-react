@@ -11,7 +11,7 @@ function Navbar() {
         <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            { getCookie("loggedIn") && <Nav.Link href="/groups">Cursos</Nav.Link> }
+            { getCookie("loggedIn") && <Nav.Link href="/groups">Grupos</Nav.Link> }
             { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/subjects">Materias</Nav.Link>) }
             { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/periods">Periodos</Nav.Link>) }
             { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/missions">Misiones</Nav.Link>) }
