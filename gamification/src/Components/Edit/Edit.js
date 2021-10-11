@@ -68,6 +68,9 @@ function EditCourse() {
       <Button variant="primary" type="submit">
           Editar {type}
       </Button>
+      <Button variant="link">
+          Cancelar
+      </Button>
     </Form>
   )
 }

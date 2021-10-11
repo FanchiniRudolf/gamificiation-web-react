@@ -67,6 +67,9 @@ function CreatePeriod() {
       <Button variant="primary" type="submit">
           Crear {type}
       </Button>
+      <Button variant="link">
+          Cancelar
+      </Button>
     </Form>
   )
 }
