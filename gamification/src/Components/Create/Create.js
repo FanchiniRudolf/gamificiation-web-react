@@ -31,15 +31,23 @@ function CreatePeriod() {
 
    const renderElement = () => {
     switch (type) {
+      // TODO: merge course and group form, check fields agains data model
       case "course":
-        return textQuestion("Profesor que imparte", "Deme el profesor", "prof")
+        return (
+          <>
+            { textQuestion("Profesor que imparte", "Deme el profesor", "prof") }
+            { textQuestion("Nombre Materia", "Materia", "sub") }
+          </>
+        )
+        
       
       case "mission":
         return datePicker
         
     case "period":
         return datePicker
-
+    
+    // TODO: remove all references to group before removing this block
     case "group":
       return textQuestion("Nombre Materia", "Materia", "sub")
 
