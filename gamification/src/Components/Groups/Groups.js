@@ -4,10 +4,10 @@ import { getCookie } from "../../Functions/Cookies";
 
 
 import CourseCard from "../CourseCard/CourseCard";
-import "./Courses.css";
+import "./Groups.css";
 
 
-function Courses() {
+function Groups() {
   //TODO put on top reused components
 
   const [joinModalShow, setJoinModalShow] = useState(false);
@@ -15,7 +15,7 @@ function Courses() {
   const handleJoinModalShow = () => setJoinModalShow(true);
   const handleJoinModalClose = () => setJoinModalShow(false);
 
-  const dummyCourses = [
+  const dummyGroups = [
     {
       id: 1,
       name: "Fundamentos de programación"
@@ -25,13 +25,13 @@ function Courses() {
       name: "Calidad y pruebas de SW"
     }
   ];
-  const coursesList = dummyCourses.map(courseInfo => <CourseCard key={courseInfo.id} course={courseInfo} />)
+  const groupsList = dummyGroups.map(groupInfo => <CourseCard key={groupInfo.id} course={groupInfo} />)
 
   return (
     <div>
       <Modal size="md" centered show={joinModalShow} onHide={handleJoinModalClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Unirse a un curso</Modal.Title>
+            <Modal.Title>Unirse a un grupo</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -55,17 +55,17 @@ function Courses() {
       <Container>
           <Row className="mt-5 mb-3">
             <Col lg={9}>
-              <h1>Mis cursos</h1>
+              <h1>Mis grupos</h1>
             </Col>
             <Col lg={3}>
               { getCookie("isTeacher") ?
                 (
-                  <Button variant="primary" href="/create/course/1">
+                  <Button variant="primary" href="/create/group/1">
                     Crear
                   </Button>
                 ) : (
                   <Button variant="primary" size="md" onClick={handleJoinModalShow}>
-                    Unirme a un curso
+                    Unirme a un grupo
                   </Button>
                 )
               }
@@ -74,18 +74,12 @@ function Courses() {
 
           <Row>
             <Col lg={6}>
-              {coursesList}
+              {groupsList}
             </Col>
           </Row>
         </Container>
     </div>
-    // <div>
-    //   {  getCookie("isTeacher") ?
-    //     (<Teacher/>) :
-    //     (<Student/>)
-    //   }
-    // </div>
   );
 }
 
-export default Courses;
+export default Groups;

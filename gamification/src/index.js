@@ -15,7 +15,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Group from './Components/Group/Group';
 
 // Student-only components
-import Courses from './Components/Courses/Courses';
+import Groups from './Components/Groups/Groups';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
@@ -49,8 +49,8 @@ ReactDOM.render(
           </Route>
 
           {/* student routes */}
-          <Route path="/courses">
-            <Courses/>
+          <Route path="/groups">
+            <Groups/>
           </Route>
 
           {/* dynamic */}
@@ -86,7 +86,7 @@ ReactDOM.render(
 
           <Route path="/">
             {getCookie("loggedIn") ?
-              (<Courses/>) :
+              (<Groups />) :
               (<Login />)
             }
           </Route>

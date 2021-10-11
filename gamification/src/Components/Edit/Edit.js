@@ -34,7 +34,7 @@ function EditCourse() {
    const renderElement = () => {
     switch (type) {
       // TODO: merge course and group form, check fields agains data model
-      case "course":
+      case "group":
         return (
           <>
             { textQuestion("Profesor que imparte", info.extra, "prof") }
@@ -49,8 +49,8 @@ function EditCourse() {
         return datePicker
 
     // TODO: remove all references to group before removing this block
-    case "group":
-      return textQuestion("Nombre Materia", info.extra, "sub")
+    // case "group":
+    //   return textQuestion("Nombre Materia", info.extra, "sub")
 
     case "subject":
       return;

@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Button, Table } from 'react-bootstrap';
-import { getCookie } from "../../Functions/Cookies";
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+
+import { getCookie } from "../../Functions/Cookies";
 
 import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
@@ -13,7 +13,7 @@ import TableEntry  from "../TableEntry/TableEntry";
 import "./Group.css";
 
 
-function Courses() {
+function Group() {
 
   const dummyStudents = [
     {
@@ -190,4 +190,4 @@ function Courses() {
   );
 }
 
-export default Courses;
+export default Group;
