@@ -31,7 +31,7 @@ function CreatePeriod() {
 
    const renderElement = () => {
     switch (type) {
-      // TODO: merge course and group form, check fields agains data model
+      // TODO: check fields against data model when API is implemented
       case "group":
         return (
           <>
@@ -40,19 +40,14 @@ function CreatePeriod() {
           </>
         )
         
-      
       case "mission":
         return datePicker
         
-    case "period":
-        return datePicker
+      case "period":
+          return datePicker
     
-    // TODO: remove all references to group before removing this block
-    // case "group":
-    //   return textQuestion("Nombre Materia", "Materia", "sub")
-
-    case "subject":
-      return;
+      case "subject":
+        return;
 
       default:
         return <p>Error</p>
