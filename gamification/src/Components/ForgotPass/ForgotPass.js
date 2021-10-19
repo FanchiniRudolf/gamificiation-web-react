@@ -13,7 +13,6 @@ function ForgotPass() {
   }
 
   return (
-    // TODO: @Bobby
     <div>
       <Container>
         <Row>

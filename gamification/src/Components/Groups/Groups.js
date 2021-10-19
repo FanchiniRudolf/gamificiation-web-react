@@ -8,14 +8,13 @@ import "./Groups.css";
 
 
 function Groups() {
-  //TODO put on top reused components
 
   const [joinModalShow, setJoinModalShow] = useState(false);
 
   const handleJoinModalShow = () => setJoinModalShow(true);
   const handleJoinModalClose = () => setJoinModalShow(false);
 
-  const dummyGroups = [
+  const groups = [
     {
       id: 1,
       name: "Fundamentos de programación"
@@ -25,7 +24,7 @@ function Groups() {
       name: "Calidad y pruebas de SW"
     }
   ];
-  const groupsList = dummyGroups.map(groupInfo => <CourseCard key={groupInfo.id} course={groupInfo} />)
+  const groupsList = groups.map(groupInfo => <CourseCard key={groupInfo.id} course={groupInfo} />)
 
   return (
     <div>
