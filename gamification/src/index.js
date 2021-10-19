@@ -29,6 +29,7 @@ import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
 import Signup from './Components/Signup/Signup';
 import ForgotPass from './Components/ForgotPass/ForgotPass';
+import NotFound from './Components/NotFound/NotFound';
 
 
 
@@ -84,9 +85,16 @@ ReactDOM.render(
             <Subjects />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             {getCookie("loggedIn") ?
               (<Groups />) :
+              (<Login />)
+            }
+          </Route>
+
+          <Route path="*">
+            {getCookie("loggedIn") ?
+              (<NotFound />) :
               (<Login />)
             }
           </Route>
