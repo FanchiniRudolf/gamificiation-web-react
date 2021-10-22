@@ -33,21 +33,23 @@ function EditCourse() {
 
    const renderElement = () => {
     switch (type) {
-      // TODO: merge course and group form, check fields agains data model
-      case "course":
-        return textQuestion("Profesor que imparte", info.extra, "prof")
+      // TODO: check fields against data model when API is implemented
+      case "group":
+        return (
+          <>
+            { textQuestion("Profesor que imparte", info.extra, "prof") }
+            { textQuestion("Nombre Materia", info.extra, "sub") }
+          </>
+        )
       
       case "mission":
         return datePicker
         
-    case "period":
-        return datePicker
+      case "period":
+          return datePicker
 
-    case "group":
-      return textQuestion("Nombre Materia", info.extra, "sub")
-
-    case "subject":
-      return;
+      case "subject":
+        return;
 
       default:
         return <p>Error</p>
@@ -61,6 +63,9 @@ function EditCourse() {
       {renderElement()}
       <Button variant="primary" type="submit">
           Editar {type}
+      </Button>
+      <Button variant="link">
+          Cancelar
       </Button>
     </Form>
   )

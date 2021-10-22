@@ -8,7 +8,7 @@ const history = useHistory();
 
   const handleRoute = () => {
     // TODO: change hard-coded route
-    history.push("/edit/course/1")
+    history.push("/edit/group/1")
   }
 
   return (

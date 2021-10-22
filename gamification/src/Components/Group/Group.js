@@ -1,10 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Button, Table } from 'react-bootstrap';
-import { getCookie } from "../../Functions/Cookies";
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+import { getCookie } from "../../Functions/Cookies";
+
+import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
 import MissionItem  from "../MissionItem/MissionItem";
 import TableEntry  from "../TableEntry/TableEntry";
@@ -12,7 +13,7 @@ import TableEntry  from "../TableEntry/TableEntry";
 import "./Group.css";
 
 
-function Courses() {
+function Group() {
 
   const dummyStudents = [
     {
@@ -93,9 +94,10 @@ function Courses() {
       <Container>
         <Tabs>
           <TabList>
-            {getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab>}
+            { getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab> }
             <Tab>Misiones</Tab>
             <Tab>Tabla de posiciones</Tab>
+            { !getCookie("isTeacher") && <Tab>Perfil</Tab> }
           </TabList>
 
 
@@ -176,10 +178,16 @@ function Courses() {
                 </tbody>
               </Table>
             </TabPanel>
+
+          { !getCookie("isTeacher") &&
+            <TabPanel>
+              <StudentProfile />
+            </TabPanel>
+          }
         </Tabs>
       </Container>
     </div>
   );
 }
 
-export default Courses;
+export default Group;
