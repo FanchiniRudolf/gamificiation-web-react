@@ -31,20 +31,23 @@ function CreatePeriod() {
 
    const renderElement = () => {
     switch (type) {
-      case "course":
-        return textQuestion("Profesor que imparte", "Deme el profesor", "prof")
-      
+      // TODO: check fields against data model when API is implemented
+      case "group":
+        return (
+          <>
+            { textQuestion("Profesor que imparte", "Deme el profesor", "prof") }
+            { textQuestion("Nombre Materia", "Materia", "sub") }
+          </>
+        )
+        
       case "mission":
         return datePicker
         
-    case "period":
-        return datePicker
-
-    case "group":
-      return textQuestion("Nombre Materia", "Materia", "sub")
-
-    case "subject":
-      return;
+      case "period":
+          return datePicker
+    
+      case "subject":
+        return;
 
       default:
         return <p>Error</p>
@@ -58,6 +61,9 @@ function CreatePeriod() {
       {renderElement()}
       <Button variant="primary" type="submit">
           Crear {type}
+      </Button>
+      <Button variant="link">
+          Cancelar
       </Button>
     </Form>
   )

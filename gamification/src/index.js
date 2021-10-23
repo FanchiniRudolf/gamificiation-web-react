@@ -15,7 +15,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Group from './Components/Group/Group';
 
 // Student-only components
-import Courses from './Components/Courses/Courses';
+import Groups from './Components/Groups/Groups';
 import StudentProfile from './Components/Profile/Profile';
 
 // Instructor-only components
@@ -27,6 +27,9 @@ import Subjects from './Components/Subjects/Subjects';
 
 import Create from './Components/Create/Create';
 import Edit from './Components/Edit/Edit';
+import Signup from './Components/Signup/Signup';
+import ForgotPass from './Components/ForgotPass/ForgotPass';
+import NotFound from './Components/NotFound/NotFound';
 
 
 
@@ -39,10 +42,16 @@ ReactDOM.render(
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/forgotpass">
+            <ForgotPass />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
 
           {/* student routes */}
-          <Route path="/courses">
-            <Courses/>
+          <Route path="/groups">
+            <Groups/>
           </Route>
 
           {/* dynamic */}
@@ -76,9 +85,16 @@ ReactDOM.render(
             <Subjects />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             {getCookie("loggedIn") ?
-              (<Courses/>) :
+              (<Groups />) :
+              (<Login />)
+            }
+          </Route>
+
+          <Route path="*">
+            {getCookie("loggedIn") ?
+              (<NotFound />) :
               (<Login />)
             }
           </Route>
