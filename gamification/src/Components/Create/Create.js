@@ -9,7 +9,6 @@ function CreatePeriod() {
   const { type } = useParams();
   const [startDate, setStartDate] = useState(new Date());
 
-  console.log(typeof type);
 
   const datePicker = (
     <Form.Group className="mb-3" controlId="formTitle">

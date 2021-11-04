@@ -25,7 +25,7 @@ export const useFetch = (url, method, headers, body) => {
     //Inicializamos el estado de la información.
     const [state, setState] = useState({
         info: null,
-        loading: true, //IDENTIFICAR si sigue en fetch
+        loading: null, //IDENTIFICAR si sigue en fetch
         error: null
     });
 
@@ -38,8 +38,12 @@ export const useFetch = (url, method, headers, body) => {
         }
     }, []);
 
-    //Utilizamos un useEffect para indicar que se actualice el estado cada vez que la url cambie.
+    //Utilizamos un useEffect para indicar que se actualice el estado cada vez que la body cambie.
     useEffect(() => {
+        console.log(typeof body)
+        console.log(body.valueOf() ) //TODO @RUDY fix javascript
+        if (body !== "notYet"){
+
         //Inicializamos el estado con loading = true para las siguientes invocaciones.
         setState({ info:null, loading: true, error:null });
         
@@ -61,7 +65,8 @@ export const useFetch = (url, method, headers, body) => {
                 }else{
                     console.log('setSate no se llamó porque el componente ya estaba desmontado');} 
                 }
-            )}, [url]);
+            )}
+        }, [body]);
             return state;
         }
 

@@ -1,18 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
+import useFetch from '../../Hooks/useFetch';
+import {createUUID} from '../../Functions/UUID'
+import {setCookie, getCookie} from '../../Functions/Cookies'
 
 import './Login.css';
 //@bobby - WIP
 function Login() {
+
   
-  const onLoginSubmit = async ({email, password}) => {
-    try {
-      await console.log(`mail: ${email}, pass: ${password}`);
-    } catch (error) {
-      console.log(error);
-    }
+
+  const { API_BASE_URL } = process.env; //TODO @Rudy fix undefined from apibase
+  const [body, setBody]= useState("notYet");
+  const {loading, info} = useFetch(API_BASE_URL+"sessions/login", "POST", {}, body) 
+
+  console.log(API_BASE_URL)
+  let message;
+  
+  const onLoginSubmit = ({email, password}) => {
+    let uuid = getCookie('uuid') || createUUID();
+    setCookie('uuid', uuid);
+    console.log("inside")
+    setBody({
+      "email": email,
+      "password": password,
+      "device_uuid": uuid
+    })
   }
+
+  if (loading === null){
+    message = <div></div>
+  }else if(loading === true){
+    message = <p>loading</p>
+  }else if (loading === false){
+    message = <p>Success</p>
+  }
+    
   
   return (
     // <div className="Login">
@@ -65,6 +89,7 @@ function Login() {
 
         </Row>
       </Container>
+      {message}
     </div>
   );
 }
