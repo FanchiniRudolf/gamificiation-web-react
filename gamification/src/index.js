@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Route, BrowserRouter, Switch} from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {getCookie} from './Functions/Cookies.js'
@@ -38,67 +38,39 @@ ReactDOM.render(
   <React.StrictMode>
     <Navbar />
     <BrowserRouter forceRefresh={false}>
-      <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/forgotpass">
-            <ForgotPass />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
+      <Routes>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/forgotpass" element={<ForgotPass/>}/>
+          <Route path="/signup" element={<Signup/>}/>
 
           {/* student routes */}
-          <Route path="/groups">
-            <Groups/>
-          </Route>
+          <Route path="/groups" element={<Groups/>}/>
+
 
           {/* dynamic */}
-          <Route path="/Group/:id">
-            <Group />
-          </Route>
-          <Route path="/profile/:group/:id">
-            <StudentProfile />
-          </Route>
-          <Route path="/gradestudent/:group/:id">
-            <GradeStudent />
-          </Route>
-          <Route path="/create/:type">
-            <Create />
-          </Route>
-          <Route path="/edit/:type/:id">
-            <Edit />
-          </Route>
+          <Route path="/Group/:id" element={<Group/>}/>
+          <Route path="/profile/:group/:id" element={<StudentProfile/>}/>
+          <Route path="/gradestudent/:group/:id" element={<GradeStudent/>}/>
+          <Route path="/create/:type" element={<Create/>}/>
+          <Route path="/edit/:type/:id" element={<Edit/>}/>
 
           {/* teacher routes */}
-          <Route path="/periods">
-            <Periods />
-          </Route>
-          <Route path="/missions">
-            <Missions />
-          </Route>
-          <Route path="/addstudent">
-            <AddStudent />
-          </Route>
-          <Route path="/subjects">
-            <Subjects />
-          </Route>
+          <Route path="/periods" element={<Periods/>}/>
+          <Route path="/missions" element={<Missions/>}/>
+          <Route path="/addstudent" element={<AddStudent/>}/>
+          <Route path="/subjects" element={<Subjects/>}/>
 
-          <Route exact path="/">
-            {getCookie("session_token") ?
-              (<Groups />) :
-              (<Login />)
-            }
-          </Route>
+          {/* generic routes */}
+          <Route exact path="/" element={getCookie("session_token") ?
+              (<Navigate to="groups" replace={true} />) :
+              (<Navigate to="login" replace={true} />)
+            }/>
 
-          <Route path="*">
-            {getCookie("session_token") ?
+          <Route path="*" element={getCookie("session_token") ?
               (<NotFound />) :
               (<Login />)
-            }
-          </Route>
-      </Switch>
+            }/>
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -40,7 +40,7 @@ function Login() {
       setCookie("isTeacher", info.session.user.role.name === "teacher")
       message = <div>
                   <p>Success!!</p>
-                 
+                  <Navigate to="/groups" replace={true} />
                 </div> 
       
     }

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Teacher() {
 
-const history = useHistory();
+const navigate = useNavigate();
 
   const handleRoute = () => {
     // TODO: change hard-coded route
-    history.push("/edit/group/1")
+    navigate("/edit/group/1", {replace: true})
   }
 
   return (
