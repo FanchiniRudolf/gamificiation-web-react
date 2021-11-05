@@ -11,12 +11,12 @@ function Navbar() {
         <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            { getCookie("loggedIn") && <Nav.Link href="/groups">Grupos</Nav.Link> }
-            { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/subjects">Materias</Nav.Link>) }
-            { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/periods">Periodos</Nav.Link>) }
-            { getCookie("loggedIn") && (getCookie("isTeacher") && <Nav.Link href="/missions">Misiones</Nav.Link>) }
+            { getCookie("session_token") && <Nav.Link href="/groups">Grupos</Nav.Link> }
+            { getCookie("session_token") && (getCookie("isTeacher") && <Nav.Link href="/subjects">Materias</Nav.Link>) }
+            { getCookie("session_token") && (getCookie("isTeacher") && <Nav.Link href="/periods">Periodos</Nav.Link>) }
+            { getCookie("session_token") && (getCookie("isTeacher") && <Nav.Link href="/missions">Misiones</Nav.Link>) }
 
-            { getCookie("loggedIn") && <Nav.Link href="/login">Cerrar sesión</Nav.Link> }
+            { getCookie("session_token") && <Nav.Link href="/login">Cerrar sesión</Nav.Link> }
           </Nav>
         </BNavbar.Collapse>
       </Container>

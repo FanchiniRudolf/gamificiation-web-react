@@ -86,14 +86,14 @@ ReactDOM.render(
           </Route>
 
           <Route exact path="/">
-            {getCookie("loggedIn") ?
+            {getCookie("session_token") ?
               (<Groups />) :
               (<Login />)
             }
           </Route>
 
           <Route path="*">
-            {getCookie("loggedIn") ?
+            {getCookie("session_token") ?
               (<NotFound />) :
               (<Login />)
             }
