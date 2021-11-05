@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
 import useFetch from '../../Hooks/useFetch';
 import {createUUID} from '../../Functions/UUID'
 import {setCookie, getCookie} from '../../Functions/Cookies'
 import { Navigate } from "react-router-dom";
+import { SessionContext } from '../../Hooks/sessionContext'
 import './Login.css';
 
 function Login() {
@@ -12,6 +13,7 @@ function Login() {
   const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
   const [body, setBody]= useState("notYet");
   const {loading, info} = useFetch(API_BASE_URL+"sessions/login", "POST", {}, body) 
+  const {setSession, setTeacherStatus, setUsername} = useContext(SessionContext)
 
   let message;
   
@@ -30,19 +32,22 @@ function Login() {
   }else if(loading === true){
     message = <p>loading</p> //TODO make popup
   }else if (loading === false){
+    
     if (info.error){
-      message = <p>Login Error Try Again: {info.error}</p>
+      message = <p>Login Error Try Again: {info.error}</p> //TODO make pretty
+
     }else if(info.session.token){
+      
       setCookie("session_token", info.session.token)
-      setCookie("username", info.session.user.username)
-      setCookie("school_id", info.session.user.school_id)
-      setCookie("name", info.session.user.name)
-      setCookie("isTeacher", info.session.user.role.name === "teacher")
+      setCookie("user", info.session.user)
+      setUsername(info.session.user.username)
+      setTeacherStatus(info.session.user.role.name === "teacher")
+      setSession(true)
+      
       message = <div>
                   <p>Success!!</p>
-                  <Navigate to="/groups" replace={true} />
+                  <Navigate to="/groups" replace={false} />
                 </div> 
-      
     }
     
   }

@@ -1,18 +1,27 @@
 export function setCookie (key, value) {
     
-    localStorage.setItem(key, value)
+    localStorage.setItem(key, JSON.stringify(value))
     return value;
+    
 }
 
 export function getCookie(key) {
     
-    return  localStorage.getItem(key);
+    return  JSON.parse(localStorage.getItem(key));
   
 }
 
 
-export function logOut(key) {
+export function deleteAllCookies() {
     
-    //TODO erase all cookies
+    localStorage.clear();
+    return true;
   
+}
+
+export function deleteCookie(key) {
+    
+    localStorage.removeItem(key);  
+    return true;
+
 }
