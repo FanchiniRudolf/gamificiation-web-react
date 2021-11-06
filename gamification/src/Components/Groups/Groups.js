@@ -75,7 +75,7 @@ function Groups() {
             <Col lg={3}>
               { isTeacher ?
                 (
-                  <Button variant="primary" href="/create/group/1">
+                  <Button variant="primary" href="/create/group">
                     Crear
                   </Button>
                 ) : (

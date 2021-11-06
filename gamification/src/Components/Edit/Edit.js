@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import { Form, Button,  } from 'react-bootstrap';
+import { Form as FinalForm, Field as FinalFormField } from 'react-final-form'
 import {useParams}  from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function EditCourse() {
+function Edit() {
 
   const { type, id } = useParams();
   //call id 
@@ -12,6 +13,12 @@ function EditCourse() {
   const [startDate, setStartDate] = useState(new Date());
 
   console.log(typeof type);
+
+  // TODO add as params fields that will be received by form
+  const onSubmit = () => {
+
+  }
+
 
   const datePicker = (
     <Form.Group className="mb-3" controlId="formTitle">
@@ -57,18 +64,22 @@ function EditCourse() {
   }
 
   return (
-    <Form className="container-md text-center align-content-center">
-      {textQuestion("Titulo", info.tittle, "tittle")}
-      {textQuestion("Descripción", info.desc, "desc")}
-      {renderElement()}
-      <Button variant="primary" type="submit">
-          Editar {type}
-      </Button>
-      <Button variant="link">
-          Cancelar
-      </Button>
-    </Form>
+    <FinalForm onSubmit={onSubmit}>
+      {({handleSubmit, submitting}) => (
+        <Form className="container-md text-center align-content-center">
+        {textQuestion("Titulo", info.tittle, "tittle")}
+        {textQuestion("Descripción", info.desc, "desc")}
+        {renderElement()}
+        <Button variant="primary" type="submit">
+            Editar {type}
+        </Button>
+        <Button variant="link">
+            Cancelar
+        </Button>
+      </Form>
+      )}
+    </FinalForm>
   )
 }
 
-export default EditCourse
+export default Edit
