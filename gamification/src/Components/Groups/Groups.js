@@ -25,7 +25,6 @@ function Groups() {
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
   const { loading, info } = useFetch(API_BASE_URL+urlRoute,
     "GET", {"Authorization": getCookie("session_token")})
-  console.log(info);
 
   let table;
   if (loading === null) {
