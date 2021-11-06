@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-import { getCookie } from "../../Functions/Cookies";
+import { SessionContext } from "../../Hooks/sessionContext";
 
 import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
@@ -14,6 +14,9 @@ import "./Group.css";
 
 
 function Group() {
+
+  // use context instead of cookie
+  const {isTeacher} = useContext(SessionContext)
 
   const dummyStudents = [
     {
@@ -94,14 +97,14 @@ function Group() {
       <Container>
         <Tabs>
           <TabList>
-            { getCookie("isTeacher") && <Tab>Grupo/alumnos</Tab> }
+            { isTeacher && <Tab>Grupo/alumnos</Tab> }
             <Tab>Misiones</Tab>
             <Tab>Tabla de posiciones</Tab>
-            { !getCookie("isTeacher") && <Tab>Perfil</Tab> }
+            { !isTeacher && <Tab>Perfil</Tab> }
           </TabList>
 
 
-          {getCookie("isTeacher") &&
+          {isTeacher &&
             <TabPanel>
               <div>
                 <Row className="mt-5 mb-3">
@@ -179,7 +182,7 @@ function Group() {
               </Table>
             </TabPanel>
 
-          { !getCookie("isTeacher") &&
+          { isTeacher &&
             <TabPanel>
               <StudentProfile />
             </TabPanel>
