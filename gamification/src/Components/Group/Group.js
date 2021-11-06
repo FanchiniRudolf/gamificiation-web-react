@@ -43,9 +43,8 @@ function Group() {
     students = info.students.map(student =>
        <StudentListItem key={student.id} student={student} />);
     missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
-    tableEntries = info.students.sort((a, b) => a.val - b.val)
-        .map(student =>
-          <StudentListItem key={student.id} student={student} />);;
+    tableEntries = info.students.sort((a, b) => a.hp - b.hp)
+    .map((entry, index) => <TableEntry entry={entry} index={index}/>);
   }
 
 
@@ -66,13 +65,13 @@ function Group() {
               <div>
                 <Row className="mt-5 mb-3">
                   <Col lg={12}>
-                    <h1>Grupo {1+1}</h1>
+                    <h1>Grupo {id}</h1>
                   </Col>
                 </Row>
 
                 <Row className="mt-4">
                   <Col lg={6}>
-                    <h4>{3*3} misiones</h4>
+                    <h4>{loading ? "loading":missions.length} misiones</h4>
                   </Col>
 
                   <Col lg={6}>
@@ -93,7 +92,6 @@ function Group() {
                 <Row className="mt-2">
                   <Col lg={12}>
                     <p>tabla con los alumnos (ordenados por matricula)</p>
-                    {/* <StudentListItem /> */}
                     {students}
                   </Col>
                 </Row>
@@ -133,12 +131,12 @@ function Group() {
                   </tr>
                 </thead>
                 <tbody>
-                  {tableEntries.map(entry => <TableEntry entry={entry}/> )}
+                  {tableEntries}
                 </tbody>
               </Table>
             </TabPanel>
 
-          { isTeacher &&
+          { !isTeacher &&
             <TabPanel>
               <StudentProfile />
             </TabPanel>

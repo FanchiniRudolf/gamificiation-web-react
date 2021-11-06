@@ -33,10 +33,10 @@ import NotFound from '../NotFound/NotFound';
 
 function MainAppRouter() {
 
-    const [session, setSession] = useState(false); //TODO check if token is in cookie
-    const [isTeacher, setTeacherStatus] = useState(false);
-    const [username, setUsername] = useState(""); //TODO check if user is in cookie
-    const [userId, setUserId] = useState(0);
+    const [session, setSession] = useState(getCookie("session_token") || false);
+    const [isTeacher, setTeacherStatus] = useState(getCookie("user").role.name === "teacher");
+    const [username, setUsername] = useState(getCookie("user").username || "");
+    const [userId, setUserId] = useState(getCookie("user").id || 0);
 
     return (
         <SessionContext.Provider value={{session, setSession, isTeacher, 
