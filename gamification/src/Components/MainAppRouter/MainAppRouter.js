@@ -34,9 +34,9 @@ import NotFound from '../NotFound/NotFound';
 function MainAppRouter() {
 
     const [session, setSession] = useState(getCookie("session_token") || false);
-    const [isTeacher, setTeacherStatus] = useState(getCookie("user").role.name === "teacher");
-    const [username, setUsername] = useState(getCookie("user").username || "");
-    const [userId, setUserId] = useState(getCookie("user").id || 0);
+    const [isTeacher, setTeacherStatus] = useState(getCookie("user")?.role?.name  ?? "student" === "teacher");
+    const [username, setUsername] = useState(getCookie("user")?.username || "");
+    const [userId, setUserId] = useState(getCookie("user")?.id || 0);
 
     return (
         <SessionContext.Provider value={{session, setSession, isTeacher, 

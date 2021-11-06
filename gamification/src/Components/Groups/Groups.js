@@ -15,6 +15,7 @@ function Groups() {
   const {isTeacher} = useContext(SessionContext)
 
   let urlRoute = ''
+  console.log(isTeacher)
   if (isTeacher) {
     urlRoute = "groups"
   } else {

@@ -13,15 +13,10 @@ function CourseCard({course}) {
         <Card>
           <Card.Header>
             {/* TODO replace hard-coded route in href for dynamic route */}
-            <Button variant="link" href="/Group/1">{course.name}</Button>
+            <Button variant="link" href={"/Group/"+course.id}>{course.name}</Button>
           </Card.Header>
           <Card.Body>
-            <Card.Title>Grupo {3*3}</Card.Title>
-            {/* TODO: after demo add data customer requests -
-                might have to determine it how to get it first */}
-            {/* <Card.Text>
-              {1*1} Misiones en total
-            </Card.Text> */}
+            <Card.Title>Grupo {course.id}</Card.Title>
             <div>
               { isTeacher && (<Teacher/>) }
             </div>
