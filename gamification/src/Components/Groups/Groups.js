@@ -18,7 +18,7 @@ function Groups() {
   if (isTeacher) {
     urlRoute = "groups"
   } else {
-    urlRoute = "user_groups"
+    urlRoute = "users_groups"
   }
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
