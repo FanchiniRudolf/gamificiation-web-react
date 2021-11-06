@@ -4,11 +4,16 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import { SessionContext } from "../../Hooks/sessionContext";
+import { getCookie } from "../../Functions/Cookies";
 
 import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
 import MissionItem  from "../MissionItem/MissionItem";
 import TableEntry  from "../TableEntry/TableEntry";
+import {useFetch} from "../../Hooks/useFetch"
+import {useParams}  from "react-router-dom";
+
+
 
 import "./Group.css";
 
@@ -18,80 +23,32 @@ function Group() {
   // use context instead of cookie
   const {isTeacher} = useContext(SessionContext)
 
-  const dummyStudents = [
-    {
-      id: 'A01374448',
-      name: 'Estudiante1',
-      hp: 0,
-      xp: 0,
-      gold: 0,
-      average:0.0
-    },
-    {
-      id: 'A01374866',
-      name: 'Estudiante2',
-      hp: 0,
-      xp: 0,
-      gold: 0,
-      average:0.0
-    },
-    {
-      id: 'A01374785',
-      name: 'Estudiante3',
-      hp: 0,
-      xp: 0,
-      gold: 0,
-      average:0.0
-    }
-  ];
+  const { id } = useParams();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const { loading, info } = useFetch(API_BASE_URL+"groups/"+String(id),
+    "GET", {"Authorization": getCookie("session_token")})
+  console.log(info);
 
-  const misiones = [
-    {
-      tittle: 'Mision 1',
-      desc: 'Descripcion 1',
-    },
-    {
-      tittle: 'Mision 2',
-      desc: 'Descripcion 2',
-    },
-    {
-      tittle: 'Mision 3',
-      desc: 'Descripcion 3',
-    }
-  ];
+  let students, missions, tableEntries;
 
-  const tableEntries = [
-    {
-      name: 'John Doe',
-      id: 'A01374458',
-      hp: 35,
-      xp: 0,
-      coins: 10,
-      position: 1
-
-    },
-    {
-      name: 'Jane Doe',
-      id: 'A01373458',
-      hp: 25,
-      xp: 10,
-      coins: 110,
-      position: 2
-    },
-    {
-      name: 'Max Doe',
-      id: 'A01384458',
-      hp: 0,
-      xp: 2,
-      coins: 1,
-      position: 3
-    }
-  ];
-  const studentsList = dummyStudents.map(student => <StudentListItem key={student.id} student={student} />)
+  if (loading === null){
+    students = <div/>;
+    missions = <div/>;
+    tableEntries = <div/>;
+  }else if(loading === true){
+    students = <p>Loading</p>;
+    missions = <p>Loading</p>;
+    tableEntries = <p>Loading</p>;
+  }else if(loading === false){
+    students = info.students.map(student =>
+       <StudentListItem key={student.id} student={student} />);
+    missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
+    tableEntries = info.students.sort((a, b) => a.val - b.val)
+        .map(student =>
+          <StudentListItem key={student.id} student={student} />);;
+  }
 
 
-  //TODO give components group id from route
-  //TODO put on top reused components
   return (
     <div>
       <Container>
@@ -137,7 +94,7 @@ function Group() {
                   <Col lg={12}>
                     <p>tabla con los alumnos (ordenados por matricula)</p>
                     {/* <StudentListItem /> */}
-                    {studentsList}
+                    {students}
                   </Col>
                 </Row>
                 {/* divider */}
@@ -152,13 +109,12 @@ function Group() {
 
 
             <TabPanel>
-              {/* TODO: @FanchiniRudolf, make missions table and leaderboard */}
               <Row className="mt-4">
               <Col lg={12}>
               <h1>Misiones del grupo</h1>
                 </Col>
                 <Col lg={12}>
-                  {misiones.map(mission => <MissionItem mission={mission}/>)}
+                  {missions}
                 </Col>
               </Row>
             </TabPanel>
