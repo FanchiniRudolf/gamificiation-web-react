@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getCookie } from "../../Functions/Cookies";
 
+import { useFetch } from "../../Hooks/useFetch"
+
 
 import CourseCard from "../CourseCard/CourseCard";
 import "./Groups.css";
@@ -9,22 +11,26 @@ import "./Groups.css";
 
 function Groups() {
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const { loading, info } = useFetch(API_BASE_URL+"users_groups",
+    "GET", {"Authorization": getCookie("session_token")})
+  console.log(info);
+
+  let table;
+  if (loading === null) {
+    table = <div></div>
+  } else if (loading === true) {
+    table = <p>Loading...</p>
+  } else if (loading === false) {
+    table = info.map(groupInfo =>
+      <CourseCard key={groupInfo.id} course={groupInfo} />)
+  }
+
   const [joinModalShow, setJoinModalShow] = useState(false);
 
   const handleJoinModalShow = () => setJoinModalShow(true);
   const handleJoinModalClose = () => setJoinModalShow(false);
 
-  const groups = [
-    {
-      id: 1,
-      name: "Fundamentos de programación"
-    },
-    {
-      id: 2,
-      name: "Calidad y pruebas de SW"
-    }
-  ];
-  const groupsList = groups.map(groupInfo => <CourseCard key={groupInfo.id} course={groupInfo} />)
 
   return (
     <div>
@@ -73,7 +79,7 @@ function Groups() {
 
           <Row>
             <Col lg={6}>
-              {groupsList}
+              {table}
             </Col>
           </Row>
         </Container>
