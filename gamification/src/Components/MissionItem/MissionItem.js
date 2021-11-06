@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Card, Button} from 'react-bootstrap'
-import {getCookie} from '../../Functions/Cookies'
+import {SessionContext} from '../../Hooks/sessionContext'
 
 function MissionItem({mission}) {
+
+  const {isTeacher} = useContext(SessionContext)
   
   return (
     <Card>
@@ -11,9 +13,9 @@ function MissionItem({mission}) {
       <Card.Text>
         {mission.desc}
       </Card.Text>
-      { getCookie("isTeacher") && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
+      { isTeacher && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
       {' '}
-      { getCookie("isTeacher") && <Button variant="danger">Borrar</Button> }
+      { isTeacher && <Button variant="danger">Borrar</Button> }
       
     </Card.Body>
     </Card>

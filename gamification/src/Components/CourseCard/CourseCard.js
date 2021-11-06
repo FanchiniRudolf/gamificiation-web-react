@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Button, Card, Col } from "react-bootstrap";
-import { getCookie } from "../../Functions/Cookies";
 import Teacher from "./Dynamic/Teacher"
+import { SessionContext } from '../../Hooks/sessionContext'
 
 function CourseCard({course}) {
+
+  const {isTeacher} = useContext(SessionContext)
+  
   return (
     <div>
       {/* <Col lg={6}> */}
@@ -20,7 +23,7 @@ function CourseCard({course}) {
               {1*1} Misiones en total
             </Card.Text> */}
             <div>
-              { getCookie("isTeacher") && (<Teacher/>) }
+              { isTeacher && (<Teacher/>) }
             </div>
           </Card.Body>
         </Card>

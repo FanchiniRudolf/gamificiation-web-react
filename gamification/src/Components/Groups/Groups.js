@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getCookie } from "../../Functions/Cookies";
+import { SessionContext } from "../../Hooks/sessionContext";
 
 import { useFetch } from "../../Hooks/useFetch"
 
@@ -11,8 +12,10 @@ import "./Groups.css";
 
 function Groups() {
 
+  const {isTeacher} = useContext(SessionContext)
+
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
-  const { loading, info } = useFetch(API_BASE_URL+"users_groups",
+  const { loading, info } = useFetch(API_BASE_URL+"groups",
     "GET", {"Authorization": getCookie("session_token")})
   console.log(info);
 
@@ -63,7 +66,7 @@ function Groups() {
               <h1>Mis grupos</h1>
             </Col>
             <Col lg={3}>
-              { getCookie("isTeacher") ?
+              { isTeacher ?
                 (
                   <Button variant="primary" href="/create/group/1">
                     Crear
