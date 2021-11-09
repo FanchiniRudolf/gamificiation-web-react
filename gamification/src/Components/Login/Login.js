@@ -37,7 +37,9 @@ function Login() {
   }else if (loading === false){
     // setModalShow(false)
     if (info.error){
-      message = <p>Error al iniciar sesión: {info.error}</p> //TODO make pretty, draw error message below login button
+      message = <p style={{color: 'red'}}>
+          Error al iniciar sesión: {info.error}
+        </p>
 
     } else if(info.session.token) {
       setCookie("session_token", info.session.token)
