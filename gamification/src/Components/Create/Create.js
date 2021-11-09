@@ -8,19 +8,24 @@ import "react-datepicker/dist/react-datepicker.css";
 function Create() {
 
   const { type } = useParams();
-  const [startDate, setStartDate] = useState(new Date());
+  const [formDate, setFormDate] = useState(new Date());
 
-  // TODO add as params fields that will be received by form
-  const onSubmit = () => {
-
+  
+  const onSubmit = (formData) => {
+    console.log("formdata:", formData)
+    console.log(formDate)
   }
 
 
   const datePicker = (
     <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Fecha de Fin</Form.Label>
-        <DatePicker /*TODO fix css*/selected={startDate} onChange={(date) => setStartDate(date)}>
+        {/* <FinalFormField name="date"> */}
+        <DatePicker /*TODO fix css*/
+          selected={formDate}
+          onChange={(date) => setFormDate(date)}>
         </DatePicker>
+        {/* </FinalFormField> */}
       </Form.Group>
     )
 
@@ -28,7 +33,11 @@ function Create() {
     return( 
           <Form.Group className="mb-3" controlId={id}>
             <Form.Label>{tittle}</Form.Label>
-            <Form.Control type="text" placeholder={desc} />
+            <FinalFormField name={id}>
+              {({input}) => (
+                <Form.Control {...input} type="text" placeholder={desc} />
+              )}
+            </FinalFormField>
           </Form.Group>
         )
   }
@@ -41,6 +50,10 @@ function Create() {
         return (
           <>
             { textQuestion("Profesor que imparte", "Deme el profesor", "prof") }
+
+            {/* TODO this should be a select (combo box) element
+            we should GET the subjects of the teacher and
+            load them in here */}
             { textQuestion("Nombre Materia", "Materia", "sub") }
           </>
         )
@@ -66,7 +79,7 @@ function Create() {
         {textQuestion("Titulo", "Indicar el título", "tittle")}
         {textQuestion("Descripción", "Indicar la descripción", "desc")}
         {renderElement()}
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
             Crear {type}
         </Button>
         <Button variant="link">
