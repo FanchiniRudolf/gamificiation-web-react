@@ -6,7 +6,9 @@ import {createUUID} from '../../Functions/UUID'
 import {setCookie, getCookie} from '../../Functions/Cookies'
 import { Navigate } from "react-router-dom";
 import { SessionContext } from '../../Hooks/sessionContext'
+import LoginModal from './Modal/LoginModal'
 import './Login.css';
+
 
 function Login() {
 
@@ -14,6 +16,7 @@ function Login() {
   const [body, setBody]= useState("notYet");
   const {loading, info} = useFetch(API_BASE_URL+"sessions/login", "POST", {}, body) 
   const {setSession, setTeacherStatus, setUsername} = useContext(SessionContext)
+  const [modalShow, setModalShow] = useState(true);
 
   let message;
   
@@ -30,14 +33,13 @@ function Login() {
   if (loading === null){
     message = <div></div>
   }else if(loading === true){
-    message = <p>loading</p> //TODO make popup
+    message = <LoginModal modalShow={modalShow} setModalShow={setModalShow} />
   }else if (loading === false){
-    
+    // setModalShow(false)
     if (info.error){
-      message = <p>Login Error Try Again: {info.error}</p> //TODO make pretty
+      message = <p>Error al iniciar sesión: {info.error}</p> //TODO make pretty, draw error message below login button
 
-    }else if(info.session.token){
-      
+    } else if(info.session.token) {
       setCookie("session_token", info.session.token)
       setCookie("user", info.session.user)
       setUsername(info.session.user.username)
@@ -49,7 +51,6 @@ function Login() {
                   <Navigate to="/groups" replace={false} />
                 </div> 
     }
-    
   }
     
   
@@ -84,6 +85,7 @@ function Login() {
                     )}
                   </FinalFormField>
                 </Form.Group>
+                {message}
                 <Button variant="primary" size='lg' type="submit" onClick={handleSubmit}>
                   Iniciar sesión
                 </Button>
@@ -104,7 +106,6 @@ function Login() {
 
         </Row>
       </Container>
-      {message}
     </div>
   );
 }
