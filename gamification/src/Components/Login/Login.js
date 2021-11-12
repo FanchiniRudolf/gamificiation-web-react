@@ -35,7 +35,6 @@ function Login() {
   }else if(loading === true){
     message = <LoginModal modalShow={modalShow} setModalShow={setModalShow} />
   }else if (loading === false){
-    // setModalShow(false)
     if (info.error){
       message = <p style={{color: 'red'}}>
           Error al iniciar sesión: {info.error}
