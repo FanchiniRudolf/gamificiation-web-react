@@ -20,7 +20,6 @@ import "./Group.css";
 
 function Group() {
 
-  // use context instead of cookie
   const {isTeacher} = useContext(SessionContext)
 
   const { id } = useParams();
