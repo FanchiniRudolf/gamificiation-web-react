@@ -6,17 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {getCookie} from '../../Functions/Cookies.js'
 import { SessionContext } from '../../Hooks/sessionContext';
 
-// Component imports
+
 import Login from '../Login/Login';
+import Signup from '../Signup/Signup';
 import Navbar from '../Navbar/Navbar';
 
 import Group from '../Group/Group';
-
-// Student-only components
 import Groups from '../Groups/Groups';
+import PeriodGroups from '../PeriodGroups/PeriodGroups.js';
 import StudentProfile from '../Profile/Profile';
 
-// Instructor-only components
+
 import Periods from '../Periods/Periods';
 import Missions from '../Missions/Missions';
 import GradeStudent from '../GradeStudent/GradeStudent';
@@ -25,11 +25,12 @@ import Subjects from '../Subjects/Subjects';
 
 import Create from '../Create/Create';
 import Edit from '../Edit/Edit';
-import Signup from '../Signup/Signup';
-import ForgotPass from '../ForgotPass/ForgotPass';
-import NotFound from '../NotFound/NotFound';
 
-import PeriodGroups from '../PeriodGroups/PeriodGroups.js';
+
+import ForgotPass from '../ForgotPass/ForgotPass';
+import ValidateCode from '../ForgotPass/ValidateCode';
+import ChangePass from '../ForgotPass/ChangePass';
+import NotFound from '../NotFound/NotFound';
 
 
 
@@ -47,8 +48,11 @@ function MainAppRouter() {
                 <Navbar />
                 <Routes>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/forgotpass" element={<ForgotPass/>}/>
                     <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/forgot" element={<ForgotPass/>}/>
+                    <Route path="/validateRecoverCode" element={<ValidateCode/>}/>
+                    <Route path="/setNewPassword" element={<ChangePass/>}/>
+                    
 
                     {/* student routes */}
                     <Route path="/groups" element={<Groups/>}/>

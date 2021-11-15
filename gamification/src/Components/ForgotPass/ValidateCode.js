@@ -2,11 +2,10 @@ import React from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
 
-function ForgotPass() {
-
-  const onSubmit = async ({email}) => {
+function ValidateCode() {
+  const onSubmit = async ({validationCode}) => {
     try {
-      await console.log(`mail: ${email}`);
+      await console.log(`código: ${validationCode}`);
     } catch (error) {
       console.log(error);
     }
@@ -21,7 +20,7 @@ function ForgotPass() {
           </Col>
 
           <Col lg={12} className='text-left mt-5 mb-4'>
-            <h6>Introduce tu la dirección de correo de tu cuenta para que te enviemos un código de recuperación y validar que se trata de ti.</h6>
+            <h6>Introduce el código de recuperación que te enviamos por correo.</h6>
           </Col>
 
 
@@ -29,18 +28,18 @@ function ForgotPass() {
           <FinalForm onSubmit={onSubmit}>
             {({handleSubmit, submitting}) => (
               <Form>
-                <Form.Group controlId="emailForm" className="mb-3">
-                  <Form.Label>Ingresa tu correo</Form.Label>
-                  <FinalFormField name='email'>
+                <Form.Group controlId="validationCodeForm" className="mb-3">
+                  <Form.Label>Código de recuperación:</Form.Label>
+                  <FinalFormField name='validationCode'>
                     {({ input }) => (
-                      <Form.Control {...input} type='email' placeholder='a01234567@itesm.mx' size='lg' />
+                      <Form.Control {...input} type='text' placeholder='tu código' size='lg' />
                     )}
                   </FinalFormField>
                 </Form.Group>
 
                 
                 <Button variant="primary" size='lg' type="submit" onClick={handleSubmit}>
-                  Enviarme un correo
+                  Validar código
                 </Button>
               </Form>
             )} 
@@ -59,4 +58,4 @@ function ForgotPass() {
   )
 }
 
-export default ForgotPass
+export default ValidateCode

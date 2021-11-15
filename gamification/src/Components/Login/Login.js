@@ -105,7 +105,7 @@ function Login() {
           </Col>
 
           <Col lg={{offset: 4, span: 4}} className='text-center mt-3'>
-            <Button variant="link" href="forgotpass">
+            <Button variant="link" href="forgot">
               ¿Olvidaste tu contraseña?
             </Button>
             <Button variant="link" href="signup">
