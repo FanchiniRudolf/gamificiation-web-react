@@ -29,6 +29,8 @@ import Signup from '../Signup/Signup';
 import ForgotPass from '../ForgotPass/ForgotPass';
 import NotFound from '../NotFound/NotFound';
 
+import PeriodGroups from '../PeriodGroups/PeriodGroups.js';
+
 
 
 function MainAppRouter() {
@@ -64,6 +66,7 @@ function MainAppRouter() {
                     <Route path="/missions" element={<Missions/>}/>
                     <Route path="/addstudent" element={<AddStudent/>}/>
                     <Route path="/subjects" element={<Subjects/>}/>
+                    <Route path="/periodGroups/:id" element={<PeriodGroups/>}/>
 
                     {/* generic routes */}
                     <Route exact path="/" element={getCookie("session_token") ?

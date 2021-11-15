@@ -20,6 +20,7 @@ import "./Group.css";
 
 function Group() {
 
+  // stores the string which can have value "teacher"
   const {isTeacher} = useContext(SessionContext)
 
   const { id } = useParams();
