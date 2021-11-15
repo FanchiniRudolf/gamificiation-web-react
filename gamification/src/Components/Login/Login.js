@@ -93,7 +93,6 @@ function Login() {
               </Form>
             )} 
           </FinalForm>
-            
           </Col>
 
           <Col lg={{offset: 4, span: 4}} className='text-center mt-3'>
