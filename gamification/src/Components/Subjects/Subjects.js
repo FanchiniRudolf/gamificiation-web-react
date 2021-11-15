@@ -18,7 +18,7 @@ function Subjects() {
     if (loading == null){
       tableEntries = <div/>
     }else if (loading === true){
-      tableEntries = <p>Loading</p>
+      tableEntries = <p>Cargando...</p>
     }else if (loading === false){
       tableEntries = info.map((course, index) => <TableEntry entry={course} index={index}/>)
     }
@@ -36,12 +36,6 @@ function Subjects() {
             <Button variant="primary" size="md" href="/create/subject">
               Crear
             </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>Materias que imparte el profesor</p>
-            <p>Lista con opciones de editar o eliminar la entrada de la lista</p>
           </Col>
         </Row>
         <Row>
