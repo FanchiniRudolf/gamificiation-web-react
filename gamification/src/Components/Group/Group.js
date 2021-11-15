@@ -33,17 +33,17 @@ function Group() {
 
   if (loading === null){
     students = <div/>;
-    missions = <div/>;
+    // missions = <div/>;
     tableEntries = <div/>;
   }else if(loading === true){
     students = <p>Cargando...</p>;
-    missions = <p>Cargando...</p>;
+    // missions = <p>Cargando...</p>;
     tableEntries = <p>Cargando...</p>;
   }else if(loading === false){
     students = info.students.map(student =>
        <StudentListItem key={student.id} student={student} />);
     // TODO, change where we getting info
-    missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
+    // missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
     tableEntries = info.students.sort((a, b) => a.hp - b.hp)
     .map((entry, index) => <TableEntry entry={entry} index={index}/>);
   }
@@ -65,14 +65,17 @@ function Group() {
             <TabPanel>
               <div>
                 <Row className="mt-5 mb-3">
-                  <Col lg={12}>
+                  <Col lg={9}>
                     <h1>Grupo {id}</h1>
+                  </Col>
+                  <Col lg={3}>
+                    <Button variant="warning">Generar código</Button>
                   </Col>
                 </Row>
 
                 <Row className="mt-4">
                   <Col lg={6}>
-                    <h4>{loading ? "loading":missions.length} misiones</h4>
+                    {/* <h4>{loading ? "loading":missions.length} misiones</h4> */}
                   </Col>
 
                   <Col lg={6}>
