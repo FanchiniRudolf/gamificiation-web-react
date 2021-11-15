@@ -22,11 +22,11 @@ function Navbar() {
   return (
     <BNavbar bg="primary" variant="dark" expand="lg">
       <Container>
-        <BNavbar.Brand href="/">Gamificación Tec CEM</BNavbar.Brand>
+        <BNavbar.Brand>Gamificación Tec CEM</BNavbar.Brand>
         <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            { session && <Nav.Link href="/groups">Grupos</Nav.Link> }
+            {/* { session && <Nav.Link href="/groups">Grupos</Nav.Link> } */}
             { session && isTeacher && <Nav.Link href="/subjects">Materias</Nav.Link> }
             { session && isTeacher && <Nav.Link href="/periods">Periodos</Nav.Link> }
             { session && isTeacher && <Nav.Link href="/missions">Misiones</Nav.Link> }
