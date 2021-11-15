@@ -20,12 +20,11 @@ function Subjects() {
     }else if (loading === true){
       tableEntries = <p>Cargando...</p>
     }else if (loading === false){
-      tableEntries = info.map((course, index) => <TableEntry entry={course} index={index}/>)
+      tableEntries = info.map((course, index) => <TableEntry key={course.id} entry={course} index={index}/>)
     }
 
 
   return (
-    // <div className="StudentGroup">
     <div>
       <Container>
       <Row className="mt-5 mb-3">
