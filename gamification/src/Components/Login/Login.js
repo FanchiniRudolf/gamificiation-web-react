@@ -18,7 +18,7 @@ function Login() {
   const {setSession, setTeacherStatus, setUsername} = useContext(SessionContext)
   const [modalShow, setModalShow] = useState(true);
 
-  let message;
+  let message, roleName;
   
   const onLoginSubmit = ({email, password}) => {
     let uuid = getCookie('uuid') || createUUID();
@@ -45,12 +45,21 @@ function Login() {
       setCookie("user", info.session.user)
       setUsername(info.session.user.username)
       setTeacherStatus(info.session.user.role.name === "teacher")
+      roleName = info.session.user.role.name
+      console.log(roleName)
       setSession(true)
-      
-      message = <div>
+
+      if (roleName === "teacher") {
+        message = <div>
+                  <p>Success!!</p>
+                  <Navigate to="/periods" replace={false} />
+                </div>
+      } else if (roleName === "student") {
+        message = <div>
                   <p>Success!!</p>
                   <Navigate to="/groups" replace={false} />
-                </div> 
+                </div>
+      }
     }
   }
     

@@ -15,10 +15,11 @@ function Groups() {
   const {isTeacher} = useContext(SessionContext)
 
   let urlRoute = ''
+  // TODO care isTeacher is NOT a boolean
   console.log(isTeacher)
-  if (isTeacher) {
+  if (isTeacher === "teacher") {
     urlRoute = "groups"
-  } else {
+  } else if (isTeacher === "student") {
     urlRoute = "users_groups"
   }
 
@@ -32,8 +33,18 @@ function Groups() {
   } else if (loading === true) {
     table = <p>Loading...</p>
   } else if (loading === false) {
-    table = info.map(groupInfo =>
-      <CourseCard key={groupInfo.id} course={groupInfo} />)
+    if (info.title === "500 Internal Server Error") {
+      console.log(info)
+      table = <p style={{color: 'red'}}>
+          Error: {info.title}
+        </p>
+    
+      // TODO validate if this is the right condition to catch
+    } else if (info) {
+      console.log(info)
+      table = info.map(groupInfo =>
+        <CourseCard key={groupInfo.id} course={groupInfo} />)
+    }
   }
 
   const [joinModalShow, setJoinModalShow] = useState(false);
@@ -73,7 +84,7 @@ function Groups() {
               <h1>Mis grupos</h1>
             </Col>
             <Col lg={3}>
-              { isTeacher ?
+              { isTeacher === "teacher" ?
                 (
                   <Button variant="primary" href="/create/group">
                     Crear
