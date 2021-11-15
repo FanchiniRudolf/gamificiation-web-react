@@ -36,12 +36,13 @@ function Group() {
     missions = <div/>;
     tableEntries = <div/>;
   }else if(loading === true){
-    students = <p>Loading</p>;
-    missions = <p>Loading</p>;
-    tableEntries = <p>Loading</p>;
+    students = <p>Cargando...</p>;
+    missions = <p>Cargando...</p>;
+    tableEntries = <p>Cargando...</p>;
   }else if(loading === false){
     students = info.students.map(student =>
        <StudentListItem key={student.id} student={student} />);
+    // TODO, change where we getting info
     missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
     tableEntries = info.students.sort((a, b) => a.hp - b.hp)
     .map((entry, index) => <TableEntry entry={entry} index={index}/>);
