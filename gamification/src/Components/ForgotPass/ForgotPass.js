@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
+import { Navigate } from "react-router-dom";
+import useFetch from '../../Hooks/useFetch';
 
 function ForgotPass() {
 
-  const onSubmit = async ({email}) => {
+  const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
+  const [body, setBody] = useState("notYet")
+  const {loading, info} = useFetch(API_BASE_URL+"password-recovery/request", "POST", {}, body)
+
+  let message
+  
+  const onSubmit = ({email}) => {
     try {
-      await console.log(`mail: ${email}`);
+      setBody({
+        "email": email
+      })
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  if(loading === null) {
+    message = <div></div>
+  } else if (loading === true) {
+    message = <p>Cargando...</p>
+  } else if (loading === false) {
+    if (info.error) {
+      message = <p style={{color: 'red'}}>
+          Error: {info.error}
+        </p>
+    } else if (info.message === "OTP saved successfully") {
+      message = <div>
+        <p>Success!</p>
+        <Navigate to="/validateRecoverCode" replace={false} />
+      </div>
     }
   }
 
@@ -38,7 +65,7 @@ function ForgotPass() {
                   </FinalFormField>
                 </Form.Group>
 
-                
+                {message}
                 <Button variant="primary" size='lg' type="submit" onClick={handleSubmit}>
                   Enviarme un correo
                 </Button>

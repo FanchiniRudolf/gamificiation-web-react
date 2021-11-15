@@ -1,13 +1,45 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
+import { Navigate } from "react-router-dom";
+import { SessionContext } from '../../Hooks/sessionContext';
+import {setCookie, getCookie} from '../../Functions/Cookies'
+import useFetch from '../../Hooks/useFetch';
 
 function ValidateCode() {
-  const onSubmit = async ({validationCode}) => {
+
+  const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
+  const [body, setBody] = useState("notYet")
+  const {loading, info} = useFetch(API_BASE_URL+"password-recovery/validate-code", "POST", {}, body)
+  const {setSession} = useContext(SessionContext)
+
+  let message
+
+  const onSubmit = ({validationCode}) => {
     try {
-      await console.log(`código: ${validationCode}`);
+      setBody({
+        "otp": validationCode
+      })
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  if(loading === null) {
+    message = <div></div>
+  } else if (loading === true) {
+    message = <p>Cargando...</p>
+  } else if (loading === false) {
+    if (info.error) {
+      message = <p style={{color: 'red'}}>
+          Error: {info.error}
+        </p>
+    } else if (info.session.token) {
+      setCookie("session_token", info.session.token)
+      message = <div>
+        <p>Success!</p>
+        <Navigate to="/setNewPassword" replace={false} />
+      </div>
     }
   }
 
@@ -37,7 +69,7 @@ function ValidateCode() {
                   </FinalFormField>
                 </Form.Group>
 
-                
+                {message}
                 <Button variant="primary" size='lg' type="submit" onClick={handleSubmit}>
                   Validar código
                 </Button>
