@@ -1,9 +1,29 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { getCookie } from '../../Functions/Cookies';
+import useFetch from '../../Hooks/useFetch';
+import MissionItem from '../MissionItem/MissionItem';
 
 import './Missions.css';
-//@bobby
 function Missions() {
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const{loading, info} = useFetch(API_BASE_URL + "missions",
+    "GET",
+    {"Authorization": getCookie("session_token")})
+
+  let missionTable;
+
+  if (loading === null) {
+    missionTable = <div></div>
+  } else if (loading === true) {
+    missionTable = <p>Cargando...</p>
+  } else if (loading === false) {
+    // missionTable = <p>WIP</p>
+    missionTable = info.map((mission) => <MissionItem key={mission.id} mission={mission} />)
+    console.log(info)
+  }
+
   return (
     <div>
       <Container>
@@ -15,6 +35,10 @@ function Missions() {
             <Button variant="primary" href="/create/mission">
               Crear
             </Button>
+          </Col>
+
+          <Col lg={12}>
+            {missionTable}
           </Col>
         </Row>
       </Container>

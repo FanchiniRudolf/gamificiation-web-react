@@ -17,7 +17,7 @@ function Periods() {
   if (loading === null) {
     periodTable = <div></div>
   } else if (loading === true) {
-    periodTable = <p>Loading...</p>
+    periodTable = <p>Cargando...</p>
   } else if (loading === false) {
     periodTable = info.map((period, index) => <TableEntry key={period.id} entry={period} index={index}/>)
     console.log(info)

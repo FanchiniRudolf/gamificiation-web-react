@@ -7,18 +7,20 @@ function MissionItem({mission}) {
   const {isTeacher} = useContext(SessionContext)
   
   return (
-    <Card>
-      <Card.Body>
-      <Card.Title>{mission.tittle}</Card.Title>
-      <Card.Text>
-        {mission.desc}
-      </Card.Text>
-      { isTeacher && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
-      {' '}
-      { isTeacher && <Button variant="danger">Borrar</Button> }
-      
-    </Card.Body>
-    </Card>
+    <>
+      <Card>
+        <Card.Body>
+        <Card.Title>{mission.title}</Card.Title>
+        <Card.Text>
+          {mission.description}
+        </Card.Text>
+        { isTeacher && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
+        {' '}
+        { isTeacher && <Button variant="danger">Borrar</Button> }
+        
+      </Card.Body>
+      </Card>
+    </>
   )
 }
 
