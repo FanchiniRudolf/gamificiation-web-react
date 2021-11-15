@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { getCookie } from '../../Functions/Cookies';
 
 import {useFetch} from "../../Hooks/useFetch"
 import './Periods.css';
+import TableEntry from './TableEntry/TableEntry';
 
 function Periods() {
 
@@ -18,8 +19,7 @@ function Periods() {
   } else if (loading === true) {
     periodTable = <p>Loading...</p>
   } else if (loading === false) {
-    periodTable = <p>List goes here</p>
-    // periodTable = info.map(periodInfo => )
+    periodTable = info.map((period, index) => <TableEntry key={period.id} entry={period} index={index}/>)
     console.log(info)
   }
 
@@ -39,7 +39,19 @@ function Periods() {
 
         <Row>
           <Col lg={12}>
-            {periodTable}
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Fecha de inicio</th>
+                  <th>Fecha de fin</th>
+                </tr>
+              </thead>
+              <tbody>
+                {periodTable}
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </Container>
