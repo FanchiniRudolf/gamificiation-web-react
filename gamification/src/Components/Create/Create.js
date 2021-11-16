@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useFetch from '../../Hooks/useFetch';
 import {getCookie} from '../../Functions/Cookies'
 import { Navigate } from "react-router-dom";
+import Dropdown from './Dropdown/Dropdown'
 
 function Create() {
 
@@ -65,8 +66,8 @@ function Create() {
     switch (type) {
       case "group":
         bodyData.name = formData.tittle;
-        bodyData.course_id = 8; //todo
-        bodyData.period_id = 8;
+        bodyData.course_id = parseInt(formData.course_id);
+        bodyData.period_id = parseInt(formData.period_id);
         break;
       case "mission": 
         bodyData.type_id = 2;
@@ -128,6 +129,15 @@ function Create() {
         )
   }
 
+  const dropDownQuestion = (tittle, id) => {
+    return( 
+          <Form.Group className="mb-3" controlId={id}>
+            <Form.Label>{tittle}</Form.Label>
+            <Dropdown type={id}/>
+          </Form.Group>
+        )
+  }
+
 
    const renderElement = () => {
     switch (type) {
@@ -135,12 +145,9 @@ function Create() {
       case "group":
         return (
           <>
-            { textQuestion("Profesor que imparte", "Deme el profesor", "prof") }
+            { dropDownQuestion("Curso que se dara", "course_id") }
 
-            {/* TODO this should be a select (combo box) element
-            we should GET the subjects of the teacher and
-            load them in here */}
-            { textQuestion("Nombre Materia", "Materia", "sub") }
+            { dropDownQuestion("Periodo en que se dara", "period_id") }
           </>
         )
         
