@@ -18,7 +18,7 @@ function Edit() {
   let urlType;
   
   if (type === "subject"){
-    urlType = "periods"
+    urlType = "courses"
   }else if (type === "group"){
     urlType = "groups"
   }else if (type === "mission"){
@@ -31,7 +31,7 @@ function Edit() {
 
   const {loading, info} = useFetch(API_BASE_URL+urlType, "GET", {"Authorization": getCookie("session_token")}, null)
   const [formDate, setFormDate] = useState(new Date());
-  let data = {'name': "fuck"};
+  let data = {};
 
 
   // TODO add as params fields that will be received by form
