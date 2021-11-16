@@ -15,12 +15,13 @@ function Groups() {
 
   const {isTeacher} = useContext(SessionContext)
 
-  let urlRoute = ''
+  let urlRoute = 'users_groups'
   // TODO care isTeacher is NOT a boolean
-  console.log(isTeacher)
   if (isTeacher === "teacher") {
+    console.log(isTeacher, "es teacher")
     urlRoute = "groups"
   } else if (isTeacher === "student") {
+    console.log(isTeacher, "es student")
     urlRoute = "users_groups"
   }
 
@@ -43,6 +44,7 @@ function Groups() {
     
       // TODO validate if this is the right condition to catch
     } else if (info) {
+      // TODO try and implement useEffect to avoid crash
       table = info.map((groupInfo) =>
         <CourseCard key={groupInfo.id} course={groupInfo} />)
       console.log(info)
