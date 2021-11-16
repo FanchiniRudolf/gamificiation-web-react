@@ -8,7 +8,7 @@ function GroupMissionInfo() {
   }
   return (
     <>
-      <Container>
+      <Container className="mt-3 mb-3">
         <Row>
           <Col lg={3}>
           <Button variant="link" onClick={navigateBack}>
@@ -26,12 +26,16 @@ function GroupMissionInfo() {
         
         
         
-        <Row>
-          <Col>
+        <Row className="mt-3">     
+          <Col lg={12}>
+            <h2>Calificar esta misión:</h2>
           </Col>          
         </Row>
+
+        {/* students go here */}
         <Row>
           <Col>
+            <p>(Listado de estudiantes a calificar para esta misión)</p>
           </Col>          
         </Row>
       </Container>
