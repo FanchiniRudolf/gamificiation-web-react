@@ -4,19 +4,65 @@ import { Form as FinalForm, Field as FinalFormField } from 'react-final-form'
 import {useParams}  from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useFetch from '../../Hooks/useFetch';
+import {getCookie} from '../../Functions/Cookies'
+
+
 
 function Edit() {
 
+  const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
   const { type, id } = useParams();
+  
   //call id 
-  const info = {tittle:id, desc: "temp desc", date: new Date(), extra:"temp extra" }
-  const [formDate, setFormDate] = useState(new Date());
+  let urlType;
+  
+  if (type === "subject"){
+    urlType = "periods"
+  }else if (type === "group"){
+    urlType = "groups"
+  }else if (type === "mission"){
+    urlType = "missions"
+  }else if (type === "period"){
+    urlType = "periods"
+  }else {
+    urlType = "error"
+  }
 
-  console.log(typeof type);
+  const {loading, info} = useFetch(API_BASE_URL+urlType, "GET", {"Authorization": getCookie("session_token")}, null)
+  const [formDate, setFormDate] = useState(new Date());
+  let data = {'name': "fuck"};
+
 
   // TODO add as params fields that will be received by form
   const onSubmit = () => {
 
+  }
+
+  let message;
+
+  if (loading === null){
+    message = <div></div>
+  }else if(loading === true){
+    message = <p>Loading</p>
+  }else if (loading === false){
+    console.log(info);
+    data = info.filter(entry => String(entry.id) === id)[0];
+    console.log(data);
+    message = <FinalForm onSubmit={onSubmit}>
+        {({handleSubmit, submitting}) => (
+          <Form className="container-md text-center align-content-center">
+          {textQuestion("Titulo", data.name, "tittle")}
+          {renderElement()}
+          <Button variant="primary" type="submit">
+              Actualizar datos ({type})
+          </Button>
+          <Button variant="link">
+              Cancelar
+          </Button>
+        </Form>
+        )}
+      </FinalForm>
   }
 
 
@@ -24,7 +70,7 @@ function Edit() {
     <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Fecha de Fin</Form.Label>
         <DatePicker /*TODO fix css*/
-          selected={info.date}
+          selected={Date.parse(data.end_date)}
           onChange={(date) => setFormDate(date)}>
         </DatePicker>
       </Form.Group>
@@ -50,42 +96,29 @@ function Edit() {
       case "group":
         return (
           <>
-            { textQuestion("Profesor que imparte", info.extra, "prof") }
-            { textQuestion("Nombre Materia", info.extra, "sub") }
+            { textQuestion("Profesor que imparte", data.extra, "prof") }
+            { textQuestion("Nombre Materia", data.extra, "sub") }
           </>
         )
       
       case "mission":
-        return datePicker
+        return (<>
+                { textQuestion("Descripción", data.desc, "desc")}
+                {datePicker}
+              </>)
         
       case "period":
-          return datePicker
+          return datePicker;
 
       case "subject":
-        return;
+        return datePicker;
 
       default:
         return <p>Error</p>
     }
   }
 
-  return (
-    <FinalForm onSubmit={onSubmit}>
-      {({handleSubmit, submitting}) => (
-        <Form className="container-md text-center align-content-center">
-        {textQuestion("Titulo", info.tittle, "tittle")}
-        {textQuestion("Descripción", info.desc, "desc")}
-        {renderElement()}
-        <Button variant="primary" type="submit">
-            Actualizar datos ({type})
-        </Button>
-        <Button variant="link">
-            Cancelar
-        </Button>
-      </Form>
-      )}
-    </FinalForm>
-  )
+  return message;
 }
 
 export default Edit
