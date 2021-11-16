@@ -63,7 +63,7 @@ function Group() {
           </TabList>
 
 
-          {isTeacher &&
+          {isTeacher === "teacher" &&
             <TabPanel>
               <div>
                 <Row className="mt-5 mb-3">
@@ -130,7 +130,7 @@ function Group() {
               </Table>
             </TabPanel>
 
-          { !isTeacher &&
+          { isTeacher === "student" &&
             <TabPanel>
               <StudentProfile />
             </TabPanel>
