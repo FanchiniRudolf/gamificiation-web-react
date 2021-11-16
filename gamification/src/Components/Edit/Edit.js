@@ -14,6 +14,10 @@ function Edit() {
 
   console.log(typeof type);
 
+  const navigateBack = () => {
+    window.history.back()
+  }
+  
   // TODO add as params fields that will be received by form
   const onSubmit = () => {
 
@@ -79,7 +83,7 @@ function Edit() {
         <Button variant="primary" type="submit">
             Actualizar datos ({type})
         </Button>
-        <Button variant="link">
+        <Button variant="link" onClick={navigateBack}>
             Cancelar
         </Button>
       </Form>

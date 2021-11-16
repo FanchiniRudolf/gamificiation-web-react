@@ -10,6 +10,10 @@ function Create() {
   const { type } = useParams();
   const [formDate, setFormDate] = useState(new Date());
 
+  const navigateBack = () => {
+    window.history.back()
+  }
+
   
   const onSubmit = (formData) => {
     console.log("formdata:", formData)
@@ -82,7 +86,7 @@ function Create() {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
             Crear {type}
         </Button>
-        <Button variant="link">
+        <Button variant="link" onClick={navigateBack}>
             Cancelar
         </Button>
       </Form>
