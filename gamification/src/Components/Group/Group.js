@@ -8,6 +8,7 @@ import { getCookie } from "../../Functions/Cookies";
 
 import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
+import GroupMissions from "./GroupMissions/GroupMissions";
 import MissionItem  from "../MissionItem/MissionItem";
 import TableEntry  from "../TableEntry/TableEntry";
 import {useFetch} from "../../Hooks/useFetch"
@@ -16,6 +17,7 @@ import {useParams}  from "react-router-dom";
 
 
 import "./Group.css";
+
 
 
 function Group() {
@@ -77,16 +79,12 @@ function Group() {
                   <Col lg={6}>
                     {/* <h4>{loading ? "loading":missions.length} misiones</h4> */}
                   </Col>
-
                   <Col lg={6}>
                     <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)} HP</h4>
                   </Col>
-
-                  {/* stretch goal: add min & max grade & logic to compute it */}
-
                 </Row>
-
                 <hr />
+
                 <Row className="mt-4">
                   <Col lg={12}>
                     <h4>Alumnos:</h4>
@@ -111,14 +109,7 @@ function Group() {
 
 
             <TabPanel>
-              <Row className="mt-4">
-              <Col lg={12}>
-              <h1>Misiones del grupo</h1>
-                </Col>
-                <Col lg={12}>
-                  {missions}
-                </Col>
-              </Row>
+              <GroupMissions />
             </TabPanel>
               
             <TabPanel>
