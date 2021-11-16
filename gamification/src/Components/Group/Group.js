@@ -93,7 +93,6 @@ function Group() {
 
                 <Row className="mt-2">
                   <Col lg={12}>
-                    <p>tabla con los alumnos (ordenados por matricula)</p>
                     {students}
                   </Col>
                 </Row>

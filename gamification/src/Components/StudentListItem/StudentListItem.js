@@ -18,10 +18,7 @@ function StudentListItem({student}) {
           </Col>
 
           <Col lg={1}>
-            {/* TODO replace hard-coded route in href for dynamic route */}
-            <Button variant="info" href="/gradestudent/1/a01745759">
-              Calificar
-            </Button>
+            <></>
           </Col>
         </Row>
       </Container>
