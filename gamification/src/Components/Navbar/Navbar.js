@@ -27,9 +27,9 @@ function Navbar() {
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {/* { session && <Nav.Link href="/groups">Grupos</Nav.Link> } */}
-            { session && isTeacher && <Nav.Link href="/subjects">Materias</Nav.Link> }
-            { session && isTeacher && <Nav.Link href="/periods">Periodos</Nav.Link> }
-            { session && isTeacher && <Nav.Link href="/missions">Misiones</Nav.Link> }
+            { session && isTeacher === "teacher" && <Nav.Link href="/subjects">Materias</Nav.Link> }
+            { session && isTeacher === "teacher" && <Nav.Link href="/periods">Periodos</Nav.Link> }
+            { session && isTeacher === "teacher" && <Nav.Link href="/missions">Misiones</Nav.Link> }
             { session && <Nav.Link onClick={deleteAllCookies} href="/login">Cerrar sesión</Nav.Link> }
             { session && <Nav.Link>{username}</Nav.Link> } {/*TODO make pretty (all to the right?)*/}
           </Nav>
