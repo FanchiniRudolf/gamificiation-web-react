@@ -23,6 +23,7 @@ import GradeStudent from '../GradeStudent/GradeStudent';
 import AddStudent from '../AddStudent/AddStudent';
 import Subjects from '../Subjects/Subjects';
 import PostMissionToGroup from '../Missions/PostMissionToGroup/PostMissionToGroup.js';
+import GroupMissionInfo from '../Group/GroupMissions/GroupMissionItem/GroupMissionInfo/GroupMissionInfo.js';
 
 import Create from '../Create/Create';
 import Edit from '../Edit/Edit';
@@ -61,6 +62,9 @@ function MainAppRouter() {
 
                     {/* dynamic */}
                     <Route path="/Group/:id" element={<Group/>}/>
+                    <Route path="/Group/:id/mission/:id" element={<GroupMissionInfo/>}/>
+
+
                     <Route path="/profile/:group/:id" element={<StudentProfile/>}/>
                     <Route path="/gradestudent/:group/:id" element={<GradeStudent/>}/>
                     <Route path="/create/:type" element={<Create/>}/>

@@ -56,6 +56,10 @@ function Create() {
     return day+"-"+month+"-"+year;
   }
 
+  const navigateBack = () => {
+    window.history.back()
+  }
+
   
   
   const onSubmit = (formData) => {
@@ -182,7 +186,7 @@ function Create() {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
             Crear {type}
         </Button>
-        <Button variant="link">
+        <Button variant="link" onClick={navigateBack}>
             Cancelar
         </Button>
         {message}

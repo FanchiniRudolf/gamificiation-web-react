@@ -26,7 +26,7 @@ function GroupMissions() {
   } else if (loading === true) {
     missions = <p>Cargando...</p>
   } else if (loading === false) {
-    missions = info.map(mission => <GroupMissionItem key={mission.id} mission={mission}/>);
+    missions = info.map(mission => <GroupMissionItem key={mission.mission.id} mission={mission}/>);
   }
 
   return (
