@@ -56,10 +56,10 @@ function Group() {
       <Container>
         <Tabs>
           <TabList>
-            { isTeacher && <Tab>Grupo/alumnos</Tab> }
+            { isTeacher === "teacher" && <Tab>Grupo/alumnos</Tab> }
             <Tab>Misiones</Tab>
             <Tab>Tabla de posiciones</Tab>
-            { !isTeacher && <Tab>Perfil</Tab> }
+            { isTeacher === "student" && <Tab>Perfil</Tab> }
           </TabList>
 
 
@@ -113,6 +113,7 @@ function Group() {
               
             <TabPanel>
               <h1>Tabla de posiciones del grupo</h1>
+              { isTeacher === "student" && <h4>Estos son los mejores estudiantes</h4> }
               <Table striped bordered hover>
                 <thead>
                   <tr>
