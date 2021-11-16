@@ -58,7 +58,7 @@ function GroupMissionItem({mission}) {
           <Card.Text>
             Promedio acumulado: { mission.average }
           </Card.Text>
-          {/* { isTeacher === "teacher" && <Button variant="danger" onClick={ () => onDeleteMissionToGroup(mission.mission.id) }>Eliminar de este grupo</Button> } */}
+          { isTeacher === "teacher" && <Button variant="danger" onClick={ () => onDeleteMissionToGroup(mission.mission.id) }>Eliminar de este grupo</Button> }
       </Card.Body>
       </Card>
     </>
