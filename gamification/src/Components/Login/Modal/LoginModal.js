@@ -8,10 +8,10 @@ function LoginModal({modalShow, setModalShow}) {
 
   return (
     <Modal size="md" centered show={modalShow} onHide={handleLoginModalClose}>
-        <Modal.Body>
-          <img src="/img/loading.gif" alt="loading"></img>
-        </Modal.Body>
-      </Modal>
+      <Modal.Body>
+        <img src="/img/loading.gif" alt="loading"></img>
+      </Modal.Body>
+    </Modal>
   )
 }
 

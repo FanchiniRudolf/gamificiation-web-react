@@ -7,6 +7,7 @@ import { useFetch } from "../../Hooks/useFetch"
 
 
 import CourseCard from "../CourseCard/CourseCard";
+import JoinGroupModal from "./JoinGroupModal/JoinGroupModal";
 import "./Groups.css";
 
 
@@ -49,34 +50,12 @@ function Groups() {
 
   const [joinModalShow, setJoinModalShow] = useState(false);
 
-  const handleJoinModalShow = () => setJoinModalShow(true);
-  const handleJoinModalClose = () => setJoinModalShow(false);
 
 
   return (
     <div>
-      <Modal size="md" centered show={joinModalShow} onHide={handleJoinModalClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Unirse a un grupo</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Código</Form.Label>
-                <Form.Control type="text" placeholder="Código de clase" />
-                <Form.Text className="text-muted">
-                  Introduce el código de la clase para quedar registrado en esta.
-                </Form.Text>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Registrar
-              </Button>
-              <Button variant="link" onClick={handleJoinModalClose}>
-                Cancelar
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
+
+      <JoinGroupModal modalShow={joinModalShow} setModalShow={setJoinModalShow} />
 
       <Container>
           <Row className="mt-5 mb-3">
@@ -90,7 +69,7 @@ function Groups() {
                     Crear
                   </Button>
                 ) : (
-                  <Button variant="primary" size="md" onClick={handleJoinModalShow}>
+                  <Button variant="primary" size="md" onClick={setJoinModalShow}>
                     Unirme a un grupo
                   </Button>
                 )

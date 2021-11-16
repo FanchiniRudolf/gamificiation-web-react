@@ -141,7 +141,7 @@ function Group() {
                     <th>Matricula</th>
                     <th>HP 💗</th>
                     <th>XP ⭐</th>
-                    <th>Coins 🪙</th>
+                    <th>Monedas 💰</th>
                   </tr>
                 </thead>
                 <tbody>
