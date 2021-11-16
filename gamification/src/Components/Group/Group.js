@@ -100,7 +100,7 @@ function Group() {
                     {/* <h4>{loading ? "loading":missions.length} misiones</h4> */}
                   </Col>
                   <Col lg={6}>
-                    <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)} HP</h4>
+                    <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
                   </Col>
                 </Row>
                 <hr />

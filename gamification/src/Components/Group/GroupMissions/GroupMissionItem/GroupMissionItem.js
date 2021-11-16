@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Container, Row, Col, Button, Table, Card } from 'react-bootstrap';
+import { SessionContext } from "../../../../Hooks/sessionContext";
+import { useParams } from "react-router-dom";
+import { getCookie } from "../../../../Functions/Cookies";
+import useFetch from '../../../../Hooks/useFetch';
 
 function GroupMissionItem({mission}) {
+  
+  const {isTeacher} = useContext(SessionContext)
+  const { id: groupID } = useParams()
+  console.log("group ID en missions:", groupID)
+
+  const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
+  const [body, setBody]= useState("notYet");
+  const {loading, info} = useFetch(API_BASE_URL + "missions-to-groups",
+    "DELETE",
+    {"Authorization": getCookie("session_token")},
+    body)
+
+  const onDeleteMissionToGroup = (id) => {
+    console.log(id)
+    console.log(groupID)
+  }
   
   // TODO add double zero when getMinutes returns 0
   let strStartDate = mission.start_date
@@ -21,7 +41,11 @@ function GroupMissionItem({mission}) {
     <>
       <Card>
         <Card.Body>
-        <Card.Title>{mission.mission.title}</Card.Title>
+        <Card.Title>
+          <Button variant="link" href={"/Group/"+groupID+"/mission/"+mission.mission.id}>
+            {mission.mission.title}
+          </Button>
+        </Card.Title>
           <Card.Text>
             {mission.mission.description}
           </Card.Text>
@@ -34,6 +58,7 @@ function GroupMissionItem({mission}) {
           <Card.Text>
             Promedio acumulado: { mission.average }
           </Card.Text>
+          {/* { isTeacher === "teacher" && <Button variant="danger" onClick={ () => onDeleteMissionToGroup(mission.mission.id) }>Eliminar de este grupo</Button> } */}
       </Card.Body>
       </Card>
     </>
