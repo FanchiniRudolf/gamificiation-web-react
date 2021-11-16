@@ -10,16 +10,11 @@ function TableEntry({entry, index}) {
   return (
     <tr>
         <td>{index+1}</td>
-
-
         <td>
           <Button variant="link" href={"/periodGroups/"+entry.id}>
             {entry.name}
           </Button>
         </td>
-
-
-
         <td>{entry.start_date}</td>
         <td>{entry.end_date}</td>
         <td>
