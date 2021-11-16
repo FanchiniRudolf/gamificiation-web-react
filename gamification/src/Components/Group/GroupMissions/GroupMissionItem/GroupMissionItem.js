@@ -42,9 +42,10 @@ function GroupMissionItem({mission}) {
       <Card>
         <Card.Body>
         <Card.Title>
-          <Button variant="link" href={"/Group/"+groupID+"/mission/"+mission.mission.id}>
+          { isTeacher === "teacher" && <Button variant="link" href={"/Group/"+groupID+"/mission/"+mission.mission.id}>
             {mission.mission.title}
-          </Button>
+          </Button>}
+          { isTeacher === "student" && mission.mission.title}
         </Card.Title>
           <Card.Text>
             {mission.mission.description}
