@@ -26,13 +26,14 @@ function Groups() {
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
   const { loading, info } = useFetch(API_BASE_URL+urlRoute,
-    "GET", {"Authorization": getCookie("session_token")})
+    "GET",
+    {"Authorization": getCookie("session_token")})
 
   let table;
   if (loading === null) {
     table = <div></div>
   } else if (loading === true) {
-    table = <p>Loading...</p>
+    table = <p>Cargando...</p>
   } else if (loading === false) {
     if (info.title === "500 Internal Server Error") {
       console.log(info)
@@ -42,9 +43,9 @@ function Groups() {
     
       // TODO validate if this is the right condition to catch
     } else if (info) {
-      console.log(info)
-      table = info.map(groupInfo =>
+      table = info.map((groupInfo) =>
         <CourseCard key={groupInfo.id} course={groupInfo} />)
+      console.log(info)
     }
   }
 

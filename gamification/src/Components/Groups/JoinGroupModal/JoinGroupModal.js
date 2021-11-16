@@ -39,7 +39,7 @@ function JoinGroupModal({modalShow, setModalShow}) {
       responseMessage = <p style={{color: 'green'}}>
         Listo! Formas parte del grupo!
       </p>;
-      Window.location.reload()
+      window.location.reload()
     }
   }
 
