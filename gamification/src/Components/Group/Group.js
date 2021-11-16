@@ -1,18 +1,20 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import axios from "axios"
 import 'react-tabs/style/react-tabs.css';
 
 import { SessionContext } from "../../Hooks/sessionContext";
 import { getCookie } from "../../Functions/Cookies";
+import {useFetch} from "../../Hooks/useFetch"
+import {useParams}  from "react-router-dom";
 
 import StudentProfile from "../Profile/Profile"
 import StudentListItem from "../../Components/StudentListItem/StudentListItem"
 import GroupMissions from "./GroupMissions/GroupMissions";
 import MissionItem  from "../MissionItem/MissionItem";
 import TableEntry  from "../TableEntry/TableEntry";
-import {useFetch} from "../../Hooks/useFetch"
-import {useParams}  from "react-router-dom";
+
 
 
 
@@ -24,6 +26,9 @@ function Group() {
 
   // stores the string which can have value "teacher"
   const {isTeacher} = useContext(SessionContext)
+  const axiosHeader = { Authorization: `${getCookie("session_token")}`}
+  let groupJoinCode = ""
+  const [joinCode, setJoinCode] = useState("")
 
   const { id } = useParams();
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
@@ -32,11 +37,14 @@ function Group() {
   console.log(info);
 
   const generateClassCode = () => {
-    console.log("TODO generate code")
-    // const CODE_API_URL = process.env.REACT_APP_API_BASE_URL
-    // const {loading, info} = useFetch(API_BASE_URL + "groups/access_code/" + String(id),
-    //   "GET", {"Authorization": getCookie("session_token")})
-    // console.log(info)
+    axios.get(API_BASE_URL+"groups/acces_code/"+String(id), {headers: axiosHeader})
+      .then(response => {
+        groupJoinCode = response.data.otp
+        setJoinCode(<h3>Se generó el código {groupJoinCode} para que los alumnos se registren por 24 horas.</h3>)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   let students, missions, tableEntries;
@@ -80,6 +88,9 @@ function Group() {
                   </Col>
                   <Col lg={3}>
                     <Button variant="warning" onClick={generateClassCode}>Generar código</Button>
+                  </Col>
+                  <Col lg={12} className="mt-1">
+                    {joinCode}
                   </Col>
                 </Row>
 
