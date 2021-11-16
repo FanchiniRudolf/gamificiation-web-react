@@ -22,6 +22,7 @@ import Missions from '../Missions/Missions';
 import GradeStudent from '../GradeStudent/GradeStudent';
 import AddStudent from '../AddStudent/AddStudent';
 import Subjects from '../Subjects/Subjects';
+import PostMissionToGroup from '../Missions/PostMissionToGroup/PostMissionToGroup.js';
 
 import Create from '../Create/Create';
 import Edit from '../Edit/Edit';
@@ -68,6 +69,7 @@ function MainAppRouter() {
                     {/* teacher routes */}
                     <Route path="/periods" element={<Periods/>}/>
                     <Route path="/missions" element={<Missions/>}/>
+                    <Route path="/postMissionToGroup/:id" element={<PostMissionToGroup/>}/>
                     <Route path="/addstudent" element={<AddStudent/>}/>
                     <Route path="/subjects" element={<Subjects/>}/>
                     <Route path="/periodGroups/:id" element={<PeriodGroups/>}/>

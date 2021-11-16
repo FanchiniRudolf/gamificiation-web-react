@@ -5,15 +5,18 @@ import { getCookie } from "../../../Functions/Cookies";
 import { useFetch } from "../../../Hooks/useFetch";
 import { SessionContext } from "../../../Hooks/sessionContext";
 import GroupMissionItem from "./GroupMissionItem/GroupMissionItem";
+import { useParams } from "react-router-dom";
 
 function GroupMissions() {
 
   const {isTeacher} = useContext(SessionContext)
+  const { id: groupID } = useParams()
+  console.log("group ID:", groupID)
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
   // TODO make dynamic
-  const { loading, info } = useFetch(API_BASE_URL+"missions-to-groups/4",
+  const { loading, info } = useFetch(API_BASE_URL+"missions-to-groups/"+groupID,
     "GET", {"Authorization": getCookie("session_token")})
   console.log(info);
 

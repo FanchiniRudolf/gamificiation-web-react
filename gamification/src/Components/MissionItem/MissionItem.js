@@ -18,7 +18,7 @@ function MissionItem({mission}) {
         {' '}
         { isTeacher && <Button variant="danger">Borrar</Button> }
         {' '}
-        { isTeacher && <Button variant="success">Asignar a un grupo</Button> }
+        { isTeacher && <Button variant="success" href={"/postMissionToGroup/"+mission.id}>Asignar a un grupo</Button> }
 
         
       </Card.Body>

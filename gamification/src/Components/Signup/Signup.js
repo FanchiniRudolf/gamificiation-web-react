@@ -12,7 +12,10 @@ function Signup() {
   const [body, setBody]= useState("notYet");
   
   // Using "POST Student" API endpoint
-  const {loading, info} = useFetch(API_BASE_URL+"users", "POST", {}, body) 
+  const {loading, info} = useFetch(API_BASE_URL+"users",
+    "POST",
+    {},
+    body) 
   const {setSession, setTeacherStatus, setUsername} = useContext(SessionContext)
 
   let message
@@ -48,7 +51,7 @@ function Signup() {
       message = <div>
                   <p>Success!!</p>
                   <Navigate to="/groups" replace={false} />
-                </div> 
+                </div>
     }
   }
 

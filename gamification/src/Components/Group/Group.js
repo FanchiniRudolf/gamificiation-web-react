@@ -33,7 +33,8 @@ function Group() {
   const { id } = useParams();
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
   const { loading, info } = useFetch(API_BASE_URL+"groups/"+String(id),
-    "GET", {"Authorization": getCookie("session_token")})
+    "GET",
+    {"Authorization": getCookie("session_token")})
   console.log(info);
 
   const generateClassCode = () => {
