@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useFetch from '../../Hooks/useFetch';
 import {getCookie} from '../../Functions/Cookies'
+import Dropdown from './Dropdown/Dropdown'
 
 
 
@@ -89,6 +90,15 @@ function Edit() {
         )
   }
 
+  const dropDownQuestion = (tittle, id) => {
+    return( 
+          <Form.Group className="mb-3" controlId={id}>
+            <Form.Label>{tittle}</Form.Label>
+            <Dropdown type={id}/>
+          </Form.Group>
+        )
+  }
+
 
    const renderElement = () => {
     switch (type) {
@@ -96,8 +106,8 @@ function Edit() {
       case "group":
         return (
           <>
-            { textQuestion("Profesor que imparte", data.extra, "prof") }
-            { textQuestion("Nombre Materia", data.extra, "sub") }
+            { dropDownQuestion("Curso que se dara", "course_id") }
+            { dropDownQuestion("Periodo en que se dara", "period_id") }
           </>
         )
       
