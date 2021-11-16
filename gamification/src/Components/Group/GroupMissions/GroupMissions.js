@@ -15,7 +15,6 @@ function GroupMissions() {
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
-  // TODO make dynamic
   const { loading, info } = useFetch(API_BASE_URL+"missions-to-groups/"+groupID,
     "GET", {"Authorization": getCookie("session_token")})
   console.log(info);
