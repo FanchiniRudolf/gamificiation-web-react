@@ -31,6 +31,14 @@ function Group() {
     "GET", {"Authorization": getCookie("session_token")})
   console.log(info);
 
+  const generateClassCode = () => {
+    console.log("TODO generate code")
+    // const CODE_API_URL = process.env.REACT_APP_API_BASE_URL
+    // const {loading, info} = useFetch(API_BASE_URL + "groups/access_code/" + String(id),
+    //   "GET", {"Authorization": getCookie("session_token")})
+    // console.log(info)
+  }
+
   let students, missions, tableEntries;
 
   if (loading === null){
@@ -71,7 +79,7 @@ function Group() {
                     <h1>Grupo {id}</h1>
                   </Col>
                   <Col lg={3}>
-                    <Button variant="warning">Generar código</Button>
+                    <Button variant="warning" onClick={generateClassCode}>Generar código</Button>
                   </Col>
                 </Row>
 
