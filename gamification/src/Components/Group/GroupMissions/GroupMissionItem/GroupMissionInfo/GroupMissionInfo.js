@@ -6,6 +6,7 @@ function GroupMissionInfo() {
   const navigateBack = () => {
     window.history.back()
   }
+  
   return (
     <>
       <Container className="mt-3 mb-3">

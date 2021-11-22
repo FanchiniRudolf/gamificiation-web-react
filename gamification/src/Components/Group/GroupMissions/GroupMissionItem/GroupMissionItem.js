@@ -24,6 +24,7 @@ function GroupMissionItem({mission}) {
   }
   
   // TODO add double zero when getMinutes returns 0
+  // TODO prettify date
   let strStartDate = mission.start_date
   let startDateType = new Date(strStartDate)
   let startDay = startDateType.toLocaleDateString("es-MX")

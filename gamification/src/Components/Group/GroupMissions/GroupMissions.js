@@ -13,12 +13,15 @@ function GroupMissions() {
   const { id: groupID } = useParams()
   console.log("group ID:", groupID)
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
+  // TODO modal component to delete mission from group
+  // <Modaasdfas midssionid=, otrawea=></Modaasdfas>
+
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
   const { loading, info } = useFetch(API_BASE_URL+"missions-to-groups/"+groupID,
     "GET", {"Authorization": getCookie("session_token")})
   console.log(info);
-
   let missions;
 
   if (loading === null) {
