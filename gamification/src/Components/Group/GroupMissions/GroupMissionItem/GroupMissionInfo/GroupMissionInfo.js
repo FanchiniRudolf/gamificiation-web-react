@@ -6,6 +6,10 @@ function GroupMissionInfo() {
   const navigateBack = () => {
     window.history.back()
   }
+
+  const hundredAllStudents = () => {
+    console.log("all got hundred yay")
+  }
   
   return (
     <>
@@ -19,12 +23,11 @@ function GroupMissionInfo() {
           <Col lg={6}>
           </Col>          
           <Col lg={3}>
-            <Button variant="success">
+            <Button variant="success" onClick={hundredAllStudents}>
               Poner 100 a todos
             </Button>
           </Col>          
         </Row>
-        
         
         
         <Row className="mt-3">     
@@ -35,7 +38,7 @@ function GroupMissionInfo() {
 
         {/* students go here */}
         <Row>
-          <Col>
+          <Col lg={12}>
             <p>(Listado de estudiantes a calificar para esta misión)</p>
           </Col>          
         </Row>
