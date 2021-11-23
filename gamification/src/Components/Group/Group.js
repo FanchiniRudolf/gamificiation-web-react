@@ -64,7 +64,7 @@ function Group() {
     // TODO, change where we getting info
     // missions = info.misiones.map(mission => <MissionItem mission={mission}/>);
     tableEntries = info.students.sort((a, b) => a.hp - b.hp)
-    .map((entry, index) => <TableEntry entry={entry} index={index}/>);
+      .map((entry, index) => <TableEntry entry={entry} index={index}/>);
   }
 
 

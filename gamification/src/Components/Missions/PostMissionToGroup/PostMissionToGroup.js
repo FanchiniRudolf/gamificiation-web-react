@@ -69,7 +69,6 @@ function PostMissionToGroup() {
                   <p>Success!!</p>
                   <Navigate to="/missions" replace={false} />
                 </div>
-
     }
   }
 

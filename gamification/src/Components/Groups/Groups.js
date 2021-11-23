@@ -2,10 +2,7 @@ import React, {useState, useContext} from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getCookie } from "../../Functions/Cookies";
 import { SessionContext } from "../../Hooks/sessionContext";
-
 import { useFetch } from "../../Hooks/useFetch"
-
-
 import CourseCard from "../CourseCard/CourseCard";
 import JoinGroupModal from "./JoinGroupModal/JoinGroupModal";
 import "./Groups.css";
@@ -52,7 +49,6 @@ function Groups() {
   }
 
   const [joinModalShow, setJoinModalShow] = useState(false);
-
 
 
   return (

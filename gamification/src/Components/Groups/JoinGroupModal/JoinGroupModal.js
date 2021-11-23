@@ -37,8 +37,8 @@ function JoinGroupModal({modalShow, setModalShow}) {
       </p>
     } else {
       responseMessage = <p style={{color: 'green'}}>
-        Listo! Formas parte del grupo!
-      </p>;
+          Listo! Formas parte del grupo!
+        </p>
       window.location.reload()
     }
   }
@@ -71,14 +71,7 @@ function JoinGroupModal({modalShow, setModalShow}) {
                 
               </Form>
               )}
-            </FinalForm>
-
-            
-
-
-
-
-            
+            </FinalForm> 
           </Modal.Body>
         </Modal>
     </>

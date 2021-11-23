@@ -48,7 +48,7 @@ function StudentProfile() {
             <h2>{user.xp} ⭐</h2>
           </Col>
           <Col >
-            <h2>{user.coins} 🪙</h2>
+            <h2>{user.coins} 💰</h2>
           </Col>
         </Row>
         

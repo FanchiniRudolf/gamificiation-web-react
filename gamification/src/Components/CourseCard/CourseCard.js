@@ -9,10 +9,8 @@ function CourseCard({course}) {
   
   return (
     <div>
-      {/* <Col lg={6}> */}
-        <Card>
+        <Card className="mt-2">
           <Card.Header>
-            {/* TODO replace hard-coded route in href for dynamic route */}
             <Button variant="link" href={"/Group/"+course.id}>{course.name}</Button>
           </Card.Header>
           <Card.Body>
@@ -22,8 +20,6 @@ function CourseCard({course}) {
             </div>
           </Card.Body>
         </Card>
-      {/* </Col> */}
-      
     </div>
   )
 }
