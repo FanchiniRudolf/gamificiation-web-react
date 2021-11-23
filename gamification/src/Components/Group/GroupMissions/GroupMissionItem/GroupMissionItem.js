@@ -4,12 +4,17 @@ import { SessionContext } from "../../../../Hooks/sessionContext";
 import { useParams } from "react-router-dom";
 import { getCookie } from "../../../../Functions/Cookies";
 import useFetch from '../../../../Hooks/useFetch';
+import UnbindMissionModal from './UnbindMissionModal/UnbindMissionModal';
 
 function GroupMissionItem({mission}) {
   
   const {isTeacher} = useContext(SessionContext)
   const { id: groupID } = useParams()
   console.log("group ID en missions:", groupID)
+
+  // TODO modal component to delete mission from group
+  // <Modaasdfas midssionid=, otrawea=></Modaasdfas>
+  const [unbindModalShow, setUnbindModalShow] = useState(false)
 
   const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
   const [body, setBody]= useState("notYet");
@@ -40,6 +45,8 @@ function GroupMissionItem({mission}) {
   
   return (
     <>
+      <UnbindMissionModal modalShow={unbindModalShow} setModalShow={setUnbindModalShow} missionID={mission.mission.id} groupID={groupID} />
+
       <Card>
         <Card.Body>
         <Card.Title>
@@ -60,7 +67,7 @@ function GroupMissionItem({mission}) {
           <Card.Text>
             Promedio acumulado: { mission.average }
           </Card.Text>
-          { isTeacher === "teacher" && <Button variant="danger" onClick={ () => onDeleteMissionToGroup(mission.mission.id) }>Eliminar de este grupo</Button> }
+          { isTeacher === "teacher" && <Button variant="danger" onClick={ setUnbindModalShow }>Eliminar de este grupo</Button> }
       </Card.Body>
       </Card>
     </>
