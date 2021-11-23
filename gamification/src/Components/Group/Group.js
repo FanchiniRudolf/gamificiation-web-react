@@ -35,7 +35,8 @@ function Group() {
   const { loading, info } = useFetch(API_BASE_URL+"groups/"+String(id),
     "GET",
     {"Authorization": getCookie("session_token")})
-  console.log(info);
+    // info contains group ID, course ID, period ID, name of group & OTP
+    // console.log(info);
 
   const generateClassCode = () => {
     axios.get(API_BASE_URL+"groups/acces_code/"+String(id), {headers: axiosHeader})
