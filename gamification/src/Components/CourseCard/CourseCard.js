@@ -18,7 +18,7 @@ function CourseCard({course}) {
           <Card.Body>
             <Card.Title>Grupo {course.id}</Card.Title>
             <div>
-              { isTeacher === "teacher" && (<Teacher/>) }
+              { isTeacher === "teacher" && (<Teacher courseId={course.id}/>) }
             </div>
           </Card.Body>
         </Card>

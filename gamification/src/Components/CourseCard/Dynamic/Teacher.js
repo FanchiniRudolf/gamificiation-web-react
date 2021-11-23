@@ -2,13 +2,12 @@ import React from 'react'
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-function Teacher() {
+function Teacher({courseId}) {
 
 const navigate = useNavigate();
 
   const handleRoute = () => {
-    // TODO: change hard-coded route
-    navigate("/edit/group/1", {replace: true})
+    navigate("/edit/group/"+courseId, {replace: true})
   }
 
   return (
