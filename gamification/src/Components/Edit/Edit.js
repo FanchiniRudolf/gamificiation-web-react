@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useFetch from '../../Hooks/useFetch';
 import {getCookie} from '../../Functions/Cookies'
+import {dateToString} from '../../Functions/Dates'
 import Dropdown from './Dropdown/Dropdown'
 
 
@@ -14,6 +15,7 @@ function Edit() {
 
   const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
   const { type, id } = useParams();
+  const [body, setBody] = useState("notYet");
   
   //call id 
   let urlType;
@@ -30,8 +32,11 @@ function Edit() {
     urlType = "error"
   }
 
+  const {loading:postLoad, info:postInfo} = useFetch(API_BASE_URL+urlType, "PUT", 
+              {"Authorization": getCookie("session_token")}, body)
   const {loading, info} = useFetch(API_BASE_URL+urlType, "GET", {"Authorization": getCookie("session_token")}, null)
-  const [formDate, setFormDate] = useState(new Date());
+  const [startDate, setStarDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   let data = {};
 
 
@@ -39,9 +44,37 @@ function Edit() {
     window.history.back()
   }
   
-  // TODO add as params fields that will be received by form
-  const onSubmit = () => {
+  const onSubmit = (formData) => {
+    console.log("formdata:", formData)
 
+    let bodyData = {};
+
+    switch (type) {
+      case "group":
+        bodyData.name = formData.tittle;
+        bodyData.course_id = parseInt(formData.course_id);
+        bodyData.period_id = parseInt(formData.period_id);
+        break;
+      case "mission": 
+        bodyData.type_id = 2;
+        bodyData.title = formData.tittle;
+        bodyData.description = formData.desc;
+        bodyData.xp = parseInt(formData.xp);
+        break;
+      case "period":
+        bodyData.name = formData.tittle;
+        bodyData.start_date = dateToString(startDate)
+        bodyData.end_date = dateToString(endDate)
+        break;
+      case "subject":
+        bodyData.name = formData.tittle;
+        bodyData.details = formData.desc;
+        break;
+      default:
+        break;
+    }
+    setBody(bodyData);
+    
   }
 
   let message;
@@ -71,13 +104,27 @@ function Edit() {
   }
 
 
-  const datePicker = (
+  const startDatePicker = (
+    <Form.Group className="mb-3" controlId="formTitle">
+        <Form.Label>Fecha de Inicio</Form.Label>
+        {/* <FinalFormField name="date"> */}
+        <DatePicker /*TODO fix css*/
+          selected={startDate}
+          onChange={(date) => setStarDate(date)}>
+        </DatePicker>
+        {/* </FinalFormField> */}
+      </Form.Group>
+    )
+
+  const endDatePicker = (
     <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Fecha de Fin</Form.Label>
+        {/* <FinalFormField name="date"> */}
         <DatePicker /*TODO fix css*/
-          selected={Date.parse(data.end_date)}
-          onChange={(date) => setFormDate(date)}>
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}>
         </DatePicker>
+        {/* </FinalFormField> */}
       </Form.Group>
     )
 
@@ -94,11 +141,11 @@ function Edit() {
         )
   }
 
-  const dropDownQuestion = (tittle, id) => {
+  const dropDownQuestion = (tittle, formId, selectedId) => {
     return( 
-          <Form.Group className="mb-3" controlId={id}>
+          <Form.Group className="mb-3" controlId={formId}>
             <Form.Label>{tittle}</Form.Label>
-            <Dropdown type={id}/>
+            <Dropdown type={formId} selectedId={selectedId}/>
           </Form.Group>
         )
   }
@@ -106,26 +153,31 @@ function Edit() {
 
    const renderElement = () => {
     switch (type) {
-      // TODO: check fields against data model when API is implemented
       case "group":
         return (
           <>
-            { dropDownQuestion("Curso que se dara", "course_id") }
-            { dropDownQuestion("Periodo en que se dara", "period_id") }
+            { dropDownQuestion("Curso que se dara: ", "course_id", data.course_id) }
+            { dropDownQuestion("Periodo en que se dara: ", "period_id", data.period_id) }
           </>
         )
       
       case "mission":
         return (<>
                 { textQuestion("Descripción", data.desc, "desc")}
-                {datePicker}
+                { textQuestion("Experienica", "Indicar la cantidad ganada", "xp")}
+                {startDatePicker}
+                {endDatePicker}
               </>)
         
       case "period":
-          return datePicker;
+        return (<>
+        
+          {startDatePicker}
+          {endDatePicker}
+          </>);
 
       case "subject":
-        return datePicker;
+        return textQuestion("Descripción", data.desc, "desc");
 
       default:
         return <p>Error</p>
