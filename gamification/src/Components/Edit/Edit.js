@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Form, Button,  } from 'react-bootstrap';
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form'
 import {useParams}  from "react-router-dom";
@@ -19,26 +19,44 @@ function Edit() {
   
   //call id 
   let urlType;
+  let titleType;
   
   if (type === "subject"){
     urlType = "courses"
+    titleType = "name"
   }else if (type === "group"){
     urlType = "groups"
+    titleType = "name"
   }else if (type === "mission"){
     urlType = "missions"
+    titleType = "title"
   }else if (type === "period"){
     urlType = "periods"
+    titleType = "name"
   }else {
     urlType = "error"
   }
 
-  const {loading:postLoad, info:postInfo} = useFetch(API_BASE_URL+urlType, "PUT", 
-              {"Authorization": getCookie("session_token")}, body)
-  const {loading, info} = useFetch(API_BASE_URL+urlType, "GET", {"Authorization": getCookie("session_token")}, null)
+  const {loading:postLoad, info:postInfo} = useFetch(API_BASE_URL+urlType+"/"+id, "PUT", 
+              {"Authorization": getCookie("session_token")}, body);
+  const {loading, info} = useFetch(API_BASE_URL+urlType, "GET", {"Authorization": getCookie("session_token")}, null);
   const [startDate, setStarDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  let data = {};
+  
+  const [data, setData] = useState({});
 
+  useEffect(() => {
+    if (info){
+      setData(info.filter(entry => parseInt(entry.id) === parseInt(id))[0]);
+    }
+  }, [info])
+
+  useEffect(() => {
+    if (data.start_date){
+      setStarDate(new Date(data.start_date));
+      setEndDate(new Date( data.end_date));
+    }
+  }, [data])
 
   const navigateBack = () => {
     window.history.back()
@@ -51,48 +69,46 @@ function Edit() {
 
     switch (type) {
       case "group":
-        bodyData.name = formData.tittle;
-        bodyData.course_id = parseInt(formData.course_id);
-        bodyData.period_id = parseInt(formData.period_id);
+        bodyData.name = formData.tittle ?? data.tittle;
+        bodyData.course_id = parseInt(formData.course_id ?? data.course_id) ;
+        bodyData.period_id = parseInt(formData.period_id ?? data.period_id) ;
         break;
       case "mission": 
         bodyData.type_id = 2;
-        bodyData.title = formData.tittle;
-        bodyData.description = formData.desc;
-        bodyData.xp = parseInt(formData.xp);
+        bodyData.title = formData.tittle ?? data.tittle;
+        bodyData.description = formData.desc ?? data.description;
+        bodyData.xp = parseInt(formData.xp?? data.xp);
         break;
       case "period":
-        bodyData.name = formData.tittle;
-        bodyData.start_date = dateToString(startDate)
-        bodyData.end_date = dateToString(endDate)
+        bodyData.name = formData.tittle ?? data.tittle;
+        bodyData.start_date = dateToString(startDate ?? data.start_date);
+        bodyData.end_date = dateToString(endDate ?? data.end_date);
         break;
       case "subject":
-        bodyData.name = formData.tittle;
-        bodyData.details = formData.desc;
+        bodyData.name = formData.tittle ?? data.tittle;
+        bodyData.details = formData.desc ?? data.details;
         break;
       default:
         break;
     }
     setBody(bodyData);
+    console.log("body", body);
     
   }
 
-  let message;
+  let message, editMessage;
 
   if (loading === null){
     message = <div></div>
   }else if(loading === true){
     message = <p>Loading</p>
   }else if (loading === false){
-    console.log(info);
-    data = info.filter(entry => String(entry.id) === id)[0];
-    console.log(data);
     message = <FinalForm onSubmit={onSubmit}>
         {({handleSubmit, submitting}) => (
           <Form className="container-md text-center align-content-center">
-          {textQuestion("Titulo", data.name, "tittle")}
+          {textQuestion("Titulo", data[titleType], "tittle")}
           {renderElement()}
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
               Actualizar datos ({type})
           </Button>
           <Button variant="link" onClick={navigateBack}>
@@ -103,28 +119,39 @@ function Edit() {
       </FinalForm>
   }
 
+  if (postLoad === null){
+    editMessage = <div></div>
+  }else if(postLoad === true){
+    editMessage = <p>Loading</p>
+  }else if (postLoad === false){
+    if (postInfo.error){
+      editMessage = <p style={{color: 'red'}}>
+          Error al editar: {postInfo.error}
+        </p>
+    } else {
+      window.history.back();
+      console.log("exit")
+    }
+  }
+
 
   const startDatePicker = (
     <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Fecha de Inicio</Form.Label>
-        {/* <FinalFormField name="date"> */}
         <DatePicker /*TODO fix css*/
-          selected={startDate}
+          selected={startDate} dateFormat="dd/MM/yyyy"
           onChange={(date) => setStarDate(date)}>
         </DatePicker>
-        {/* </FinalFormField> */}
       </Form.Group>
     )
 
   const endDatePicker = (
     <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Fecha de Fin</Form.Label>
-        {/* <FinalFormField name="date"> */}
         <DatePicker /*TODO fix css*/
-          selected={endDate}
+          selected={endDate} dateFormat="dd/MM/yyyy"
           onChange={(date) => setEndDate(date)}>
         </DatePicker>
-        {/* </FinalFormField> */}
       </Form.Group>
     )
 
@@ -163,15 +190,12 @@ function Edit() {
       
       case "mission":
         return (<>
-                { textQuestion("Descripción", data.desc, "desc")}
-                { textQuestion("Experienica", "Indicar la cantidad ganada", "xp")}
-                {startDatePicker}
-                {endDatePicker}
+                { textQuestion("Descripción", data.description, "desc")}
+                { textQuestion("Experiencia", data.xp, "xp")}
               </>)
         
       case "period":
         return (<>
-        
           {startDatePicker}
           {endDatePicker}
           </>);
@@ -184,7 +208,10 @@ function Edit() {
     }
   }
 
-  return message;
+  return (<div>
+    {message}
+    {editMessage}
+    </div>);
 }
 
 export default Edit

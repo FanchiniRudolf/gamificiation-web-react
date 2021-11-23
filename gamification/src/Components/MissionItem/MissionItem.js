@@ -14,7 +14,7 @@ function MissionItem({mission}) {
         <Card.Text>
           {mission.description}
         </Card.Text>
-        { isTeacher && <Button variant="primary" href="/edit/mission/1">Editar</Button> }
+        { isTeacher && <Button variant="primary" href={"/edit/mission/"+mission.id}>Editar</Button> }
         {' '}
         { isTeacher && <Button variant="danger">Borrar</Button> }
         {' '}

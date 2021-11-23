@@ -40,7 +40,6 @@ function Dropdown({type, selectedId}) {
                 </option>
             ))}
         </FinalFormField>)
-        console.log(message);
     
   }
 
