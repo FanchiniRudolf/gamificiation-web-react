@@ -16,7 +16,7 @@ function GroupMissionInfo() {
       <Container className="mt-3 mb-3">
         <Row>
           <Col lg={3}>
-          <Button variant="link" onClick={navigateBack}>
+            <Button variant="link" onClick={navigateBack}>
               Atrás
             </Button>
           </Col>          
