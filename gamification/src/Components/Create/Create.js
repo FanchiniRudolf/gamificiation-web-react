@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useFetch from '../../Hooks/useFetch';
 import {getCookie} from '../../Functions/Cookies'
+import {dateToString} from '../../Functions/Dates'
 import { Navigate } from "react-router-dom";
 import Dropdown from './Dropdown/Dropdown'
 
@@ -49,12 +50,6 @@ function Create() {
     }
   }
 
-  function dateToString(date){
-    let day = date.getDate() < 10 ? "0"+String(date.getDate()) : String(date.getDate());
-    let month = date.getMonth() +1 < 10 ?  "0"+String(date.getMonth()+1) : String(date.getMonth()+1);
-    let year = String(date.getFullYear());
-    return day+"-"+month+"-"+year;
-  }
 
   const navigateBack = () => {
     window.history.back()
