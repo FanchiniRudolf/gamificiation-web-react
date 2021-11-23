@@ -5,7 +5,7 @@ import {getCookie} from '../../../Functions/Cookies'
 
 
 
-function Dropdown({type}) {
+function Dropdown({type, selectedId}) {
 
     let urlType;
   
@@ -25,13 +25,17 @@ function Dropdown({type}) {
     message = <div></div>
   }else if(loading === true){
     message = (<FinalFormField name={type} component="select">
-                    <option value="1">Loading</option>
+                    <option key="1" value="1">Loading</option>
             </FinalFormField>)
   }else if (loading === false){
+      let selected = info.find((entry) => selectedId === entry.id );
       message = (
         <FinalFormField name={type} component="select">
-            {info.map((entry) => (
-                <option value={entry.id} >
+            <option key={selected.id} value={selected.id}>
+                    {selected.name}
+            </option>
+            {info.filter((entry) => selectedId !== entry.id).map((entry) => (
+                <option key={entry.id} value={entry.id}>
                     {entry.name}
                 </option>
             ))}
