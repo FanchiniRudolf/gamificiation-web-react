@@ -8,7 +8,7 @@ function MissionItem({mission}) {
   
   return (
     <>
-      <Card>
+      <Card className="mt-2">
         <Card.Body>
         <Card.Title>{mission.title}</Card.Title>
         <Card.Text>
