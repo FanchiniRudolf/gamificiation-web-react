@@ -11,9 +11,9 @@ function TableEntry({entry, groupID, missionID}) {
       <td>{entry.student.name}</td>
       <td>{entry.xp}</td>
       <td>{entry.coins}</td>
-      <td>{entry['mission grade']}</td>
+      <td>{entry.mission_grade}</td>
       <td>
-        { entry['mission grade'] === null ? 
+        { entry.mission_grade === null ? 
           <Button variant="success" href={`/Group/${groupID}/gradeMission/${missionID}/enrollment/${entry.id}`}>Calificar</Button> :
           <Button variant="primary" href={`/Group/${groupID}/editGradeMission/${missionID}/enrollment/${entry.id}`}>Editar</Button>
         }
