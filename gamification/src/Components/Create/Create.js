@@ -43,7 +43,7 @@ function Create() {
   }else if (loading === false){
     if (info.error){
       message = <p style={{color: 'red'}}>
-          Error al iniciar sesión: {info.error}
+          Error: {info.error}
         </p>
     } else{
         message = <Navigate to={-1} />
@@ -132,6 +132,7 @@ function Create() {
     return( 
           <Form.Group className="mb-3" controlId={id}>
             <Form.Label>{tittle}</Form.Label>
+            {' '}
             <Dropdown type={id}/>
           </Form.Group>
         )
