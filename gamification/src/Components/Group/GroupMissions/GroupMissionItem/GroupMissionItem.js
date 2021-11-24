@@ -64,9 +64,9 @@ function GroupMissionItem({mission}) {
           <Card.Text>
             Fecha de entrega: { formattedDeliveryDate }
           </Card.Text>
-          <Card.Text>
+          {/* <Card.Text>
             Promedio acumulado: { mission.average }
-          </Card.Text>
+          </Card.Text> */}
           { isTeacher === "teacher" && <Button variant="danger" onClick={ setUnbindModalShow }>Eliminar de este grupo</Button> }
       </Card.Body>
       </Card>
