@@ -32,7 +32,7 @@ function Missions() {
             <h1>Misiones</h1>
           </Col>
           <Col lg={3}>
-            <Button variant="primary" href="/create/mission">
+            <Button variant="primary" href="/create/mission" className="float-end">
               Crear
             </Button>
           </Col>
