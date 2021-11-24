@@ -13,13 +13,16 @@ function StudentListItem({student}) {
             {student.student.name + " "  + student.student.last_name}
           </Col>
 
-          <Col lg={6}>
-            {student.hp} HP, {student.xp} xp, {student.coins} monedas
+          <Col lg={3} className="text-center">
+            {/* {student.hp} HP, {student.xp} xp, {student.coins} monedas */}
+            {student.xp} xp
           </Col>
 
-          <Col lg={1}>
-            <></>
+          <Col lg={4} className="text-center">
+            {/* {student.hp} HP, {student.xp} xp, {student.coins} monedas */}
+            {student.coins} monedas
           </Col>
+
         </Row>
       </Container>
     </div>
