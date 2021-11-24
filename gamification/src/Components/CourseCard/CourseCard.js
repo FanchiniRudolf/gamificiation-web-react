@@ -11,7 +11,7 @@ function CourseCard({course}) {
     <div>
         <Card className="mt-2">
           <Card.Header>
-            <Button variant="link" href={"/Group/"+course.id}>{course.name}</Button>
+            <Button variant="link" href={"/Group/"+course.id}>{course.course.name}</Button>
           </Card.Header>
           <Card.Body>
             <Card.Title>Grupo {course.id}</Card.Title>

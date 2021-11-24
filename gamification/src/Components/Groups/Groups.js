@@ -26,6 +26,7 @@ function Groups() {
   const { loading, info } = useFetch(API_BASE_URL+urlRoute,
     "GET",
     {"Authorization": getCookie("session_token")})
+  // console.log("groups info:", info)
 
   let table;
   if (loading === null) {
