@@ -14,11 +14,11 @@ function MissionItem({mission}) {
         <Card.Text>
           {mission.description}
         </Card.Text>
-        { isTeacher && <Button variant="primary" href={"/edit/mission/"+mission.id}>Editar</Button> }
+        { isTeacher === "teacher" && <Button variant="primary" href={"/edit/mission/"+mission.id}>Editar</Button> }
         {' '}
-        { isTeacher && <Button variant="danger">Borrar</Button> }
+        { isTeacher === "teacher" && <Button variant="danger">Borrar</Button> }
         {' '}
-        { isTeacher && <Button variant="success" href={"/postMissionToGroup/"+mission.id}>Asignar a un grupo</Button> }
+        { isTeacher === "teacher" && <Button variant="success" href={"/postMissionToGroup/"+mission.id}>Asignar a un grupo</Button> }
 
         
       </Card.Body>
