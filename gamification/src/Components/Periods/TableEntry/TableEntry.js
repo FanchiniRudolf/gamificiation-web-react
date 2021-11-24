@@ -20,7 +20,8 @@ function TableEntry({entry, index}) {
         <td>
             <Button variant="primary" href={"edit/period/"+entry.id}>editar</Button>
             {' '}
-            <Button variant="danger">eliminar</Button></td>
+            <Button variant="danger">eliminar</Button>
+        </td>
     </tr>
   )
 }
