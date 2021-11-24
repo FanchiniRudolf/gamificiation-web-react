@@ -30,8 +30,10 @@ function Navbar() {
             { session && isTeacher === "teacher" && <Nav.Link href="/subjects">Materias</Nav.Link> }
             { session && isTeacher === "teacher" && <Nav.Link href="/periods">Periodos</Nav.Link> }
             { session && isTeacher === "teacher" && <Nav.Link href="/missions">Misiones</Nav.Link> }
+          </Nav>
+          <Nav>
+            { session && <Nav.Link disabled>{username}</Nav.Link> }
             { session && <Nav.Link onClick={deleteAllCookies} href="/login">Cerrar sesión</Nav.Link> }
-            { session && <Nav.Link>{username}</Nav.Link> } {/*TODO make pretty (all to the right?)*/}
           </Nav>
         </BNavbar.Collapse>
       </Container>
