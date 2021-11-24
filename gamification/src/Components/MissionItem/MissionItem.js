@@ -1,13 +1,18 @@
-import React, {useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import {Card, Button} from 'react-bootstrap'
 import {SessionContext} from '../../Hooks/sessionContext'
+import SelectPeriodModal from '../Missions/Modal/SelectPeriodModal'
 
 function MissionItem({mission}) {
 
   const {isTeacher} = useContext(SessionContext)
+
+  const [selectModalShow, setSelectModalShow] = useState(false)
   
   return (
     <>
+      <SelectPeriodModal missionID={mission.id} modalShow={selectModalShow} setModalShow={setSelectModalShow} />
+
       <Card className="mt-2">
         <Card.Body>
         <Card.Title>{mission.title}</Card.Title>
@@ -18,7 +23,7 @@ function MissionItem({mission}) {
         {' '}
         { isTeacher === "teacher" && <Button variant="danger">Borrar</Button> }
         {' '}
-        { isTeacher === "teacher" && <Button variant="success" href={"/postMissionToGroup/"+mission.id}>Asignar a un grupo</Button> }
+        { isTeacher === "teacher" && <Button variant="success" onClick={() => setSelectModalShow(true)} >Asignar a un grupo</Button> }
 
         
       </Card.Body>

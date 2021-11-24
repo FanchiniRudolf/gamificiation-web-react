@@ -75,7 +75,7 @@ function MainAppRouter() {
                     {/* teacher routes */}
                     <Route path="/periods" element={<Periods/>}/>
                     <Route path="/missions" element={<Missions/>}/>
-                    <Route path="/postMissionToGroup/:id" element={<PostMissionToGroup/>}/>
+                    <Route path="/postMissionToGroup/:missionId/period/:periodId" element={<PostMissionToGroup/>}/>
                     <Route path="/addstudent" element={<AddStudent/>}/>
                     <Route path="/subjects" element={<Subjects/>}/>
                     <Route path="/periodGroups/:id" element={<PeriodGroups/>}/>
