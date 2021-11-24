@@ -21,7 +21,7 @@ function MissionItem({mission}) {
         </Card.Text>
         { isTeacher === "teacher" && <Button variant="primary" href={"/edit/mission/"+mission.id}>Editar</Button> }
         {' '}
-        { isTeacher === "teacher" && <Button variant="danger">Borrar</Button> }
+        { isTeacher === "teacher" && <Button variant="danger">Eliminar</Button> }
         {' '}
         { isTeacher === "teacher" && <Button variant="success" onClick={() => setSelectModalShow(true)} >Asignar a un grupo</Button> }
 
