@@ -12,10 +12,10 @@ function TableEntry({entry, index}) {
         <td>{entry.name}</td>
         <td>{entry.details}</td>
         <td>{date.getDay()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()}</td>
-        <td>
-            <Button variant="primary" href={'edit/subject/'+entry.id}>editar</Button>
+        <td className="text-center">
+            <Button variant="primary" href={'edit/subject/'+entry.id}>Editar</Button>
             {' '}
-            <Button variant="danger">eliminar</Button></td>
+            <Button variant="danger">Eliminar</Button></td>
     </tr>
   )
 }

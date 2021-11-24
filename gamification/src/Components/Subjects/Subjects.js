@@ -40,7 +40,7 @@ function Subjects() {
         <Row>
           <Table striped bordered hover>
                 <thead>
-                  <tr>
+                  <tr className="text-center">
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
