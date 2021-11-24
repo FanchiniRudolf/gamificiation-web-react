@@ -25,16 +25,9 @@ function EditStudentGrade() {
     {"Authorization": getCookie("session_token")},
     null)
   console.log("GET info:",info)
-  // console.log("grade:", info.grade)
-  // console.log("comments:", info.comments)
 
     const [data, setData] = useState({});
     
-    // useEffect(() => {
-    //   if (info) {
-    //     setData(info.filter(entry => parseInt(entry.id) === parseInt(id))[0])
-    //   }
-    // }, [info])
 
   const navigateBack = () => {
     window.history.back()
@@ -133,9 +126,6 @@ function EditStudentGrade() {
             <h1>Modificando calificación de misión {missionID}</h1>
           </Col>
         </Row>
-
-
-        
         <Row className="mt-3">
           <Col lg={6}>
             {message}
