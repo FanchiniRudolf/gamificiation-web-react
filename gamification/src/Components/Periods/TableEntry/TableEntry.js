@@ -17,7 +17,7 @@ function TableEntry({entry, index}) {
         </td>
         <td>{entry.start_date}</td>
         <td>{entry.end_date}</td>
-        <td>
+        <td className="text-center">
             <Button variant="primary" href={"edit/period/"+entry.id}>editar</Button>
             {' '}
             <Button variant="danger">eliminar</Button>
