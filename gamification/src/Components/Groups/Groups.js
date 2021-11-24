@@ -64,11 +64,11 @@ function Groups() {
             <Col lg={3}>
               { isTeacher === "teacher" ?
                 (
-                  <Button variant="primary" href="/create/group">
+                  <Button variant="primary" href="/create/group" className="float-end">
                     Crear
                   </Button>
                 ) : (
-                  <Button variant="primary" size="md" onClick={setJoinModalShow}>
+                  <Button variant="primary" size="md" onClick={setJoinModalShow} className="float-end">
                     Unirme a un grupo
                   </Button>
                 )

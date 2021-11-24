@@ -56,7 +56,7 @@ function PeriodGroups() {
               <h1>Mis grupos para este periodo</h1>
             </Col>
             <Col lg={3}>
-              <Button variant="primary" href="/create/group">
+              <Button variant="primary" href="/create/group" className="float-end">
                 Crear
               </Button>
             </Col>
