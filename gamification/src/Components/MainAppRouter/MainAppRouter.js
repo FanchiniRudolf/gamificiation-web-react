@@ -57,11 +57,10 @@ function MainAppRouter() {
                     <Route path="/setNewPassword" element={<ChangePass/>}/>
                     
 
-                    {/* student routes */}
+
                     <Route path="/groups" element={<Groups/>}/>
 
 
-                    {/* dynamic */}
                     <Route path="/Group/:id" element={<Group/>}/>
                     <Route path="/Group/:groupId/mission/:missionId" element={<GroupMissionInfo/>}/>
 
@@ -72,7 +71,7 @@ function MainAppRouter() {
                     <Route path="/create/:type" element={<Create/>}/>
                     <Route path="/edit/:type/:id" element={<Edit/>}/>
 
-                    {/* teacher routes */}
+
                     <Route path="/periods" element={<Periods/>}/>
                     <Route path="/missions" element={<Missions/>}/>
                     <Route path="/postMissionToGroup/:missionId/period/:periodId" element={<PostMissionToGroup/>}/>
@@ -80,7 +79,7 @@ function MainAppRouter() {
                     <Route path="/subjects" element={<Subjects/>}/>
                     <Route path="/periodGroups/:id" element={<PeriodGroups/>}/>
 
-                    {/* generic routes */}
+
                     <Route exact path="/" element={getCookie("session_token") ?
                         (<Navigate to="groups" replace={true} />) :
                         (<Navigate to="login" replace={true} />)
