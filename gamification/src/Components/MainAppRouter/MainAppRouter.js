@@ -20,6 +20,7 @@ import StudentProfile from '../Profile/Profile';
 import Periods from '../Periods/Periods';
 import Missions from '../Missions/Missions';
 import GradeStudent from '../GradeStudent/GradeStudent';
+import EditStudentGrade from '../GradeStudent/EditStudentGrade'
 import AddStudent from '../AddStudent/AddStudent';
 import Subjects from '../Subjects/Subjects';
 import PostMissionToGroup from '../Missions/PostMissionToGroup/PostMissionToGroup.js';
@@ -66,7 +67,8 @@ function MainAppRouter() {
 
 
                     <Route path="/profile/:group/:id" element={<StudentProfile/>}/>
-                    <Route path="/gradestudent/:group/:id" element={<GradeStudent/>}/>
+                    <Route path="/Group/:groupId/gradeMission/:missionId/enrollment/:enrollmentId" element={<GradeStudent/>}/> {/*TODO add right dynamic path*/}
+                    <Route path="/Group/:groupID/editGradeMission/:missionId/enrollment/:enrollmentId" element={<EditStudentGrade/>}/> {/*TODO add right dynamic path*/}
                     <Route path="/create/:type" element={<Create/>}/>
                     <Route path="/edit/:type/:id" element={<Edit/>}/>
 

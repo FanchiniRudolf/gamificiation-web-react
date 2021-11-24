@@ -37,7 +37,7 @@ function GroupMissionInfo() {
     // students are objects each, this is an array of objects
     studentsToGrade = info.students
     console.log(studentsToGrade, typeof(studentsToGrade))
-    studentsToGrade = studentsToGrade.map( (student) => <TableEntry key={studentsToGrade.id} entry={student} /> )
+    studentsToGrade = studentsToGrade.map( (student) => <TableEntry key={studentsToGrade.id} entry={student} groupID={groupID} missionID={missionID} /> )
   }
   
   return (
@@ -69,7 +69,7 @@ function GroupMissionInfo() {
           <Col lg={12}>
             <Table striped bordered hover>
               <thead>
-                <tr>
+                <tr className="text-center">
                   <th>Matrícula</th>
                   <th>Nombre</th>
                   <th>XP total</th>

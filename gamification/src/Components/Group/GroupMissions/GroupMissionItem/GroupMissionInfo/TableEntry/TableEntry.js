@@ -1,7 +1,10 @@
 import React from 'react'
 import {Button} from 'react-bootstrap';
 
-function TableEntry({entry}) {
+function TableEntry({entry, groupID, missionID}) {
+  
+  console.log(missionID)
+  
   return (
     <tr className="text-center">
       <td>{entry.student.school_id}</td>
@@ -11,8 +14,8 @@ function TableEntry({entry}) {
       <td>{entry['mission grade']}</td>
       <td>
         { entry['mission grade'] === null ? 
-          <Button variant="success">Calificar</Button> :
-          <Button variant="primary">Editar</Button>
+          <Button variant="success" href={`/Group/${groupID}/gradeMission/${missionID}/enrollment/${entry.id}`}>Calificar</Button> :
+          <Button variant="primary" href={`/Group/${groupID}/editGradeMission/${missionID}/enrollment/${entry.id}`}>Editar</Button>
         }
       </td>
     </tr>

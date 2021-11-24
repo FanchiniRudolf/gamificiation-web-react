@@ -140,7 +140,6 @@ function Create() {
 
    const renderElement = () => {
     switch (type) {
-      // TODO: check fields against data model when API is implemented
       case "group":
         return (
           <>
