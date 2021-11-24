@@ -62,7 +62,7 @@ function MainAppRouter() {
 
                     {/* dynamic */}
                     <Route path="/Group/:id" element={<Group/>}/>
-                    <Route path="/Group/:id/mission/:id" element={<GroupMissionInfo/>}/>
+                    <Route path="/Group/:groupId/mission/:missionId" element={<GroupMissionInfo/>}/>
 
 
                     <Route path="/profile/:group/:id" element={<StudentProfile/>}/>
