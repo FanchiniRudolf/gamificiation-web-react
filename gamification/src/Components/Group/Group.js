@@ -85,21 +85,23 @@ function Group() {
                     <h1>Grupo {id}</h1>
                   </Col>
                   <Col lg={3}>
-                    <Button variant="warning" onClick={generateClassCode}>Generar código</Button>
+                    <Button variant="warning" onClick={generateClassCode} className="float-end">
+                      Generar código
+                    </Button>
                   </Col>
                   <Col lg={12} className="mt-1">
                     {joinCode}
                   </Col>
                 </Row>
 
-                <Row className="mt-4">
+                {/* <Row className="mt-4">
                   <Col lg={6}>
-                    {/* <h4>{loading ? "loading":missions.length} misiones</h4> */}
+                    <h4>{loading ? "loading":missions.length} misiones</h4>
                   </Col>
-                  <Col lg={6}>
+                  <Col lg={6} className="text-end">
                     <h4>Promedio de misiones del grupo: {(99.8+0.1).toFixed(2)}</h4>
                   </Col>
-                </Row>
+                </Row> */}
                 <hr />
 
                 <Row className="mt-4">
