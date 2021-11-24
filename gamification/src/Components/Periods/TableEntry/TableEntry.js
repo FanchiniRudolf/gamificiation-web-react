@@ -9,7 +9,7 @@ function TableEntry({entry, index}) {
 
   return (
     <tr>
-        <td>{index+1}</td>
+        <td className="text-center">{index+1}</td>
         <td>
           <Button variant="link" href={"/periodGroups/"+entry.id}>
             {entry.name}
