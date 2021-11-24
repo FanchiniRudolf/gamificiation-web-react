@@ -15,6 +15,7 @@ function GroupMissionInfo() {
 
   const hundredAllStudents = () => {
     console.log("all got hundred yay")
+    window.location.reload()
   }
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
