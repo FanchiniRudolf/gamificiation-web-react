@@ -46,7 +46,7 @@ function Create() {
           Error: {info.error}
         </p>
     } else{
-        message = <Navigate to={-1} />
+        message = <Navigate to={-1} replace={true}/>
     }
   }
 

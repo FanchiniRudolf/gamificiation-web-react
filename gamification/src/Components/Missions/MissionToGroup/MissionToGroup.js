@@ -14,7 +14,7 @@ import TimePicker from "react-time-picker"
 
 
 
-function PostMissionToGroup() {
+function MissionToGroup() {
 
   const navigate = useNavigate()
 
@@ -40,7 +40,7 @@ function PostMissionToGroup() {
 
   
 
-  let message, postMessage
+  let postMessage
 
   const onSubmit = ({group}) => {
     console.log("submitting missionID:", missionID)
@@ -159,4 +159,4 @@ function PostMissionToGroup() {
   )
 }
 
-export default PostMissionToGroup
+export default MissionToGroup

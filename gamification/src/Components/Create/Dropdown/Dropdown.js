@@ -28,8 +28,9 @@ function Dropdown({type}) {
                     <option value="1">Loading</option>
             </FinalFormField>)
   }else if (loading === false){
+      console.log("info", info[0])
       message = (
-        <FinalFormField name={type} component="select">
+        <FinalFormField name={type} component="select" initialValue={info[0]?.id ?? null}>
             {info.map((entry) => (
                 <option value={entry.id} >
                     {entry.name}

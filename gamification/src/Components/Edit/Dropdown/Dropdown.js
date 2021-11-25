@@ -30,7 +30,7 @@ function Dropdown({type, selectedId}) {
   }else if (loading === false){
       let selected = info.find((entry) => selectedId === entry.id );
       message = (
-        <FinalFormField name={type} component="select">
+        <FinalFormField name={type} component="select" initialValue={selected.id ?? null}>
             <option key={selected.id} value={selected.id}>
                     {selected.name}
             </option>

@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { Form as FinalForm, Field as FinalFormField } from 'react-final-form'
 import useFetch from '../../../Hooks/useFetch';
 import { getCookie } from "../../../Functions/Cookies";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Dropdown from "../../Create/Dropdown/Dropdown"
 
 function SelectPeriodModal({missionID, modalShow, setModalShow}) {
@@ -26,13 +26,9 @@ function SelectPeriodModal({missionID, modalShow, setModalShow}) {
     console.log(formData)
     periodID = formData.period_id
     console.log(periodID)
-    navigate("/postMissionToGroup/"+missionID+"/period/"+periodID)
+    navigate("/MissionToGroup/"+missionID+"/period/"+periodID)
   }
 
-  const navigateToMissionAssignment = (periodID) => {
-    message = <Navigate to={"/postMissionToGroup/"+missionID+"/period/"+periodID} replace={false} />
-    return message
-  }
   
   return (
     <Modal size="md" centered show={modalShow} onHide={handleSelectModalClose}>
@@ -44,7 +40,7 @@ function SelectPeriodModal({missionID, modalShow, setModalShow}) {
         {({handleSubmit, submitting}) => (
           <Form>
             <Modal.Body>
-              <Form.Group controlId="period">
+              <Form.Group controlId="period_id">
                 <Form.Label>Periodo académico</Form.Label>
                 {' '}
                 <Dropdown type="period_id" />

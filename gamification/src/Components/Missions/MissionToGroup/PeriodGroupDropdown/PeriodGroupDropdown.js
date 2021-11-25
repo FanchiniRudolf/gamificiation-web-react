@@ -23,7 +23,7 @@ function PeriodGroupDropdown({periodID}) {
             </FinalFormField>)
   }else if (loading === false){
       message = (
-        <FinalFormField name="group" component="select">
+        <FinalFormField name="group" component="select" initialValue={info[0]?.id ?? null}>
             {info.map((entry) => (
                 <option value={entry.id} >
                     {entry.name}

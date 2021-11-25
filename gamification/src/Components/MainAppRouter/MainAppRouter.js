@@ -23,7 +23,7 @@ import GradeStudent from '../GradeStudent/GradeStudent';
 import EditStudentGrade from '../GradeStudent/EditStudentGrade'
 import AddStudent from '../AddStudent/AddStudent';
 import Subjects from '../Subjects/Subjects';
-import PostMissionToGroup from '../Missions/PostMissionToGroup/PostMissionToGroup.js';
+import MissionToGroup from '../Missions/MissionToGroup/MissionToGroup.js';
 import GroupMissionInfo from '../Group/GroupMissions/GroupMissionItem/GroupMissionInfo/GroupMissionInfo.js';
 
 import Create from '../Create/Create';
@@ -74,7 +74,7 @@ function MainAppRouter() {
 
                     <Route path="/periods" element={<Periods/>}/>
                     <Route path="/missions" element={<Missions/>}/>
-                    <Route path="/postMissionToGroup/:missionId/period/:periodId" element={<PostMissionToGroup/>}/>
+                    <Route path="/MissionToGroup/:missionId/period/:periodId" element={<MissionToGroup/>}/>
                     <Route path="/addstudent" element={<AddStudent/>}/>
                     <Route path="/subjects" element={<Subjects/>}/>
                     <Route path="/periodGroups/:id" element={<PeriodGroups/>}/>
