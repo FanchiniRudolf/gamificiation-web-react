@@ -4,10 +4,13 @@ import { useParams } from 'react-router';
 import { getCookie } from '../../../../../Functions/Cookies';
 import useFetch from '../../../../../Hooks/useFetch';
 import TableEntry from './TableEntry/TableEntry';
+import AllPassButton from "./Button/AllPassButton"
 
 function GroupMissionInfo() {
 
   let studentsToGrade
+  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL 
 
   const navigateBack = () => {
     window.history.back()
@@ -18,13 +21,11 @@ function GroupMissionInfo() {
     window.location.reload()
   }
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
   const {groupId: groupID, missionId: missionID} = useParams()
   console.log(`params: ${groupID}, ${missionID}`)
 
   const {loading, info} = useFetch(API_BASE_URL + `missions-to-groups/${groupID}?mission_id=${missionID}`,
-    "GET",
-    {"Authorization": getCookie("session_token")})
+    "GET", {"Authorization": getCookie("session_token")})
   console.log(info)
   
 
@@ -53,9 +54,7 @@ function GroupMissionInfo() {
           <Col lg={6}>
           </Col>          
           <Col lg={3}>
-            <Button variant="success" onClick={hundredAllStudents} className="float-end">
-              Poner 100 a todos
-            </Button>
+            <AllPassButton/>
           </Col>          
         </Row>
         

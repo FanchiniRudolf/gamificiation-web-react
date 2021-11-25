@@ -81,7 +81,10 @@ function MainAppRouter() {
 
 
                     <Route exact path="/" element={getCookie("session_token") ?
+                        ( isTeacher === "student" ?
                         (<Navigate to="groups" replace={true} />) :
+                        (<Navigate to="periods" replace={true} />)
+                        ) :
                         (<Navigate to="login" replace={true} />)
                         }/>
 

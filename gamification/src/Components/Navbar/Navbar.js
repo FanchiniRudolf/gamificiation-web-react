@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <BNavbar bg="primary" variant="dark" expand="lg">
       <Container>
-        <BNavbar.Brand>Ludificación Tec CEM</BNavbar.Brand>
+        <BNavbar.Brand href="/">Ludificación Tec CEM</BNavbar.Brand>
         <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
