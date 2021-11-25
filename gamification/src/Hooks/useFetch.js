@@ -25,7 +25,7 @@ export const useFetch = (url, method, headers, body) => {
     //Inicializamos el estado de la información.
     const [state, setState] = useState({
         info: null,
-        loading: true, //IDENTIFICAR si sigue en fetch
+        loading: null, //IDENTIFICAR si sigue en fetch
         error: null
     });
 
@@ -38,30 +38,34 @@ export const useFetch = (url, method, headers, body) => {
         }
     }, []);
 
-    //Utilizamos un useEffect para indicar que se actualice el estado cada vez que la url cambie.
+    //Utilizamos un useEffect para indicar que se actualice el estado cada vez que la body cambie.
     useEffect(() => {
-        //Inicializamos el estado con loading = true para las siguientes invocaciones.
-        setState({ info:null, loading: true, error:null });
-        
-        //Invocamos la URL con 'fetch'. Esta función devuelve un Promise por lo que podemos utilizar la
-        // función 'then'.
-        fetch(url, init)
-            .then((answer) => {
-                return answer.json()
-            })
-            .then((answer) => {  
-                //Hacemos el setState solamente si el componente sigue montado. Esto es para evitar el error
-                // que se menciona en UseRefEjemploReal.js  
-                if(isMounted.current){
-                    setState({
-                        loading:false,
-                        error:null,
-                        info:answer
-                    });
-                }else{
-                    console.log('setSate no se llamó porque el componente ya estaba desmontado');} 
-                }
-            )}, [url]);
+        if (body !== "\"notYet\""){
+            //Inicializamos el estado con loading = true para las siguientes invocaciones.
+            setState({ info:null, loading: true, error:null });
+            
+            //Invocamos la URL con 'fetch'. Esta función devuelve un Promise por lo que podemos utilizar la
+            // función 'then'.
+            fetch(url, init)
+                .then((answer) => {
+                    return answer.json()
+                })
+                .then((answer) => {  
+                    //Hacemos el setState solamente si el componente sigue montado. Esto es para evitar el error
+                    // que se menciona en UseRefEjemploReal.js  
+                    if(isMounted.current){
+                        setState({
+                            loading:false,
+                            error:null,
+                            info:answer
+                        });
+                    }else{
+                        console.log('setSate no se llamó porque el componente ya estaba desmontado');} 
+                    }
+                )
+        }
+        }, [body]);
+
             return state;
         }
 

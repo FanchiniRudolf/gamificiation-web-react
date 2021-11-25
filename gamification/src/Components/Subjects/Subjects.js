@@ -1,11 +1,30 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
+import { useFetch } from "../../Hooks/useFetch"
+import { getCookie } from "../../Functions/Cookies";
+import TableEntry from "./TableEntry/TableEntry"
 
 import './Subjects.css';
-//@bobby
+
+
 function Subjects() {
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const { loading, info } = useFetch(API_BASE_URL+"courses",
+    "GET", {"Authorization": getCookie("session_token")})
+
+    let tableEntries;
+
+    if (loading == null){
+      tableEntries = <div/>
+    }else if (loading === true){
+      tableEntries = <p>Cargando...</p>
+    }else if (loading === false){
+      tableEntries = info.map((course, index) => <TableEntry key={course.id} entry={course} index={index}/>)
+    }
+
+
   return (
-    // <div className="StudentGroup">
     <div>
       <Container>
       <Row className="mt-5 mb-3">
@@ -13,17 +32,25 @@ function Subjects() {
             <h1>Mis Materias</h1>
           </Col>
           <Col lg={3}>
-            <Button variant="primary" size="md" href="/create/subject">
+            <Button variant="primary" size="md" href="/create/subject" className="float-end">
               Crear
             </Button>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <p>Materias que imparte el profesor</p>
-            <p>Lista con opciones de editar o eliminar la entrada de la lista</p>
-            {/* TODO: @FanchiniRudolf */}
-          </Col>
+          <Table striped bordered hover>
+                <thead>
+                  <tr className="text-center">
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de creación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableEntries}
+                </tbody>
+          </Table>
         </Row>
       </Container>
     </div>

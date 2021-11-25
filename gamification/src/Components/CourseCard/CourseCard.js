@@ -1,31 +1,25 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Button, Card, Col } from "react-bootstrap";
-import { getCookie } from "../../Functions/Cookies";
 import Teacher from "./Dynamic/Teacher"
+import { SessionContext } from '../../Hooks/sessionContext'
 
 function CourseCard({course}) {
+
+  const {isTeacher} = useContext(SessionContext)
+  
   return (
     <div>
-      {/* <Col lg={6}> */}
-        <Card>
+        <Card className="mt-2">
           <Card.Header>
-            {/* TODO replace hard-coded route in href for dynamic route */}
-            <Button variant="link" href="/Group/1">{course.name}</Button>
+            <Button variant="link" href={"/Group/"+course.id}>{course.name}</Button>
           </Card.Header>
           <Card.Body>
-            <Card.Title>Grupo {3*3}</Card.Title>
-            {/* TODO: after demo add data customer requests -
-                might have to determine it how to get it first */}
-            {/* <Card.Text>
-              {1*1} Misiones en total
-            </Card.Text> */}
+            <Card.Title>Grupo {course.id}</Card.Title>
             <div>
-              { getCookie("isTeacher") && (<Teacher/>) }
+              { isTeacher === "teacher" && (<Teacher courseId={course.id}/>) }
             </div>
           </Card.Body>
         </Card>
-      {/* </Col> */}
-      
     </div>
   )
 }

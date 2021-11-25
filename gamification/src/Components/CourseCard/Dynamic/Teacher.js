@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import DeleteButton from '../../Buttons/DeleteButton'
 
-function Teacher() {
+function Teacher({courseId}) {
 
-const history = useHistory();
+const navigate = useNavigate();
 
   const handleRoute = () => {
-    // TODO: change hard-coded route
-    history.push("/edit/group/1")
+    navigate("/edit/group/"+courseId, {replace: true})
   }
 
   return (
@@ -16,7 +16,7 @@ const history = useHistory();
       <hr />
       <Button variant="primary" onClick={handleRoute}>editar</Button>
       {' '}
-      <Button variant="danger">eliminar</Button>
+      <DeleteButton type={"groups"} id ={courseId}/>
     </div>
   )
 }

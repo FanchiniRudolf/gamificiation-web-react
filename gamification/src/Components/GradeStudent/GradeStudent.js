@@ -1,12 +1,64 @@
 import React, {useState} from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Form as FinalForm, Field as FinalFormField } from 'react-final-form';
+import { Navigate, useParams } from "react-router-dom";
+import { getCookie } from '../../Functions/Cookies';
+import useFetch from '../../Hooks/useFetch';
 
 function GradeStudent() {
+  
+  const {groupId: groupID, missionId: missionID, enrollmentId: enrollmentID} = useParams()
 
-  const [mission, setMission] = useState({hp:100, xp:50, coins:20});
-  const [hp, setHp] = useState(0);
-  const [xp, setXp] = useState(0);
+  const API_BASE_URL  = process.env.REACT_APP_API_BASE_URL;
+  const [body, setBody] = useState("notYet")
+  const {loading, info} = useFetch(API_BASE_URL+"user-mission",
+    "POST",
+    {"Authorization": getCookie("session_token")},
+    body)
+
+  let message
+
+  const navigateBack = () => {
+    window.history.back()
+  }
+  
+  
+  const onGradeSubmit = () => {
+    console.log(grade, coins, comments)
+    console.log(missionID, enrollmentID)
+    setBody({
+      "enrollment_id": enrollmentID,
+      "mission_id": missionID,
+      "grade": grade,
+      "coins": coins,
+      "comments": comments
+    })
+  }
+
+
+  if (loading === null) {
+    message = <div></div>
+  } else if (loading === true) {
+    message = <p>Cargando...</p>
+  } else if (loading === false) {
+    if (info.error) {
+      console.log("error", info.error)
+      message = <p style={{color: 'red'}}>
+          Error: {info.error}
+        </p>
+    } else if (info) {
+      message = <div>
+                  <Navigate to={-1} />
+                </div>
+    }
+  }
+
+  
+
+  const [mission, setMission] = useState({grade:0, coins:0, comments:""});
+  const [grade, setGrade] = useState(0);
   const [coins, setCoins] = useState(0);
+  const [comments, setComments] = useState("");
 
 
   return (
@@ -14,75 +66,59 @@ function GradeStudent() {
       <Container>
         <Row className="mt-5 mb-3">
           <Col lg={12}>
-            <h1>Calificar misión</h1>
-          </Col>
-        </Row>
-        <Row className="mt-2">
-          <Col lg={12}>
-            <h3>Calificando a: {`nombre y matrícula del alumno`}</h3>
+            <h1>Calificando misión {missionID}</h1>
           </Col>
         </Row>
 
-        <Form>
-          <Row className="mt-3">
-            <Col lg={6}>
-              <h3>Misión</h3>
 
-              <Form.Select aria-label="Default select example">
-                <option>Misión a calificar</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </Form.Select>
-            </Col>
-          </Row>
-
-          <Row className="mt-3">
-            <Col lg={6}>
-              <Form.Group className="mb-3" controlId="hp">
-                <Form.Label><h5>HP a sumar o restar</h5></Form.Label>
-                <Form.Control type="number" placeholder={hp}  onChange={(e) => {setHp(Number(e.target.value))}}/>
-                <Form.Text className="text-muted">
-                  HP Final: {hp + (mission.hp)}
-                </Form.Text>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col lg={6}>
-              <Form.Group className="mb-3" controlId="xp">
-                <Form.Label><h5>XP a sumar o restar</h5></Form.Label>
-                <Form.Control type="number" placeholder={xp}  onChange={(e) => {setXp(Number(e.target.value))}}/>
-                <Form.Text className="text-muted">
-                  XP Final: {xp + (mission.xp)}
-                </Form.Text>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row className="mt-3 mb-5">
-            <Col lg={6}>
-              <Form.Group className="mb-3" controlId="coins">
-              <Form.Label><h5>Monedas a sumar o restar</h5></Form.Label>
-                <Form.Control type="number" placeholder={coins}  onChange={(e) => {setCoins(Number(e.target.value))}}/>
-                <Form.Text className="text-muted">
-                  Monedas Finales: {coins + (mission.coins)}
-                </Form.Text>
-              </Form.Group>
-            </Col>
-          </Row>
+        
+        <Row className="mt-3">
+          <Col lg={6}>
+            <FinalForm onSubmit={onGradeSubmit}>
+              {({handleSubmit, submitting}) => (
+                <Form>
+                  <Form.Group className="mb-3" controlId="grade">
+                    <Form.Label><h5>Calificación</h5></Form.Label>
+                    <Form.Control type="number" placeholder={grade}  onChange={(e) => {setGrade(Number(e.target.value))}}/>
+                  </Form.Group>
 
 
-          <Row className="mt-3 mb-5">
-            <Col>
-              {/* TODO replace hard-coded route in href for dynamic route */}
-              <Button variant="danger" href="/Group/1">Cancelar</Button>
-            </Col>
-            <Col>
-              {' '}
-              <Button variant="success" type="submit">Registrar</Button>
-            </Col>
-          </Row>
-        </Form>
+
+                  <Form.Group className="mb-3" controlId="coins">
+                    <Form.Label><h5>Monedas</h5></Form.Label>
+                      <Form.Control type="number" placeholder={coins}  onChange={(e) => {setCoins(Number(e.target.value))}}/>
+                  </Form.Group>
+
+
+
+                  <Form.Group className="mb-3" controlId="comments">
+                    <Form.Label><h5>Comentarios (opcional)</h5></Form.Label>
+                    <Form.Control type="text" placeholder={comments}  onChange={(e) => {setComments(e.target.value)}}/>
+                  </Form.Group>
+
+
+
+
+
+                  {message}
+                  <Button variant="success" type="submit" onClick={handleSubmit} className="mt-5">
+                    Registrar
+                  </Button>
+                  {' '}
+                  <Button variant="danger" onClick={navigateBack} className="float-end mt-5">
+                    Cancelar
+                  </Button>
+                </Form>
+              )}
+            </FinalForm>
+
+
+
+
+
+            
+          </Col>
+        </Row>
       </Container>
     </div>
   )

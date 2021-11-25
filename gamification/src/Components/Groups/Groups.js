@@ -1,55 +1,61 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getCookie } from "../../Functions/Cookies";
-
-
+import { SessionContext } from "../../Hooks/sessionContext";
+import { useFetch } from "../../Hooks/useFetch"
 import CourseCard from "../CourseCard/CourseCard";
+import JoinGroupModal from "./JoinGroupModal/JoinGroupModal";
 import "./Groups.css";
 
 
 function Groups() {
 
+  const {isTeacher} = useContext(SessionContext)
+
+  let urlRoute = 'users_groups'
+  // TODO care isTeacher is NOT a boolean
+  if (isTeacher === "teacher") {
+    console.log(isTeacher, "es teacher")
+    urlRoute = "groups"
+  } else if (isTeacher === "student") {
+    console.log(isTeacher, "es student")
+    urlRoute = "users_groups"
+  }
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const { loading, info } = useFetch(API_BASE_URL+urlRoute,
+    "GET",
+    {"Authorization": getCookie("session_token")})
+  // console.log("groups info:", info)
+
+  let table;
+  if (loading === null) {
+    table = <div></div>
+  } else if (loading === true) {
+    table = <p>Cargando...</p>
+  } else if (loading === false) {
+    if (info.title === "500 Internal Server Error") {
+      console.log(info)
+      table = <p style={{color: 'red'}}>
+          Error: {info.title}
+        </p>
+    
+      // TODO validate if this is the right condition to catch
+    } else if (info) {
+      // TODO try and implement useEffect to avoid crash
+      table = info.map((groupInfo) =>
+        <CourseCard key={groupInfo.id} course={groupInfo} />)
+      console.log(info)
+    }
+  }
+
   const [joinModalShow, setJoinModalShow] = useState(false);
 
-  const handleJoinModalShow = () => setJoinModalShow(true);
-  const handleJoinModalClose = () => setJoinModalShow(false);
-
-  const groups = [
-    {
-      id: 1,
-      name: "Fundamentos de programación"
-    },
-    {
-      id: 2,
-      name: "Calidad y pruebas de SW"
-    }
-  ];
-  const groupsList = groups.map(groupInfo => <CourseCard key={groupInfo.id} course={groupInfo} />)
 
   return (
     <div>
-      <Modal size="md" centered show={joinModalShow} onHide={handleJoinModalClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Unirse a un grupo</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Código</Form.Label>
-                <Form.Control type="text" placeholder="Código de clase" />
-                <Form.Text className="text-muted">
-                  Introduce el código de la clase para quedar registrado en esta.
-                </Form.Text>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Registrar
-              </Button>
-              <Button variant="link" onClick={handleJoinModalClose}>
-                Cancelar
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
+
+      <JoinGroupModal modalShow={joinModalShow} setModalShow={setJoinModalShow} />
 
       <Container>
           <Row className="mt-5 mb-3">
@@ -57,13 +63,13 @@ function Groups() {
               <h1>Mis grupos</h1>
             </Col>
             <Col lg={3}>
-              { getCookie("isTeacher") ?
+              { isTeacher === "teacher" ?
                 (
-                  <Button variant="primary" href="/create/group/1">
+                  <Button variant="primary" href="/create/group" className="float-end">
                     Crear
                   </Button>
                 ) : (
-                  <Button variant="primary" size="md" onClick={handleJoinModalShow}>
+                  <Button variant="primary" size="md" onClick={setJoinModalShow} className="float-end">
                     Unirme a un grupo
                   </Button>
                 )
@@ -73,7 +79,7 @@ function Groups() {
 
           <Row>
             <Col lg={6}>
-              {groupsList}
+              {table}
             </Col>
           </Row>
         </Container>
