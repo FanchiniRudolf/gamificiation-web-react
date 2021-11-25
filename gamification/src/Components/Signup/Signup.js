@@ -45,7 +45,7 @@ function Signup() {
       setCookie("session_token", info.session.token)
       setCookie("user", info.session.user)
       setUsername(info.session.user.username)
-      setTeacherStatus(info.session.user.role.name === "teacher")
+      setTeacherStatus(info.session.user.role.name )
       setSession(true)
       
       message = <div>

@@ -13,7 +13,7 @@ function Navbar() {
   const handleLogOut = () => {
     deleteAllCookies();
     setSession(false);
-    setTeacherStatus(false)
+    setTeacherStatus("")
     setUsername("")
     setUserId(0)
   }

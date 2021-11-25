@@ -44,7 +44,7 @@ function Login() {
       setCookie("session_token", info.session.token)
       setCookie("user", info.session.user)
       setUsername(info.session.user.username)
-      setTeacherStatus(info.session.user.role.name === "teacher")
+      setTeacherStatus(info.session.user.role.name)
       roleName = info.session.user.role.name
       console.log(roleName)
       setSession(true)
@@ -52,12 +52,12 @@ function Login() {
       if (roleName === "teacher") {
         message = <div>
                   <p>Success!!</p>
-                  <Navigate to="/periods" replace={false} />
+                  <Navigate to="/periods" replace={true} />
                 </div>
       } else if (roleName === "student") {
         message = <div>
                   <p>Success!!</p>
-                  <Navigate to="/groups" replace={false} />
+                  <Navigate to="/groups" replace={true} />
                 </div>
       }
     }
