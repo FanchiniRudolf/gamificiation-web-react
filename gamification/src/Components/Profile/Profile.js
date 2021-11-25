@@ -1,13 +1,46 @@
 import React, {useState} from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import "./Profile.css";
+import { useFetch } from "../../Hooks/useFetch";
 import {useParams}  from "react-router-dom";
+import { getCookie } from "../../Functions/Cookies";
 
-//@dos
 function StudentProfile() {
+
+  let userCookie = getCookie("user")
+  console.log(userCookie)
+
+  let studentObject = {
+    id: userCookie.id,
+    nickname: userCookie.username,
+    name: userCookie.name,
+    lastName: userCookie.last_name
+  }
+
+  console.log("studentobj:", studentObject)
 
 
   const { id } = useParams();
+  console.log("groupID en profile:", id)
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const {loading, info} = useFetch(API_BASE_URL + "users_groups/student-info?group_id="+id+"&student_id="+studentObject.id,
+    "GET",
+    {"Authorization": getCookie("session_token")})
+  console.log("info GET para Profile:", info);
+
+  let userGroupXP, userGroupCoins
+
+  if (loading === null) {
+    userGroupXP = <div></div>
+    userGroupCoins = <div></div>
+  } else if (loading === true) {
+    userGroupXP = <p>Cargando...</p>
+    userGroupCoins = <p>Cargando...</p>
+  } else if (loading === false) {
+    userGroupXP = info.xp
+    userGroupCoins = info.coins
+  }
 
 
   const [user] = useState({
@@ -24,10 +57,10 @@ function StudentProfile() {
     // <div className="Courses">
     <div>
       <Container>
-        <Row className="text-center mt-2 mb-3">
+        <Row className="text-center mt-3 mb-3">
           <Col lg={12}>
-            <h2>Grupo  {user.group} </h2>
-            <h2>Perfil de {user.id} </h2>
+            {/* <h2>Grupo  {user.group} (quitar)</h2> */}
+            <h2>Mi perfil</h2>
           </Col>
         </Row>
         <Row className="text-center mt-2 mb-5">
@@ -37,18 +70,15 @@ function StudentProfile() {
         </Row>
         <Row className="text-center mt-5 mb-3">
           <Col lg={12}>
-            <h1>{user.name}</h1>
+            <h1>{studentObject.name} {studentObject.lastName}</h1>
           </Col>
         </Row>
         <Row className="text-center mt-5 mb-3">
-          <Col>
-            <h2>{user.hp} 💗</h2>
+          <Col >
+            <h2>{userGroupXP} ⭐</h2>
           </Col>
           <Col >
-            <h2>{user.xp} ⭐</h2>
-          </Col>
-          <Col >
-            <h2>{user.coins} 💰</h2>
+            <h2>{userGroupCoins} 💰</h2>
           </Col>
         </Row>
         

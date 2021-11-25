@@ -24,6 +24,8 @@ import "./Group.css";
 
 function Group() {
 
+  let studentData, studentArr
+
   // stores the string which can have value "teacher"
   const {isTeacher} = useContext(SessionContext)
   const axiosHeader = { Authorization: `${getCookie("session_token")}`}
@@ -36,7 +38,7 @@ function Group() {
     "GET",
     {"Authorization": getCookie("session_token")})
     // info contains group ID, course ID, period ID, name of group & OTP
-    // console.log(info);
+    console.log("info en Group:", info);
 
   const generateClassCode = () => {
     axios.get(API_BASE_URL+"groups/acces_code/"+String(id), {headers: axiosHeader})
@@ -60,10 +62,13 @@ function Group() {
   }else if(loading === false){
     students = info.students.map(student =>
        <StudentListItem key={student.id} student={student} />);
+    studentArr = info.students
     tableEntries = info.students.sort((a, b) => a.hp - b.hp)
       .map((entry, index) => <TableEntry key={entry.id} entry={entry} index={index}/>);
     topTableEntries = tableEntries.slice(0, 5)
   }
+
+  console.log(studentArr)
 
 
   return (
