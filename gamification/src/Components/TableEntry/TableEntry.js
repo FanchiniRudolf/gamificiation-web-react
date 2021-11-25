@@ -7,9 +7,9 @@ function TableEntry({entry, index}) {
         <td>{index+1}</td>
         <td>{entry.student.name + " " + entry.student.last_name}</td>
         <td>{entry.student.school_id}</td>
-        <td>{entry.hp}</td>
-        <td>{entry.xp}</td>
-        <td>{entry.coins}</td>
+        {/* <td>{entry.hp}</td> */}
+        <td className="text-center">{entry.xp}</td>
+        <td className="text-center">{entry.coins}</td>
     </tr>
   )
 }

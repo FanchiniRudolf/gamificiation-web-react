@@ -49,7 +49,7 @@ function Group() {
       })
   }
 
-  let students, missions, tableEntries;
+  let students, missions, tableEntries, topTableEntries;
 
   if (loading === null){
     students = <div/>;
@@ -62,6 +62,7 @@ function Group() {
        <StudentListItem key={student.id} student={student} />);
     tableEntries = info.students.sort((a, b) => a.hp - b.hp)
       .map((entry, index) => <TableEntry key={entry.id} entry={entry} index={index}/>);
+    topTableEntries = tableEntries.slice(0, 5)
   }
 
 
@@ -139,13 +140,16 @@ function Group() {
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Matricula</th>
-                    <th>HP 💗</th>
+                    {/* <th>HP 💗</th> */}
                     <th>XP ⭐</th>
                     <th>Monedas 💰</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {tableEntries}
+                  { isTeacher === "student" ?
+                    topTableEntries :
+                    tableEntries
+                  }
                 </tbody>
               </Table>
             </TabPanel>
