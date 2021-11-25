@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import {Card, Button} from 'react-bootstrap'
 import {SessionContext} from '../../Hooks/sessionContext'
 import SelectPeriodModal from '../Missions/Modal/SelectPeriodModal'
+import DeleteButton from '../Buttons/DeleteButton'
 
 function MissionItem({mission}) {
 
@@ -20,8 +21,8 @@ function MissionItem({mission}) {
           {mission.description}
         </Card.Text>
         { isTeacher === "teacher" && <Button variant="primary" href={"/edit/mission/"+mission.id}>Editar</Button> }
-        {/* {' '}
-        { isTeacher === "teacher" && <Button variant="danger">Eliminar</Button> } */}
+        {' '}
+        { isTeacher === "teacher" && <DeleteButton type={"missions"} id ={mission.id}/> }
         {' '}
         { isTeacher === "teacher" && <Button variant="success" onClick={() => setSelectModalShow(true)} >Asignar a un grupo</Button> }
 

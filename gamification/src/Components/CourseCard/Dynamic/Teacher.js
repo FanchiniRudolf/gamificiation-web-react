@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import DeleteButton from '../../Buttons/DeleteButton'
 
 function Teacher({courseId}) {
 
@@ -15,7 +16,7 @@ const navigate = useNavigate();
       <hr />
       <Button variant="primary" onClick={handleRoute}>editar</Button>
       {' '}
-      <Button variant="danger">eliminar</Button>
+      <DeleteButton type={"groups"} id ={courseId}/>
     </div>
   )
 }

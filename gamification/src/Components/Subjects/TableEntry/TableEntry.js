@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap';
+import DeleteButton from "../../Buttons/DeleteButton"
 
 
 function TableEntry({entry, index}) {
@@ -15,7 +16,8 @@ function TableEntry({entry, index}) {
         <td className="text-center">
             <Button variant="primary" href={'edit/subject/'+entry.id}>Editar</Button>
             {' '}
-            <Button variant="danger">Eliminar</Button></td>
+            <DeleteButton type={"courses"} id ={entry.id}/>
+        </td>
     </tr>
   )
 }
