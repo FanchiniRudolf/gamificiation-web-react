@@ -11,7 +11,7 @@ function PeriodGroupDropdown({periodID}) {
   const {loading, info} = useFetch(API_BASE_URL + "groups?period_id=" + periodID,
     "GET",
     {"Authorization": getCookie("session_token")})
-  console.log("GET info:", info)
+  console.log("GET pgd info:", info)
 
   let message
   
